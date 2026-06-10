@@ -7,7 +7,7 @@ sidebar_position: 1
 
 For Beta version changelog, please see [Beta Changelog](./beta.md)
 
-⚠️ Please note: If you are using Windows 8/7/XP systems, or browser kernel version lower than <120, you need to manually install the [legacy ScriptCat](https://bbs.tampermonkey.net.cn/thread-3068-1-1.html). v0.16.x is the last version that supports Manifest V2. For installation steps, please refer to: [Install Extension via Load Unpacked](/docs/use/use/#install-extension-via-load-unpacked).
+⚠️ Please note: If you are using Windows 8/7/XP systems, or browser kernel version lower than 120, you need to manually install the [legacy ScriptCat](https://bbs.tampermonkey.net.cn/thread-3068-1-1.html). v0.16.x is the last version that supports Manifest V2. For installation steps, please refer to: [Install Extension via Load Unpacked](/docs/use/use/#load-unpacked-extension-installation).
 
 ## 1.0.1 (2025-08-16)
 
@@ -184,7 +184,7 @@ Quick fixes for some major issues
 
 Fix some bugs, v0.18.1-beta version content is identical to this version
 
-⚠️ Please note: If you are using Windows 8/7/XP systems, or browser kernel version lower than <120, you need to manually install the [legacy ScriptCat](https://bbs.tampermonkey.net.cn/thread-3068-1-1.html). v0.16.6 is the last version that supports Manifest V2. For installation steps, please refer to: [Install Extension via Load Unpacked](/docs/use/use/#install-extension-via-load-unpacked).
+⚠️ Please note: If you are using Windows 8/7/XP systems, or browser kernel version lower than 120, you need to manually install the [legacy ScriptCat](https://bbs.tampermonkey.net.cn/thread-3068-1-1.html). v0.16.6 is the last version that supports Manifest V2. For installation steps, please refer to: [Install Extension via Load Unpacked](/docs/use/use/#load-unpacked-extension-installation).
 
 ### Changed
 
@@ -216,7 +216,7 @@ Fix some bugs, v0.18.1-beta version content is identical to this version
 
 Major Manifest V3 release with comprehensive improvements and new features
 
-⚠️ Please note: If you are using Windows 8/7/XP systems, or browser kernel version lower than <120, you need to manually install the [legacy ScriptCat](https://bbs.tampermonkey.net.cn/thread-3068-1-1.html). v0.16.6 is the last version that supports Manifest V2. For installation steps, please refer to: [Install Extension via Load Unpacked](/docs/use/use/#install-extension-via-load-unpacked).
+⚠️ Please note: If you are using Windows 8/7/XP systems, or browser kernel version lower than 120, you need to manually install the [legacy ScriptCat](https://bbs.tampermonkey.net.cn/thread-3068-1-1.html). v0.16.6 is the last version that supports Manifest V2. For installation steps, please refer to: [Install Extension via Load Unpacked](/docs/use/use/#load-unpacked-extension-installation).
 
 ### Added
 

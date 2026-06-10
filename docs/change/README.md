@@ -3,11 +3,386 @@ id: change
 sidebar_position: 1
 ---
 
+import GithubStar from '@site/src/components/GithubStar';
+
 # 更新日志
+
+<GithubStar variant="bar" scene="changelog" />
 
 Beta 版本更新日志请查看 [Beta 更新日志](./beta.md)
 
 ⚠️ 请注意，如果你使用的 Windows 8/7/XP 系统，或者浏览器内核版本低于\<120，需要自行手动安装[旧版脚本猫](https://bbs.tampermonkey.net.cn/thread-3068-1-1.html)，v0.16.x 是最后一个支持 Manifest V2 的版本，安装步骤可以参考：[加载解压缩方式安装扩展](/docs/use/use/#%E5%8A%A0%E8%BD%BD%E8%A7%A3%E5%8E%8B%E7%BC%A9%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95)。
+
+<a name="0.16.15"></a>
+
+## 0.16.15 (2026-05-19)
+
+### 🐛 Bug 修复
+
+- 🐛 修复 MV2 打包脚本构建命令 [#1423](https://github.com/scriptscat/scriptcat/issues/1423) (by @CodFrm)
+- 🐛 针对 WebExtensions API Changes (Firefox 149-152) 做修正（含 CSP 调整）([#1448](https://github.com/scriptscat/scriptcat/pull/1448)) (by @cyfung1031)
+
+<a name="0.16.14"></a>
+
+## 0.16.14 (2026-04-25)
+
+### ✨ 主要新功能
+
+- ✨ FirefoxMV2 同步 MV3 主要项目：升级 TypeScript 至 4.9、tsconfig 至 es2022；脚本范本（normal/crontab/background）对齐 MV3 版本；cron 升级支持 `once(...)` 表达式；Monaco Editor 多国语言支持 ([#1331](https://github.com/scriptscat/scriptcat/pull/1331)) (by @cyfung1031)
+
+### ♻️ 重构与兼容性
+
+- 🔥 跟随 MV3 移除 axios 依赖 ([#1339](https://github.com/scriptscat/scriptcat/pull/1339)) (by @cyfung1031)
+
+### 🐛 Bug 修复
+
+- 🐛 修复 window.parent 嵌套 iframe 接收不到 postMessage 消息的问题 ([#1335](https://github.com/scriptscat/scriptcat/pull/1335)) (by @cyfung1031)
+
+<a name="1.3.2"></a>
+
+## 1.3.2 (2026-03-28)
+
+### 🐛 Bug 修复
+
+- 🐛 删除 fetchScriptBody 的 Accept，避免触发 Error 406 ([#1306](https://github.com/scriptscat/scriptcat/pull/1306)) (by @cyfung1031)
+- 🐛 针对 WebDAV 修复 cookies 认证冲突 及 authType 支持 ([#1308](https://github.com/scriptscat/scriptcat/pull/1308)) (by @CodFrm)
+- 🐛 正确显示格式化错误 ([#1310](https://github.com/scriptscat/scriptcat/pull/1310)) (by @cyfung1031)
+- 🐛 设备相关配置改用 chrome.storage.local，避免跨设备同步 ([#1309](https://github.com/scriptscat/scriptcat/pull/1309)) (by @CodFrm)
+- 🐛 修复代码编辑框提示问题 ([#1301](https://github.com/scriptscat/scriptcat/pull/1301)) (by @cyfung1031)
+- 🐛 修复运行日志页面日期选择弹出框被容器裁剪的问题 ([#1292](https://github.com/scriptscat/scriptcat/pull/1292)) (by @cyfung1031)
+- 🐛 修复未绑定网盘时仍显示解绑按钮的问题 ([#1291](https://github.com/scriptscat/scriptcat/pull/1291)) (by @CodFrm)
+- 🐛 修复弹出框被遮挡的问题 ([#1290](https://github.com/scriptscat/scriptcat/pull/1290)) (by @cyfung1031)
+
+<a name="1.3.1"></a>
+
+## 1.3.1 (2026-03-13)
+
+### 🐛 Bug 修复
+
+- 🚑 修复其他扩展注入 chrome.runtime 导致环境误判的问题 [#1280](https://github.com/scriptscat/scriptcat/issues/1280) ([#1281](https://github.com/scriptscat/scriptcat/pull/1281)) (by @CodFrm)
+
+### 其它
+
+- ✅ 添加 Playwright E2E 测试及 GM API 功能测试 ([#1283](https://github.com/scriptscat/scriptcat/pull/1283)) (by @CodFrm)
+
+<a name="1.3.0"></a>
+
+## 1.3.0 (2026-03-10)
+
+本次更新带来了 Amazon S3 存储、脚本运行时期选项、不依赖外部网站安装等新功能，大幅优化了通讯机制和 React 性能，修复了大量 GM API、UI 和稳定性问题，并进行了广泛的代码质量改良。
+
+### 🚀 主要新功能
+
+- ✨ 增加 Amazon S3 存储 [#1146](https://github.com/scriptscat/scriptcat/issues/1146) ([#1189](https://github.com/scriptscat/scriptcat/pull/1189)) (by @CodFrm)
+- ✨ 脚本运行时期选项 ([#895](https://github.com/scriptscat/scriptcat/pull/895)) (by @CodFrm)
+- ✨ 不依赖外部网站访问进行安装 ＋ 安装页版面调整 ([#842](https://github.com/scriptscat/scriptcat/pull/842)) (by @cyfung1031)
+- ✨ 关闭脚本功能后展示灰色图标 [#897](https://github.com/scriptscat/scriptcat/issues/897) (by @CodFrm)
+- ✨ 优化菜单展开项为0时的交互逻辑 [#868](https://github.com/scriptscat/scriptcat/issues/868) (by @CodFrm)
+- ✨ 范本预设 `@noframes` 避免新手踩坑 ([#900](https://github.com/scriptscat/scriptcat/pull/900)) (by @cyfung1031)
+- ✨ 防止脚本安装链结因脚本名字改了而被误判为安装而非更新 ([#824](https://github.com/scriptscat/scriptcat/pull/824)) (by @cyfung1031)
+- ✨ `@grant` 冲突校验修正，增加 meta 重复声明错误提示 ([#902](https://github.com/scriptscat/scriptcat/pull/902)) (by @cyfung1031)
+- ✨ 接受 `@version` 没有或空值 ([#1216](https://github.com/scriptscat/scriptcat/pull/1216)) (by @cyfung1031)
+- ✨ 调整隐藏编辑框侧边栏位置 [#1185](https://github.com/scriptscat/scriptcat/issues/1185) ([#1254](https://github.com/scriptscat/scriptcat/pull/1254)) (by @CodFrm)
+
+### 🧩 GM API 变更
+
+- 🐛 修复 GM_addElement 问题，将操作放到 content 环境 ([#1233](https://github.com/scriptscat/scriptcat/pull/1233)) (by @cyfung1031)
+- 🐛 `GM_download` 添加 `conflictAction` 参数 ([#1250](https://github.com/scriptscat/scriptcat/pull/1250)) (by @cyfung1031)
+- 🐛 修正 GM API 异步声明，正确返回 Promise ([#1169](https://github.com/scriptscat/scriptcat/pull/1169)) (by @cyfung1031)
+- ♻️ 兼容 FF: GM_setClipboard ([#928](https://github.com/scriptscat/scriptcat/pull/928)) (by @cyfung1031)
+- 🐛 修复 GM_value 问题 [#1192](https://github.com/scriptscat/scriptcat/issues/1192) (by @CodFrm)
+- 🐛 修复 download 文件名不支持文件夹的问题 ([#1203](https://github.com/scriptscat/scriptcat/pull/1203)) (by @cyfung1031)
+
+### ⚡️ 性能优化
+
+- ♻️ 重构通讯机制：采用 storage.local 广播 + 符合 Firefox MV3 scripting 规范 + 不可追踪的动态同步 MessageFlag ([#1067](https://github.com/scriptscat/scriptcat/pull/1067)) (by @cyfung1031)
+- ⚡️ 修正 React 重绘问题（ScriptCard & ScriptTable）([#1182](https://github.com/scriptscat/scriptcat/pull/1182)) (by @cyfung1031)
+- ⚡️ 修正 React 重绘问题（Popup）([#1181](https://github.com/scriptscat/scriptcat/pull/1181)) (by @cyfung1031)
+- ⚡️ 优化 Repo 性能 ([#1232](https://github.com/scriptscat/scriptcat/pull/1232)) (by @CodFrm)
+- ⚡️ 把 metadata 从 chrome.storage.session 抽走 ([#1027](https://github.com/scriptscat/scriptcat/pull/1027)) (by @cyfung1031)
+- ⚡️ 改善 charset detection ([#1140](https://github.com/scriptscat/scriptcat/pull/1140)) (by @cyfung1031)
+- ⚡️ 把 icon 根据 url 储存，避免多个脚本储存同一 icon 造成浪费 ([#909](https://github.com/scriptscat/scriptcat/pull/909)) (by @cyfung1031)
+- ⚡️ parseMetadata 代码优化 ([#903](https://github.com/scriptscat/scriptcat/pull/903)) (by @cyfung1031)
+- 🐛 修复内存泄漏和对象属性暴露 ([#1242](https://github.com/scriptscat/scriptcat/pull/1242)) (by @cyfung1031)
+- ♻️ 移除 Redux，简化状态管理 ([#1206](https://github.com/scriptscat/scriptcat/pull/1206)) (by @cyfung1031)
+
+### 🧑‍💻 编辑器
+
+- ✨ 优化 Monaco Editor 设定，加 `/* global xxx */` 修正 ([#1012](https://github.com/scriptscat/scriptcat/pull/1012)) (by @cyfung1031)
+- ✨ Monaco Editor hints 多国语言化 及 增加 `@require-css` 提示 ([#960](https://github.com/scriptscat/scriptcat/pull/960)) (by @cyfung1031)
+
+### 🐛 Bug 修复
+
+- 🐛 修复与隐身窗口检查权限冲突导致反复重启的问题 (by @CodFrm)
+- 🐛 修复 include `*?*` 表达式处理问题 [#1271](https://github.com/scriptscat/scriptcat/issues/1271) ([#1272](https://github.com/scriptscat/scriptcat/pull/1272)) (by @CodFrm)
+- 🔒 使用 DOMPurify 清理公告通知 HTML 内容 ([#1274](https://github.com/scriptscat/scriptcat/pull/1274)) (by @CodFrm)
+- 🐛 修复脚本设置-授权管理控制无效的问题 ([#1267](https://github.com/scriptscat/scriptcat/pull/1267)) (by @CodFrm)
+- 🐛 修复弹出内容跟随屏幕滚动的问题 [#1256](https://github.com/scriptscat/scriptcat/issues/1256) ([#1263](https://github.com/scriptscat/scriptcat/pull/1263)) (by @cyfung1031)
+- 🐛 修复安装链接解析失败问题 [#1235](https://github.com/scriptscat/scriptcat/issues/1235) ([#1260](https://github.com/scriptscat/scriptcat/pull/1260)) (by @cyfung1031)
+- 🐛 修复拖拽组件导致触发 focusin/focusout 卡顿 [#1224](https://github.com/scriptscat/scriptcat/issues/1224) ([#1243](https://github.com/scriptscat/scriptcat/pull/1243)) (by @CodFrm)
+- 🐛 修复外部扩展 API 无效的问题 ([#1217](https://github.com/scriptscat/scriptcat/pull/1217)) (by @cyfung1031)
+- 🐛 修复 grant 问题 ([#1199](https://github.com/scriptscat/scriptcat/pull/1199)) (by @CodFrm)
+- 🐛 修正 content.js 没有 UserAgentData 问题 ([#1183](https://github.com/scriptscat/scriptcat/pull/1183)) (by @cyfung1031)
+- 🐛 处理脚本编码问题 [#1115](https://github.com/scriptscat/scriptcat/issues/1115) ([#1138](https://github.com/scriptscat/scriptcat/pull/1138)) (by @CodFrm)
+- 🐛 修复脚本图标展示 [#1052](https://github.com/scriptscat/scriptcat/issues/1052) ([#1104](https://github.com/scriptscat/scriptcat/pull/1104)) (by @CodFrm)
+- 🐛 UnoCSS 加 prefix 解决 CSS 冲突、CSS 布局修正 ([#1013](https://github.com/scriptscat/scriptcat/pull/1013)) (by @cyfung1031)
+- 🐛 选择不定期检查脚本更新时，清除现有 Alarm ([#996](https://github.com/scriptscat/scriptcat/pull/996)) (by @cyfung1031)
+- 🐛 导入 & 导出 - 修正不依照脚本最后修改日期时间问题 ([#951](https://github.com/scriptscat/scriptcat/pull/951)) (by @cyfung1031)
+- 🐛 修复 i18n 前缀语言脚本名和描述展示 [#1123](https://github.com/scriptscat/scriptcat/issues/1123) (by @CodFrm)
+- 🐛 修正反注册未正确执行 ([#1231](https://github.com/scriptscat/scriptcat/pull/1231)) (by @cyfung1031)
+
+### ♻️ 重构与兼容性
+
+- ♻️ userScripts / scripting API 调整，增强兼容性（重做 #704）([#925](https://github.com/scriptscat/scriptcat/pull/925)) (by @cyfung1031)
+- ♻️ Cron 相关修改：bug 修补、i18n、once 表达式增强、升级 cron 库 ([#1126](https://github.com/scriptscat/scriptcat/pull/1126)) (by @cyfung1031)
+- ♻️ 重构优化脚本图标加载 ([#893](https://github.com/scriptscat/scriptcat/pull/893)) (by @CodFrm)
+- ♻️ 增强文本解码 ([#1166](https://github.com/scriptscat/scriptcat/pull/1166)) (by @cyfung1031)
+- ⬆️ 提升 swc 兼容内核版本 ([#1186](https://github.com/scriptscat/scriptcat/pull/1186)) (by @cyfung1031)
+
+### 🎨 UI 改进
+
+- 🎨 扩展图标显示数字默认修改为脚本数量 [#989](https://github.com/scriptscat/scriptcat/issues/989) (by @CodFrm)
+- 🎨 让安装页面 URL 好看一点 ([#993](https://github.com/scriptscat/scriptcat/pull/993)) (by @cyfung1031)
+- 🐛 重构 DraggableEntry、修正卡片高度对齐 ([#1245](https://github.com/scriptscat/scriptcat/pull/1245)) (by @cyfung1031)
+
+### 其它
+
+- 🔒 安全性改进（DOMPurify、npm 依赖漏洞修复）
+- 👷 rspack 打包优化、打包工具链修复
+- ⬆️ 依赖版本更新
+
+**Full changelog:** [Compare v1.2.6...v1.3.0](https://github.com/scriptscat/scriptcat/compare/v1.2.6...v1.3.0)
+
+<a name="1.2.6"></a>
+
+## 1.2.6 (2026-02-03)
+
+### Fixed
+
+- 🐛 修复 structuredClone 错误 ([#1192](https://github.com/scriptscat/scriptcat/issues/1192)) [[265e122](https://github.com/scriptscat/scriptcat/commit/265e122342366b166d3122cc8da485cb1295b924)] (by @cyfung1031)
+
+<a name="1.2.5"></a>
+
+## 1.2.5 (2026-02-02)
+
+### Fixed
+
+- 🐛 修复脚本同步删除问题 [#1158](https://github.com/scriptscat/scriptcat/issues/1158) [[5e91a31](https://github.com/scriptscat/scriptcat/commit/5e91a31e02761ba8061e3de1f4d15fc1d964346c)] (by @CodFrm)
+- 🐛 兼容 TM &#x60;@match www.website.com/*&#x60; ([#1165](https://github.com/scriptscat/scriptcat/issues/1165)) [[da66ff7](https://github.com/scriptscat/scriptcat/commit/da66ff70d25c3087cb8405289dc8b14df9c15f05)] (by @cyfung1031)
+- 🐛 Edge最新144版本新增允许用户脚本 [#1157](https://github.com/scriptscat/scriptcat/issues/1157) [[f7c1c73](https://github.com/scriptscat/scriptcat/commit/f7c1c730cf39cae02a9e6f815e3113ea9d2a8a05)] (by @CodFrm)
+- 🐛 修正 FileSystemObserver 未能持续监听问题 ([#1160](https://github.com/scriptscat/scriptcat/issues/1160)) [[9556769](https://github.com/scriptscat/scriptcat/commit/95567690d1bf77bfe8bedfd6a94c88949a77e115)] (by @cyfung1031)
+- 🐛 locales.ts 小修正 ([#1154](https://github.com/scriptscat/scriptcat/issues/1154)) [[1c44b68](https://github.com/scriptscat/scriptcat/commit/1c44b680dab3a95a51eb73cf92531efd0a192dc9)] (by @cyfung1031)
+- 🐛 修复弹出的更新窗口时间问题 ([#1155](https://github.com/scriptscat/scriptcat/issues/1155)) [[c17f761](https://github.com/scriptscat/scriptcat/commit/c17f761807fb9b14aff09b9b08d19e4cbe72b8a5)] (by @cyfung1031)
+- 🐛 修复i18n前缀语言脚本名和描述展示 [#1123](https://github.com/scriptscat/scriptcat/issues/1123) [[7ef7355](https://github.com/scriptscat/scriptcat/commit/7ef7355632fc989fa1cad44fd2069ff840bbd8df)] (by @CodFrm)
+- 🐛 处理value引用问题 [#1141](https://github.com/scriptscat/scriptcat/issues/1141) ([#1147](https://github.com/scriptscat/scriptcat/issues/1147)) [[0892fcd](https://github.com/scriptscat/scriptcat/commit/0892fcd452758030553c33ddf14f1ce4bc6d3efc)] (by @CodFrm)
+
+<a name="1.2.4"></a>
+
+## 1.2.4 (2026-01-08)
+
+修复了同步功能的bug，修复版本更新不会再主动打开更新日志页面
+
+### Added
+
+- ✨ 同步删除默认设置为关闭 ([#958](https://github.com/scriptscat/scriptcat/issues/958)) [[9c4c7dc](https://github.com/scriptscat/scriptcat/commit/9c4c7dc411357746db43a306d97ac41a71f2b49c)] (by @cyfung1031)
+- ✨ 编辑器支持 GM.\* ([#1129](https://github.com/scriptscat/scriptcat/issues/1129)) [[bea0192](https://github.com/scriptscat/scriptcat/commit/bea0192c6cc50eff2ed4e1cc5dcc25f36bbe10e7)] (by @cyfung1031)
+
+### Changed
+
+- ♻️ 优化更新日志页面打开逻辑 [#1110](https://github.com/scriptscat/scriptcat/issues/1110) [[d3ffedc](https://github.com/scriptscat/scriptcat/commit/d3ffedcffe752ca548f87f1640072fcd871b8604)] (by @CodFrm)
+
+### Fixed
+
+- 🐛 scriptcat.d.tpl &amp; type 修正 ([#1130](https://github.com/scriptscat/scriptcat/issues/1130)) [[dd22ef5](https://github.com/scriptscat/scriptcat/commit/dd22ef544684d69e24a7aae098cb05cbab03daa8)] (by @cyfung1031)
+- 🐛 修复云同步问题 ([#1133](https://github.com/scriptscat/scriptcat/issues/1133)) [[a9383d2](https://github.com/scriptscat/scriptcat/commit/a9383d2012eb3953dc33c8886ce3891f404fa100)] (by @CodFrm)
+- 🐛 修正 &#x60;GM_addElement(&quot;tagName&quot;)&#x60; 错误 ([#1120](https://github.com/scriptscat/scriptcat/issues/1120)) [[ad19de5](https://github.com/scriptscat/scriptcat/commit/ad19de5c1793c8c079bedbf1b11c7c2ae27a469e)] (by @cyfung1031)
+- 🐛 删除清理逻辑和优化 checkuserscript 逻辑 ([#1113](https://github.com/scriptscat/scriptcat/issues/1113)) [[e635911](https://github.com/scriptscat/scriptcat/commit/e635911a3c11c3cb8acd1cfd507cb777e5ee7236)] (by @CodFrm)
+
+### Miscellaneous
+
+- 🏷️ typescript 修订 ([#1127](https://github.com/scriptscat/scriptcat/issues/1127)) [[b455724](https://github.com/scriptscat/scriptcat/commit/b4557244191018c18d5ce8ea8e8627bcfb7f7cdd)] (by @cyfung1031)
+- 📝 example 注释补充 ([#1131](https://github.com/scriptscat/scriptcat/issues/1131)) [[292549e](https://github.com/scriptscat/scriptcat/commit/292549ed0f65952fe9f269aace23eefc7d6a3a0f)] (by @cyfung1031)
+
+<a name="1.2.3"></a>
+
+## 1.2.3 (2025-12-20)
+
+一些 bug 修复
+
+### Changed
+
+- ⚡ 优化下一次运行时间显示 [#1093](https://github.com/scriptscat/scriptcat/issues/1093) [[324ce51](https://github.com/scriptscat/scriptcat/commit/324ce515c84699ca8d3bf1ee447fc6ef0656ae0d)] (by @CodFrm)
+
+### Fixed
+
+- 🐛 early 脚本处理 url 匹配问题 ([#1096](https://github.com/scriptscat/scriptcat/issues/1096)) [[a77effb](https://github.com/scriptscat/scriptcat/commit/a77effbab5ab4d1752065ef943d9c050ff99c066)] (by @CodFrm)
+- 🐛 处理弹出的更新窗口显示时间过短的问题 ([#1088](https://github.com/scriptscat/scriptcat/issues/1088)) [[b2b2d5c](https://github.com/scriptscat/scriptcat/commit/b2b2d5c41ff70ee5430f7d8d156f480ac8fc3a1a)] (by @cyfung1031)
+- 🐛 修复开启用户脚本通知显示异常的问题 ([#1086](https://github.com/scriptscat/scriptcat/issues/1086)) ([959c4db](https://github.com/scriptscat/scriptcat/commit/959c4dbed92f7bfe22a2f8ebb775c4189b5ff076))
+- 🐛 responseHeaders: &#x60;TM 兼容: \r\n&#x60; ([#1085](https://github.com/scriptscat/scriptcat/issues/1085)) [[15232c8](https://github.com/scriptscat/scriptcat/commit/15232c8543d93abfdafa1353d39d8a15d1dc385f)] (by @cyfung1031)
+- 🐛 处理 GM xhr 的问题 ([#1082](https://github.com/scriptscat/scriptcat/issues/1082)) [[3d987c3](https://github.com/scriptscat/scriptcat/commit/3d987c300242a3c765146359c35ecd6d998f792c)] (by @CodFrm)
+
+### Miscellaneous
+
+- 🌐 Handling i18n issues on popup pages [#1081](https://github.com/scriptscat/scriptcat/issues/1081) [[6b17d71](https://github.com/scriptscat/scriptcat/commit/6b17d7100e8572d72b3b7aaf8ea38be9cdf33f5f)] (by @CodFrm)
+
+<a name="1.2.2"></a>
+
+## 1.2.2 (2025-12-13)
+
+一些 bug 修复
+
+### Fixed
+
+- 🐛 修复后台频繁同步的问题 ([#1076](https://github.com/scriptscat/scriptcat/issues/1076)) [[45dc39b](https://github.com/scriptscat/scriptcat/commit/45dc39baa0f3326cf12e97312ab632dc46ba40f2)] (by @CodFrm)
+- 🐛 修复特殊 tab 处理的问题 [#1066](https://github.com/scriptscat/scriptcat/issues/1066) ([50904fb](https://github.com/scriptscat/scriptcat/commit/50904fb46efdea10fd57677bc2d28c770b47e861))
+- 🐛 修复无 匹配规则 的脚本处理 [#1071](https://github.com/scriptscat/scriptcat/issues/1071) ([560cdc0](https://github.com/scriptscat/scriptcat/commit/560cdc01fc0fc27fb7d0e3b877c63ba431206668))
+- 🐛 修复 ci 打包删除掉了 background 的可选权限问题 [[1f002f0](https://github.com/scriptscat/scriptcat/commit/1f002f0edf9892f023ae93b8522ff7c5e4a96559)] (by @CodFrm)
+- 🐛 fix ignore discarded tab ([#1058](https://github.com/scriptscat/scriptcat/issues/1058)) [[6165bf4](https://github.com/scriptscat/scriptcat/commit/6165bf48eb1d53ede0561c85c30135446c2ff882)] (by @cyfung1031)
+
+<a name="1.2.1"></a>
+
+## 1.2.1 (2025-12-06)
+
+进行了一些 BUG 修复，处理了后台运行选项
+
+### Added
+
+- ✨ 添加后台运行选项 ([#1048](https://github.com/scriptscat/scriptcat/issues/1048)) [[626e84d](https://github.com/scriptscat/scriptcat/commit/626e84dbd4dda0731e0a5ffdbdf71ae10e884489)] (by @CodFrm)
+
+### Fixed
+
+- 🐛 修复 document.write 导致消息监听重置的问题 ([#1055](https://github.com/scriptscat/scriptcat/issues/1055)) [[1f3a3ec](https://github.com/scriptscat/scriptcat/commit/1f3a3ec335ed4b519599e9aa3036c66b6f0d10b2)] (by @CodFrm)
+- 🐛 修复列表视图筛选功能 [[e272dc6](https://github.com/scriptscat/scriptcat/commit/e272dc6ed151c15a1ef785b70ae100cb9e74a5dd)] (by @CodFrm)
+- 🐛 处理 early 中的 UserAgentData ([#1045](https://github.com/scriptscat/scriptcat/issues/1045)) [[b4e08a8](https://github.com/scriptscat/scriptcat/commit/b4e08a812a08f42037837bbee54610ebc565063f)] (by @CodFrm)
+- 🐛 恢复 GM_openInTab 的 useOpen 选项 [#1043](https://github.com/scriptscat/scriptcat/issues/1043) ([#1044](https://github.com/scriptscat/scriptcat/issues/1044)) [[7f30198](https://github.com/scriptscat/scriptcat/commit/7f30198909824871e694d5ffbe7088e44a6d0b45)] (by @cyfung1031)
+- 🐛 修复 userScripts 未定义的问题 ([#1041](https://github.com/scriptscat/scriptcat/issues/1041)) [[4f2deda](https://github.com/scriptscat/scriptcat/commit/4f2deda69aa6aae7f6e791be1cd965a440b80e33)] (by @cyfung1031)
+- 🐛 修正&#x60;AppContext&#x60;错误引用&#x60;&quot;monaco-editor&quot;&#x60; ([#983](https://github.com/scriptscat/scriptcat/issues/983)) [[4b8dae1](https://github.com/scriptscat/scriptcat/commit/4b8dae1f49208d13c4d19c4c627762fc1b04ea5e)] (by @cyfung1031)
+
+**Full changelog:** [Compare v1.2.0...v1.2.1](https://github.com/scriptscat/scriptcat/compare/v1.2.0...v1.2.1)
+
+<a name="1.2.0"></a>
+
+## 1.2.0 (2025-11-29)
+
+本次更新带来了脚本列表侧边栏、卡片视图、更友好的检查更新逻辑和编辑器配置等功能，注入与运行稳定性大幅提升，并修复 CSP、沙盒、GM API 等问题，同时带来性能与结构优化。
+
+更多详细内容请看 v1.2.0-beta.x 的更新日志 和 [v1.2](https://docs.scriptcat.org/docs/change/v1.2/) 文档。
+
+### 🚀 主要新功能
+
+- ✨ 脚本列表侧边栏 [#794](https://github.com/scriptscat/scriptcat/issues/794) (by @CodFrm)
+- ✨ 卡片视图 [#860](https://github.com/scriptscat/scriptcat/issues/860) (by @CodFrm)
+- ✨ 更友好的检查更新逻辑 [#755](https://github.com/scriptscat/scriptcat/issues/755) (by @cyfung1031)
+- ✨ 增加编辑器配置和编辑器类型定义 [#708](https://github.com/scriptscat/scriptcat/pull/708) (by @CodFrm)
+- ✨ 在 popup 显示脚本数量 ([#973](https://github.com/scriptscat/scriptcat/issues/973)) [[1134586](https://github.com/scriptscat/scriptcat/commit/1134586ff040ffc0cdddd3538e9ec493950c948a)] (by @cyfung1031)
+- ✨ 增加布局菜单隐藏代码侧边栏 [#689](https://github.com/scriptscat/scriptcat/issues/689) [[dd64da7](https://github.com/scriptscat/scriptcat/commit/dd64da719c081acbf21645e2b1e1f38653ffae8c)]
+- ✨ 增加 SC 版本检查按钮 ([#795](https://github.com/scriptscat/scriptcat/issues/795)) [[1680c66](https://github.com/scriptscat/scriptcat/commit/1680c66099120c0e497c1a1f5321f38fe0160ea0)] (by @cyfung1031)
+- ✨ 添加卸载扩展后的调查页面 [[6404c8f](https://github.com/scriptscat/scriptcat/commit/6404c8f74aff09b15725a92f8afdfc0d71ac188f)]
+
+### 🧩 GM API 变更
+
+- ✨ 支持 inject into，现在可以将脚本注入到 content 环境中了 [#711](https://github.com/scriptscat/scriptcat/issues/711)
+- ✨ GM_openInTab 支持置顶窗口、在隐身窗口打开等参数 [#788](https://github.com/scriptscat/scriptcat/pull/788) (by @cyfung1031)
+- ✨ GM_registerMenuCommand 支持二级菜单和分隔线 [#831](https://github.com/scriptscat/scriptcat/pull/831) (by @cyfung1031)
+- 🗑 删除 GM_openInTab 的 useOpen 选项 [#867](https://github.com/scriptscat/scriptcat/pull/867)
+- ♻️ 调整 `@connect` 逻辑 ([#969](https://github.com/scriptscat/scriptcat/issues/969)) [[67914d2](https://github.com/scriptscat/scriptcat/commit/67914d2b7d57fa9c69706ae57ee5d3400c2643f9)] (by @cyfung1031)
+- ♻️ 重构 `GM_xmlhttpRequest` 及相关代码 ([#901](https://github.com/scriptscat/scriptcat/issues/901)) [[fabd2e9](https://github.com/scriptscat/scriptcat/commit/fabd2e944235b460bc73df346b79d23ee4540af7)] (by @cyfung1031)
+
+### 其它
+
+- ⚡️ 稳定性和性能优化
+- 🐛 修复若干问题
+- ♻️ 代码结构优化
+- 🌐 i18n 问题处理
+
+**Full changelog:** [Compare v1.1.2...v1.2.0](https://github.com/scriptscat/scriptcat/compare/v1.1.2...v1.2.0)
+
+<a name="1.1.2"></a>
+
+## 1.1.2 (2025-09-18)
+
+一些 bug 修复
+
+### Fixed
+
+- 🐛 修复沙盒 toString 问题 [#737](https://github.com/scriptscat/scriptcat/issues/737) [[6ca24c9](https://github.com/scriptscat/scriptcat/commit/6ca24c9b171792035803ac4e1c69e473629f9d18)]
+- 🐛 修复徽章显示 0 的问题 [[026c1d2](https://github.com/scriptscat/scriptcat/commit/026c1d2071dd4cfb6291f005d36717bcdf0a51c3)]
+- 🐛 修复脚本注入 CSP 问题 [#739](https://github.com/scriptscat/scriptcat/issues/739) [#728](https://github.com/scriptscat/scriptcat/issues/728) [[5da21b5](https://github.com/scriptscat/scriptcat/commit/5da21b5e3d0e7e86a1fd5dff57ba03ea641c19fa)]
+- 🐛 修复弹出页面中后台脚本不展开的问题 [[66ab70f](https://github.com/scriptscat/scriptcat/commit/66ab70fb10c28aaf0c9260a9591aab7e1ae35615)]
+- 🐛 增强消息类型判断 [#676](https://github.com/scriptscat/scriptcat/issues/676) [[5073795](https://github.com/scriptscat/scriptcat/commit/50737957507ff9af3aa9ba9a6b7d444b643d1ff2)]
+- 🐛 修复 GM xhr document 问题 [#716](https://github.com/scriptscat/scriptcat/issues/716) [[1c46546](https://github.com/scriptscat/scriptcat/commit/1c465462f4e14ae461d54358710f5caf74208af3)]
+
+<a name="1.1.1"></a>
+
+## 1.1.1 (2025-09-07)
+
+### Added
+
+- ✨ 增加自定义编辑器配置和编辑器类型定义 ([#708](https://github.com/scriptscat/scriptcat/issues/708)) [[49eb379](https://github.com/scriptscat/scriptcat/commit/49eb3794774790d61c3ef787c865a9ba6fe82841)]
+
+### Fixed
+
+- 🐛 修复低版本浏览器的兼容性问题 [#715](https://github.com/scriptscat/scriptcat/issues/715) [[4da8068](https://github.com/scriptscat/scriptcat/commit/4da806879c2b170672814d02e6f8ed98c9fae35b)]
+- 💄 优化弹出窗口过小时弹出菜单显示问题 ([288650e](https://github.com/scriptscat/scriptcat/commit/288650e5e4cbdc3fa8658f0754ce427a1b3dec5a))
+- 🐛 修复 N 个问题 ([#710](https://github.com/scriptscat/scriptcat/issues/710)) [[6a2027a](https://github.com/scriptscat/scriptcat/commit/6a2027ac0bb5e0ed625df570240d068a98a34b31)] (by @WhiteSevs)
+
+### Miscellaneous
+
+- 🌐 处理 i18n 问题 [[2adf69d](https://github.com/scriptscat/scriptcat/commit/2adf69d6ec3c30186f2c2ef89f97e3cba9e15a66)]
+
+<a name="1.1.0"></a>
+
+## 1.1.0 (2025-09-07)
+
+众多 bug 修复，和兼容性问题处理，支持了 Dropbox，新增 @early-start 支持比页面更快加载，更多详细内容请看 v1.1.0-beta.x 的更新日志
+
+### Added
+
+- ✨ 添加脚本运行环境设置 [#628](https://github.com/scriptscat/scriptcat/issues/628) [[0d4a89e](https://github.com/scriptscat/scriptcat/commit/0d4a89efaecf0331dcc7fbb6df006b93a1525846)]
+- ✨ 当没有后台脚本时默认收起 [#626](https://github.com/scriptscat/scriptcat/issues/626) ([9d0aac6](https://github.com/scriptscat/scriptcat/commit/9d0aac6aae11b96707ca1f7c024a24e9d55f217b))
+- ✨ 支持 Dropbox [#575](https://github.com/scriptscat/scriptcat/issues/575) [[2c66f21](https://github.com/scriptscat/scriptcat/commit/2c66f21f5118bd83a0eaa0f1baa3a31f2233e5b2)]
+- ✨ 优化 external.Tampermonkey 当 TM 和 SC 同时启动时，如 TM 没有安装，则查 SC 的安装状态 ([#703](https://github.com/scriptscat/scriptcat/issues/703)) [[d0115c3](https://github.com/scriptscat/scriptcat/commit/d0115c33657260d803b6091139601b1b20407d4e)] (by @cyfung1031)
+- ✨ 新增 @early-start 实现比页面更快加载 ([#649](https://github.com/scriptscat/scriptcat/issues/649)) [[eb097dd](https://github.com/scriptscat/scriptcat/commit/eb097dd146dcd6f8ca712ed883571dbfb3d09f20)]
+- ✨ 全局代码搜索 ([#662](https://github.com/scriptscat/scriptcat/issues/662)) [[f8eafb7](https://github.com/scriptscat/scriptcat/commit/f8eafb7f955dad62c1b41ac477e929bf00c65982)] (by @RenjiYuusei)
+- ✨ 添加卸载扩展后的调查页面 [[6404c8f](https://github.com/scriptscat/scriptcat/commit/6404c8f74aff09b15725a92f8afdfc0d71ac188f)]
+- 📝 修改安装打开的页面和命名空间 ([6f2f000](https://github.com/scriptscat/scriptcat/commit/6f2f000612908b7a88f6b70c2831092805c63bc7))
+- ✨ 添加移动端安装二维码 ([348237c](https://github.com/scriptscat/scriptcat/commit/348237c7ce9771c69025386926b1f73710cf6f42))
+
+### Fined
+
+- 🐛 修复网络无法访问安装中间页时无法触发安装的问题 [#705](https://github.com/scriptscat/scriptcat/issues/705) [[5f1e292](https://github.com/scriptscat/scriptcat/commit/5f1e2929d79c470ba4427c3cce01f5cd184a839b)]
+- 🐛 处理`@match *://*domain/*`的表达式 [[039b445](https://github.com/scriptscat/scriptcat/commit/039b4454148947cd3c74de82b87804ee9815e60c)]
+- 🐛 修复扩展环境沙盒穿透问题 [#700](https://github.com/scriptscat/scriptcat/issues/700) [[a1a868d](https://github.com/scriptscat/scriptcat/commit/a1a868dfe3199e666fe2bcb65cfb2ad0ad3d699b)]
+- ✏️ backgroud -&gt; background ([#698](https://github.com/scriptscat/scriptcat/issues/698)) [[2594075](https://github.com/scriptscat/scriptcat/commit/2594075c4a50f4c79fa46bcda08d7b0cbcfe723c)] (by @cyfung1031)
+- ✏️ CrhomeStorage -&gt; ChromeStorage ([#693](https://github.com/scriptscat/scriptcat/issues/693)) [[64c536d](https://github.com/scriptscat/scriptcat/commit/64c536dbd5fcb4c29eebc1109202bab69aaa3ee2)] (by @cyfung1031)
+- 🐛 修复 GM.getTab、GM.getTabs ([#683](https://github.com/scriptscat/scriptcat/issues/683)) [[31de256](https://github.com/scriptscat/scriptcat/commit/31de256f02b5b61e27f0eec9ea673248ba8faa32)] (by @WhiteSevs)
+- 🐛 修正 finalUrl 缺失域名 ([#656](https://github.com/scriptscat/scriptcat/issues/656)) [[545d7c8](https://github.com/scriptscat/scriptcat/commit/545d7c8c0dd69c83bd2f0353518aafe6af81c0f4)] (by @cyfung1031)
+- 🐛 兼容较低的浏览器内核 [#647](https://github.com/scriptscat/scriptcat/issues/647) ([bba12d2](https://github.com/scriptscat/scriptcat/commit/bba12d23f04759cb9b7fdb63f0d95ae515ee94a9))
+- 🐛 修正 finalUrl 缺失域名 ([#656](https://github.com/scriptscat/scriptcat/issues/656)) [[3ed018a](https://github.com/scriptscat/scriptcat/commit/3ed018a7a54803fcf2e1791316e0166ed0b52007)] (by @cyfung1031)
+- 💚 修复 react/jsx-no-literals lint 问题 [[017b608](https://github.com/scriptscat/scriptcat/commit/017b60886be601e3e0e1719cf249da32d5686c30)]
+- 🐛 兼容较低的浏览器内核 [#647](https://github.com/scriptscat/scriptcat/issues/647) [[0e2f817](https://github.com/scriptscat/scriptcat/commit/0e2f8173c8b44bd6ad44bdffc73fa302a96a058e)]
+- 🐛 优化 window.external 注入 ([#646](https://github.com/scriptscat/scriptcat/issues/646)) [[0b2668a](https://github.com/scriptscat/scriptcat/commit/0b2668aadcab35a33ff9abc4bd030dffb87ea168)] (by @cyfung1031)
+- 🐛 修复网盘鉴权打开页面无法自动关闭的问题 [[7748088](https://github.com/scriptscat/scriptcat/commit/7748088e63c1fc660b6a6ae5613cf04f9da99b8c)]
+- 🐛 修复`@connect` \*不生效的问题 [#623](https://github.com/scriptscat/scriptcat/issues/623) [[76481c8](https://github.com/scriptscat/scriptcat/commit/76481c845b34414a7f15ed18ec61f7dff7eef091)]
+- 🐛 添加单元测试和修复`@exclude` 问题 ([#618](https://github.com/scriptscat/scriptcat/issues/618)) [[0046bb7](https://github.com/scriptscat/scriptcat/commit/0046bb78800a2c46edaac785b8e9592327772a3b)] (by @cyfung1031)
+- 🐛 修复某些.user.js 链接无法安装脚本的问题 [#599](https://github.com/scriptscat/scriptcat/issues/599) [[ccd2639](https://github.com/scriptscat/scriptcat/commit/ccd2639858f0f3cde28f284376fe8ed998d935ae)]
+- 🐛 修复新建脚本失败 [[d42d6e7](https://github.com/scriptscat/scriptcat/commit/d42d6e7d408a84674facf9ab0da6eac0e384502f)]
+- 🐛 metadata 修正 ([#610](https://github.com/scriptscat/scriptcat/issues/610)) [[4d98cce](https://github.com/scriptscat/scriptcat/commit/4d98cce0ca1281cc58f551ea4e6700e340780d3f)] (by @cyfung1031)
+- 🐛 Popup Badge 修正 ([#605](https://github.com/scriptscat/scriptcat/issues/605)) [[eff9230](https://github.com/scriptscat/scriptcat/commit/eff92309de99abb0cf48ef4727afaa113bc2fbb6)] (by @cyfung1031)
+- 🐛 ScriptEditor.tsx 修正 ([#603](https://github.com/scriptscat/scriptcat/issues/603)) [[a9aadba](https://github.com/scriptscat/scriptcat/commit/a9aadba372b813c16bdc5f0aeb07c68981f48c63)] (by @cyfung1031)
+- 🐛 代码檢視器&amp;编辑器 CSS 修正 ([#602](https://github.com/scriptscat/scriptcat/issues/602)) [[2e86785](https://github.com/scriptscat/scriptcat/commit/2e8678513efaccd42c8dc2aa89f8b76679aa8420)] (by @cyfung1031)
+- 🐛 修复 getFaviconFromDomain 的并发问题 ([#597](https://github.com/scriptscat/scriptcat/issues/597)) [[1872fe1](https://github.com/scriptscat/scriptcat/commit/1872fe165ab204b155a56f037c111d2d7776c2b9)] (by @cyfung1031)
+- 🐛 修复多窗口时打开 tab 出错的问题 [#586](https://github.com/scriptscat/scriptcat/issues/586) [[54c1da2](https://github.com/scriptscat/scriptcat/commit/54c1da29c2bd8bd8f5ef2d85b7aed8b334de296f)]
+- 🐛 修复 openerTabId 兼容问题 ([#586](https://github.com/scriptscat/scriptcat/issues/586)) [[b861fc8](https://github.com/scriptscat/scriptcat/commit/b861fc8620e53b885cad98db03f1dd10ec9d296c)] (by @cyfung1031)
+
+### Miscellaneous
+
+- 📝 Create README_RU.md and CONTRIBUTING_RU.md ([#678](https://github.com/scriptscat/scriptcat/issues/678)) [[597ab03](https://github.com/scriptscat/scriptcat/commit/597ab0378fe5ced01637cf411326ef7845b8ce2b)] (by @Ioann)
+- 👷 兼容性调整（pack.js 兼容性） ([#669](https://github.com/scriptscat/scriptcat/issues/669)) [[fec45e6](https://github.com/scriptscat/scriptcat/commit/fec45e6606a609b10b79c58d2fcba02c2ce71e16)] (by @cyfung1031)
+- 🌐 Refines and expands Vietnamese locale ([#661](https://github.com/scriptscat/scriptcat/issues/661)) [[6847a59](https://github.com/scriptscat/scriptcat/commit/6847a596c4b06c75e13594ef60e4b9dfa5718cf3)] (by @RenjiYuusei)
+- 🌐 翻译修正 ([#635](https://github.com/scriptscat/scriptcat/issues/635)) [[19296de](https://github.com/scriptscat/scriptcat/commit/19296de6a3815e5965eb33401a55da9b2bd22bb4)] (by @cyfung1031)
+- 🌐 修复新手引导 i18n 问题 [#627](https://github.com/scriptscat/scriptcat/issues/627) [[9683f96](https://github.com/scriptscat/scriptcat/commit/9683f965400ab6a2bac15349aca4335911766eac)]
+- 👷 pack.js 代码优化 ([#615](https://github.com/scriptscat/scriptcat/issues/615)) [[870dd9b](https://github.com/scriptscat/scriptcat/commit/870dd9bc6b7eff3eceefa915452e773ec0565180)] (by @cyfung1031)
 
 ## 1.0.2 (2025-08-25)
 
@@ -43,6 +418,7 @@ Beta 版本更新日志请查看 [Beta 更新日志](./beta.md)
 ### Added
 
 - ✨ 优化日志打印 [[8693b93](https://github.com/scriptscat/scriptcat/commit/8693b9338bdd916ffad58572949e67d14cc2c109)]
+- ✨ 实现异步 GM 函数 ([8caebe9](https://github.com/scriptscat/scriptcat/commit/8caebe9ae4f6f6b304b54cbb870a4cebd6341704))
 - ✨ 链接导入脚本时可以按回车键确定 ([#537](https://github.com/scriptscat/scriptcat/issues/537)) [[45a17df](https://github.com/scriptscat/scriptcat/commit/45a17df8f35a943a489c0f5980ac3f65fb0e8e5f)] (by @TC999)
 - ✨ 增加 Prettier 的 ESLint 统一代码格式化风格 [[0f84a19](https://github.com/scriptscat/scriptcat/commit/0f84a19c42823baab60f2b379d187073be7879f9)]
 - ✨ 安装/更新脚本时增加下拉框 [#508](https://github.com/scriptscat/scriptcat/issues/508) [[790584d](https://github.com/scriptscat/scriptcat/commit/790584d078eb4bbf2179aec5297c5574d7b30167)]
@@ -436,6 +812,31 @@ Beta 版本更新日志请查看 [Beta 更新日志](./beta.md)
 - 🐛 修复 OneDrive 上传文件问题 [#366](https://github.com/scriptscat/scriptcat/issues/366) [[ad5a711](https://github.com/scriptscat/scriptcat/commit/ad5a7116c9d54b4e4a4ab53420d0e1d185612f98)]
 
 **Full Changelog**: https://github.com/scriptscat/scriptcat/compare/v0.16.6...v0.17.0-alpha.3
+
+<a name="0.16.11"></a>
+
+## 0.16.11 (2025-08-26)
+
+### Added
+
+- ✨ 优化安装的打开窗口交互 [#548](https://github.com/scriptscat/scriptcat/issues/548) [[3348f26](https://github.com/scriptscat/scriptcat/commit/3348f269de04f4d1cb6583c4b83d5cf20f6a6cc7)]
+
+### Changed
+
+- 🎨 (MV2) 增强 chrome.tabs.create 兼容性 ([#640](https://github.com/scriptscat/scriptcat/issues/640)) [[eb4d1ab](https://github.com/scriptscat/scriptcat/commit/eb4d1ab1dd3e298e733bb07235b1c8b2858131d1)] (by @cyfung1031)
+- ⚡ 基於 MV3 版修正小量共通功能代码 ([#614](https://github.com/scriptscat/scriptcat/issues/614)) [[51f3d0c](https://github.com/scriptscat/scriptcat/commit/51f3d0c15129444b1cdabf0a936e1f01473e03f5)] (by @cyfung1031)
+
+### Fixed
+
+- 🐛 修复 SRI 资源校验 [[d24d9ad](https://github.com/scriptscat/scriptcat/commit/d24d9ad3f924d3ec9c677f937c711e9b32f691e5)]
+- 💚 修复 lint 问题 [[2b33a70](https://github.com/scriptscat/scriptcat/commit/2b33a706a1bf80b1cc4c7b26449a371f2dc0ab99)]
+- 🐛 修复 firefox service worker csp 的问题 [#533](https://github.com/scriptscat/scriptcat/issues/533) [[a1cb2e0](https://github.com/scriptscat/scriptcat/commit/a1cb2e0318f64a7362ed7b25e29218bfb35fcde5)]
+- 🐛 修复下拉列表选项显示不全的问题 ([#552](https://github.com/scriptscat/scriptcat/issues/552)) [[73d6c65](https://github.com/scriptscat/scriptcat/commit/73d6c65bea67ce4ab382ab8619df2859738421c3)]
+- 🐛 设置 monaco 为英文 [[77c872d](https://github.com/scriptscat/scriptcat/commit/77c872d233c371ead9e152477cfce9c690ec2fb1)]
+
+### Miscellaneous
+
+- 🌐 处理翻译问题 [[d0ab618](https://github.com/scriptscat/scriptcat/commit/d0ab61816ffe085beb5244180f0ada4b557dd5de)]
 
 <a name="0.16.9"></a>
 
@@ -1630,7 +2031,7 @@ Firefox 的 Manifest V3 版本还在筹备中。
 
 - 界面 UI 调整
 - 增加`GM_xmlhttpRequest`所支持的`unsafe header`和支持`arraybuffer`,`nocache`,`user`,`password`,`overrideMimeType`,功能
-- 增加运行日志查看功能,点击面板`运行状态`栏即可查看最后一次运行日志.具体请看:[console](/dev/meta.md#console)功能
+- 增加运行日志查看功能,点击面板`运行状态`栏即可查看最后一次运行日志.具体请看:[console](/docs/dev/meta)功能
 - 修复`GM_notification`的`done`回调
 - 优化调整代码列表排序逻辑
 - 优化最后更新栏点击可进行脚本的手动检查更新

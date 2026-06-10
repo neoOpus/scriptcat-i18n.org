@@ -166,5 +166,380 @@
   "homepage.comments.bigonion.content": {
     "message": "ScriptCat est l'avenir.",
     "description": "Contenu du commentaire de bigonion"
+  },
+  "homepage.meta.title": {
+    "message": "Accueil"
+  },
+  "homepage.meta.description": {
+    "message": "ScriptCat est un moteur de scripts de navigateur puissant et open-source, vous permettant de personnaliser facilement les fonctionnalités Web, de bloquer les publicités, d'automatiser les tâches et d'améliorer votre expérience de navigation. Compatible avec Tampermonkey, il offre plus de fonctionnalités et d'optimisations."
+  },
+  "homepage.og.title": {
+    "message": "ScriptCat - Un moteur de scripts de navigateur puissant"
+  },
+  "homepage.og.description": {
+    "message": "ScriptCat est un moteur de scripts de navigateur puissant et open-source. Tout peut être scripté."
+  },
+  "homepage.twitter.title": {
+    "message": "ScriptCat - Un moteur de scripts de navigateur puissant"
+  },
+  "homepage.twitter.description": {
+    "message": "ScriptCat est un moteur de scripts de navigateur puissant et open-source. Tout peut être scripté."
+  },
+  "homepage.hero.title.engine": {
+    "message": "Moteur de scripts"
+  },
+  "homepage.hero.subtitle.userScript": {
+    "message": "scripts utilisateur"
+  },
+  "homepage.hero.subtitle.possibilities": {
+    "message": " et libère tout le potentiel de votre navigateur !"
+  },
+  "homepage.hero.subtitle.main": {
+    "message": "ScriptCat est un moteur de scripts open-source puissant qui vous permet de personnaliser vos sites Web, bloquer les publicités et automatiser vos tâches quotidiennes pour une expérience de navigation ultime. Entièrement compatible avec Tampermonkey."
+  },
+  "homepage.hero.button.getStarted": {
+    "message": "Commencer"
+  },
+  "homepage.hero.button.github": {
+    "message": "GitHub"
+  },
+  "homepage.features.title.powerful": {
+    "message": "Fonctionnalités "
+  },
+  "homepage.features.title.features": {
+    "message": "avancées"
+  },
+  "homepage.features.subtitle": {
+    "message": "ScriptCat offre une expérience de gestion et de développement de scripts inégalée"
+  },
+  "homepage.features.compatibility.title": {
+    "message": "Compatibilité parfaite"
+  },
+  "homepage.features.compatibility.description": {
+    "message": "Entièrement compatible avec les scripts Tampermonkey et Violentmonkey, migrez sans effort vos scripts préférés."
+  },
+  "homepage.features.background.title": {
+    "message": "Scripts d'arrière-plan"
+  },
+  "homepage.features.background.description": {
+    "message": "Support exclusif pour les scripts d'arrière-plan et les tâches planifiées, permettant au navigateur d'effectuer des tâches complexes automatiquement."
+  },
+  "homepage.features.security.title": {
+    "message": "Sécurité renforcée"
+  },
+  "homepage.features.security.description": {
+    "message": "Système de contrôle des permissions strict, comportement des scripts transparent, empêche efficacement les scripts malveillants et protège votre vie privée."
+  },
+  "homepage.features.editor.title": {
+    "message": "Éditeur de code intégré"
+  },
+  "homepage.features.editor.description": {
+    "message": "Éditeur de code puissant avec coloration syntaxique, complétion automatique et conseils d'erreur pour rendre l'écriture de scripts plus efficace."
+  },
+  "homepage.features.api.title": {
+    "message": "APIs puissantes"
+  },
+  "homepage.features.api.description": {
+    "message": "Fournit des interfaces API plus riches que GM, prend en charge des fonctionnalités avancées telles que le stockage de fichiers et la configuration utilisateur."
+  },
+  "homepage.features.store.title": {
+    "message": "Boutique de scripts"
+  },
+  "homepage.features.store.description": {
+    "message": "Propose une boutique de scripts pour une installation en un clic de scripts populaires, ou publiez vos œuvres pour les partager avec la communauté."
+  },
+  "homepage.comparison.title.why": {
+    "message": "Pourquoi choisir"
+  },
+  "homepage.comparison.subtitle": {
+    "message": "Comparé aux autres moteurs de scripts, ScriptCat offre plus d'avantages et de fonctionnalités améliorées"
+  },
+  "homepage.comparison.feature": {
+    "message": "Fonctionnalité"
+  },
+  "homepage.comparison.feature.compatibility": {
+    "message": "Compatibilité des scripts"
+  },
+  "homepage.comparison.feature.background": {
+    "message": "Scripts d'arrière-plan"
+  },
+  "homepage.comparison.feature.opensource": {
+    "message": "Open Source Gratuit"
+  },
+  "homepage.comparison.feature.mv3": {
+    "message": "Support MV3"
+  },
+  "homepage.comparison.feature.sync": {
+    "message": "Synchronisation Cloud"
+  },
+  "homepage.comparison.feature.api": {
+    "message": "APIs puissantes"
+  },
+  "homepage.comparison.feature.community": {
+    "message": "Support de la communauté"
+  },
+  "homepage.comparison.label.efficient": {
+    "message": "Efficace"
+  },
+  "homepage.comparison.label.multiplatform": {
+    "message": "Multi-plateforme"
+  },
+  "homepage.scenario.title.solve": {
+    "message": "Des scripts qui résolvent des "
+  },
+  "homepage.scenario.title.problems": {
+    "message": "problèmes réels"
+  },
+  "homepage.scenario.title.scripts": {
+    "message": ""
+  },
+  "homepage.scenario.subtitle": {
+    "message": "Découvrez comment ScriptCat peut transformer votre expérience de navigation"
+  },
+  "homepage.scenario.video.title": {
+    "message": "Amélioration des sites vidéo"
+  },
+  "homepage.scenario.video.subtitle": {
+    "message": "Optimisez l'expérience de visionnage vidéo"
+  },
+  "homepage.scenario.video.tag": {
+    "message": "Applications populaires"
+  },
+  "homepage.scenario.video.feature.speed": {
+    "message": "Contrôle de la vitesse vidéo"
+  },
+  "homepage.scenario.video.feature.download": {
+    "message": "Téléchargement vidéo en un clic"
+  },
+  "homepage.scenario.video.feature.adblock": {
+    "message": "Saut automatique des publicités"
+  },
+  "homepage.scenario.video.feature.ui": {
+    "message": "Simplification de l'interface"
+  },
+  "homepage.scenario.video.sites": {
+    "message": "Sites pris en charge"
+  },
+  "homepage.scenario.video.getScript": {
+    "message": "Obtenir le script →"
+  },
+  "homepage.scenario.shopping.title": {
+    "message": "Assistant d'achat"
+  },
+  "homepage.scenario.shopping.subtitle": {
+    "message": "Facilitez vos achats en ligne"
+  },
+  "homepage.scenario.shopping.tag": {
+    "message": "Outils pratiques"
+  },
+  "homepage.scenario.shopping.feature.history": {
+    "message": "Historique des prix"
+  },
+  "homepage.scenario.shopping.feature.coupon": {
+    "message": "Recherche automatique de coupons"
+  },
+  "homepage.scenario.shopping.feature.compare": {
+    "message": "Comparaison de prix"
+  },
+  "homepage.scenario.shopping.feature.alert": {
+    "message": "Alerte de baisse de prix"
+  },
+  "homepage.scenario.sites.more": {
+    "message": "+Plus"
+  },
+  "homepage.download.title.ready": {
+    "message": "Prêt à "
+  },
+  "homepage.download.title.enhance": {
+    "message": "révolutionner votre navigation"
+  },
+  "homepage.download.title.question": {
+    "message": " ?"
+  },
+  "homepage.download.subtitle": {
+    "message": "Installez ScriptCat maintenant et débloquez des possibilités infinies pour la navigation Web"
+  },
+  "homepage.download.edge": {
+    "message": "Boutique d'extensions Edge"
+  },
+  "homepage.download.chrome": {
+    "message": "Boutique d'extensions Chrome"
+  },
+  "homepage.download.firefox": {
+    "message": "Boutique d'extensions Firefox"
+  },
+  "homepage.download.github": {
+    "message": "Téléchargement GitHub"
+  },
+  "homepage.download.popup.title": {
+    "message": "ScriptCat activé"
+  },
+  "homepage.download.popup.text": {
+    "message": "3 scripts s'exécutent sur la page actuelle"
+  },
+  "homepage.footer.contributors.title": {
+    "message": "Merci à tous les contributeurs"
+  },
+  "footer.description": {
+    "message": "Un moteur de scripts de navigateur puissant qui rend votre expérience Web plus riche et plus colorée."
+  },
+  "footer.product.title": {
+    "message": "Produit"
+  },
+  "footer.product.features": {
+    "message": "Fonctionnalités"
+  },
+  "footer.product.scriptStore": {
+    "message": "Boutique de scripts"
+  },
+  "footer.product.changelog": {
+    "message": "Journal des modifications"
+  },
+  "footer.resources.title": {
+    "message": "Ressources"
+  },
+  "footer.resources.devDocs": {
+    "message": "Docs développeur"
+  },
+  "footer.resources.apiReference": {
+    "message": "Référence API"
+  },
+  "footer.resources.examples": {
+    "message": "Scripts d'exemple"
+  },
+  "footer.resources.faq": {
+    "message": "FAQ"
+  },
+  "footer.community.title": {
+    "message": "Communauté"
+  },
+  "footer.community.forum": {
+    "message": "Discussion sur le forum"
+  },
+  "footer.community.discord": {
+    "message": "Canal Discord"
+  },
+  "footer.community.contributing": {
+    "message": "Guide de contribution"
+  },
+  "footer.community.issues": {
+    "message": "Signaler un problème"
+  },
+  "footer.community.contact": {
+    "message": "Contacter l'équipe"
+  },
+  "footer.community.recruiting": {
+    "message": "Recrutement"
+  },
+  "footer.copyright.allRightsReserved": {
+    "message": "Tous droits réservés."
+  },
+  "footer.copyright.privacy": {
+    "message": "Politique de confidentialité"
+  },
+  "footer.copyright.terms": {
+    "message": "Conditions d'utilisation"
+  },
+  "footer.copyright.license": {
+    "message": "Accord de licence"
+  },
+  "githubStar.install.title": {
+    "message": "Vous aimez ScriptCat ?"
+  },
+  "githubStar.install.subtitle": {
+    "message": "Donnez-nous une étoile sur GitHub pour aider les autres à le découvrir 🌟"
+  },
+  "githubStar.changelog.title": {
+    "message": "ScriptCat est constamment mis à jour 🚀"
+  },
+  "githubStar.changelog.subtitle": {
+    "message": "Ces mises à jour vous sont utiles ? Donnez-nous une étoile sur GitHub pour nous soutenir"
+  },
+  "githubStar.home.title": {
+    "message": "ScriptCat est open source et gratuit"
+  },
+  "githubStar.home.subtitle": {
+    "message": "Si vous le trouvez utile, donnez-nous une étoile pour soutenir la maintenance continue"
+  },
+  "githubStar.button.label": {
+    "message": "Star"
+  },
+  "uninstall.title": {
+    "message": "Enquête de désinstallation"
+  },
+  "uninstall.description": {
+    "message": "Merci d'avoir utilisé ScriptCat, veuillez nous dire pourquoi vous avez désinstallé"
+  },
+  "uninstall.header.title": {
+    "message": "Nous sommes désolés de vous voir partir"
+  },
+  "uninstall.header.subtitle": {
+    "message": "Votre avis nous aide à nous améliorer et à mieux servir la communauté."
+  },
+  "uninstall.question.reason": {
+    "message": "Pourquoi avez-vous décidé de désinstaller ScriptCat ?"
+  },
+  "uninstall.reason.bug": {
+    "message": "J'ai rencontré des erreurs ou des bugs"
+  },
+  "uninstall.reason.unused": {
+    "message": "Je n'en ai plus besoin"
+  },
+  "uninstall.reason.feature": {
+    "message": "Il manque une fonctionnalité dont j'ai besoin"
+  },
+  "uninstall.reason.better": {
+    "message": "J'ai trouvé une meilleure alternative"
+  },
+  "uninstall.reason.other": {
+    "message": "Autre raison"
+  },
+  "uninstall.bug.alert.title": {
+    "message": "Besoin d'aide technique ?"
+  },
+  "uninstall.bug.alert.description": {
+    "message": "Si vous avez rencontré un bug, nous vous suggérons de soumettre un problème directement sur GitHub pour obtenir une assistance plus rapide."
+  },
+  "uninstall.bug.alert.button": {
+    "message": "Signaler un problème sur GitHub"
+  },
+  "uninstall.feature.alert.title": {
+    "message": "Fonctionnalité manquante ?"
+  },
+  "uninstall.feature.alert.description": {
+    "message": "Nous apprécions vos suggestions ! Veuillez décrire la fonctionnalité dont vous avez besoin sur GitHub."
+  },
+  "uninstall.feature.alert.button": {
+    "message": "Suggérer une fonctionnalité sur GitHub"
+  },
+  "uninstall.question.feedback": {
+    "message": "Si vous avez un moment, pourriez-vous partager plus de détails ?"
+  },
+  "uninstall.feedback.placeholder": {
+    "message": "Veuillez partager vos problèmes spécifiques, suggestions ou autres pensées..."
+  },
+  "uninstall.button.submit": {
+    "message": "Soumettre mon avis"
+  },
+  "uninstall.sidebar.reinstall.title": {
+    "message": "Revenez quand vous voulez"
+  },
+  "uninstall.reinstall.message": {
+    "message": "Si vous changez d'avis, vous pouvez le réinstaller à tout moment :"
+  },
+  "uninstall.sidebar.help.title": {
+    "message": "Besoin d'aide ?"
+  },
+  "uninstall.sidebar.help.description": {
+    "message": "Vous avez des problèmes ? Nous serions ravis de vous aider à les résoudre"
+  },
+  "uninstall.sidebar.help.github": {
+    "message": "Problèmes GitHub"
+  },
+  "uninstall.sidebar.help.docs": {
+    "message": "Voir la documentation"
+  },
+  "homepage.hero.subtitle.highlight": {
+    "message": "L'extension qui donne vie aux "
   }
 }

@@ -13,11 +13,11 @@ pnpm i
 ### 本地开发
 
 ```
-pnpm run start
+npm run start
 ```
 
 ### 构建
 
 ```
-pnpm run build
+npm run build
 ```
