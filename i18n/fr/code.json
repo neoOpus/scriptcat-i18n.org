@@ -168,16 +168,16 @@
     "description": "Contenu du commentaire de bigonion"
   },
   "homepage.meta.title": {
-    "message": "Accueil"
+    "message": "ScriptCat - Le moteur de scripts utilisateur pour votre navigateur"
   },
   "homepage.meta.description": {
-    "message": "ScriptCat est un moteur de scripts de navigateur puissant et open-source, vous permettant de personnaliser facilement les fonctionnalités Web, de bloquer les publicités, d'automatiser les tâches et d'améliorer votre expérience de navigation. Compatible avec Tampermonkey, il offre plus de fonctionnalités et d'optimisations."
+    "message": "ScriptCat est un moteur de scripts open-source puissant qui vous permet de personnaliser vos sites Web, bloquer les publicités et automatiser vos tâches."
   },
   "homepage.og.title": {
-    "message": "ScriptCat - Un moteur de scripts de navigateur puissant"
+    "message": "ScriptCat - Un moteur de scripts puissant"
   },
   "homepage.og.description": {
-    "message": "ScriptCat est un moteur de scripts de navigateur puissant et open-source. Tout peut être scripté."
+    "message": "Personnalisez votre navigation avec ScriptCat. Compatible avec Tampermonkey."
   },
   "homepage.twitter.title": {
     "message": "ScriptCat - Un moteur de scripts de navigateur puissant"
@@ -192,10 +192,10 @@
     "message": "scripts utilisateur"
   },
   "homepage.hero.subtitle.possibilities": {
-    "message": " et libère tout le potentiel de votre navigateur !"
+    "message": "possibilités infinies"
   },
   "homepage.hero.subtitle.main": {
-    "message": "ScriptCat est un moteur de scripts open-source puissant qui vous permet de personnaliser vos sites Web, bloquer les publicités et automatiser vos tâches quotidiennes pour une expérience de navigation ultime. Entièrement compatible avec Tampermonkey."
+    "message": "ScriptCat est une extension de navigateur qui peut exécuter des"
   },
   "homepage.hero.button.getStarted": {
     "message": "Commencer"
@@ -204,10 +204,10 @@
     "message": "GitHub"
   },
   "homepage.features.title.powerful": {
-    "message": "Fonctionnalités "
+    "message": "Fonctionnalités"
   },
   "homepage.features.title.features": {
-    "message": "avancées"
+    "message": "puissantes"
   },
   "homepage.features.subtitle": {
     "message": "ScriptCat offre une expérience de gestion et de développement de scripts inégalée"
@@ -351,7 +351,7 @@
     "message": "Prêt à "
   },
   "homepage.download.title.enhance": {
-    "message": "révolutionner votre navigation"
+    "message": "Améliorer votre expérience de navigation"
   },
   "homepage.download.title.question": {
     "message": " ?"
@@ -538,8 +538,5 @@
   },
   "uninstall.sidebar.help.docs": {
     "message": "Voir la documentation"
-  },
-  "homepage.hero.subtitle.highlight": {
-    "message": "L'extension qui donne vie aux "
   }
 }

@@ -9,7 +9,7 @@ For Beta version changelog, please see [Beta Changelog](./beta.md)
 
 ⚠️ Please note: If you are using Windows 8/7/XP systems, or browser kernel version lower than 120, you need to manually install the [legacy ScriptCat](https://bbs.tampermonkey.net.cn/thread-3068-1-1.html). v0.16.x is the last version that supports Manifest V2. For installation steps, please refer to: [Install Extension via Load Unpacked](/docs/use/use/#load-unpacked-extension-installation).
 
-## 1.0.1 (2025-08-16)
+## 1.0.1 (2025-08-18)
 
 Quick fixes for some major issues
 
@@ -251,7 +251,7 @@ Major Manifest V3 release with comprehensive improvements and new features
 
 <a name="0.17.0"></a>
 
-## 0.17.0 (2025-04-25)
+## 0.17.0 (2025-06-23)
 
 Starting from v0.17.0, ScriptCat upgrades to Manifest V3 and switches storage engine from `indexedDB` to `chrome.storage.local`. If you encounter data issues, please provide feedback on [GitHub](https://github.com/scriptscat/scriptcat/issues).
 
@@ -356,7 +356,7 @@ Firefox Manifest V3 version is still in preparation.
 
 <a name="0.16.3"></a>
 
-## 0.16.3 (2024-05-01)
+## 0.16.3 (2024-05-12)
 
 ### Fixed
 
@@ -374,7 +374,7 @@ Firefox Manifest V3 version is still in preparation.
 
 <a name="0.16.2"></a>
 
-## 0.16.2 (2024-04-22)
+## 0.16.2 (2024-04-23)
 
 > Future efforts will mainly focus on `Manifest V3` support. This version mainly includes small improvements and fixes. For detailed feature demonstrations, please see: [v0.16.2](./v0.16#v0162)
 
@@ -398,7 +398,7 @@ Firefox Manifest V3 version is still in preparation.
 
 <a name="0.16.1"></a>
 
-## 0.16.1 (2024-02-26)
+## 0.16.1 (2024-02-27)
 
 ### Added
 
@@ -421,7 +421,7 @@ Firefox Manifest V3 version is still in preparation.
 
 <a name="0.16.0"></a>
 
-## 0.16.0 (2023-12-21)
+## 0.16.0 (2023-12-23)
 
 ### Added
 
@@ -437,7 +437,7 @@ Firefox Manifest V3 version is still in preparation.
 
 <a name="0.16.0-beta"></a>
 
-## 0.16.0-beta (2023-11-28)
+## 0.16.0-beta (2023-11-30)
 
 ### Added
 
@@ -479,7 +479,7 @@ Firefox Manifest V3 version is still in preparation.
 
 <a name="0.15.0"></a>
 
-## 0.15.0 (2023-08-15)
+## 0.15.0 (2023-11-21)
 
 > Added beginner's guide
 
@@ -538,7 +538,7 @@ Firefox Manifest V3 version is still in preparation.
 
 <a name="0.14.0"></a>
 
-## 0.14.0 (2023-06-20)
+## 0.14.0 (2023-06-22)
 
 > 🎉🎉🎉 ScriptCat starts supporting multiple languages, taking the first step towards an international script manager! 💥💥💥
 

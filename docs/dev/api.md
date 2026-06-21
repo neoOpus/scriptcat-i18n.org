@@ -103,7 +103,7 @@ GM_deleteValues(["a", "b"]);
 
 ### GM_add/removeValueChangeListener
 
-> tabid 于 0.17.0-alpha 后删除，详情见 [GM_cookie](#gm_cookie-)
+> tabid 于 0.17.0-alpha 后删除，详情见 [GM_cookie](#gm_cookie)
 
 对值的监听操作，add 会返回一个监听 id，使用 remove 可以取消监听。可以使用这个方法实现一个简单的通信，使用 [**storageName**](meta.md#storagename-) 可以实现跨脚本通信。
 

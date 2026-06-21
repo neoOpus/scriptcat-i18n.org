@@ -1,0 +1,224 @@
+
+> scriptcat-org@1.0.0 docusaurus /app
+> docusaurus build
+
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[INFO] Website will be built for all these locales:
+- zh-Hans
+- en
+- ja
+- ru
+- vi
+- de
+- zh-Hant
+- es
+- fr
+- ar
+- it
+- pt
+[INFO] [zh-Hans] Creating an optimized production build...
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+Browserslist: browsers data (caniuse-lite) is 12 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled successfully in 7.33s
+[webpackbar] ✔ Client: Compiled successfully in 7.38s
+[WARNING] {"moduleIdentifier":"/app/node_modules/.pnpm/babel-loader@9.2.1_@babel+core@7.26.10_webpack@5.99.6/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[5].use[0]!/app/src/components/GithubStar/index.tsx","moduleName":"./src/components/GithubStar/index.tsx","loc":"5:50-64","message":"export 'getGithubStats' (imported as 'getGithubStats') was not found in '@site/src/service/system' (possible exports: submitFeedback)","compilerPath":"client"}
+[WARNING] {"moduleIdentifier":"/app/node_modules/.pnpm/babel-loader@9.2.1_@babel+core@7.26.10_webpack@5.99.6/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[5].use[0]!/app/src/components/GithubStar/index.tsx","moduleName":"./src/components/GithubStar/index.tsx","loc":"5:50-64","message":"export 'getGithubStats' (imported as 'getGithubStats') was not found in '@site/src/service/system' (possible exports: submitFeedback)","compilerPath":"server"}
+[WARNING] Docusaurus found broken anchors!
+
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /docs/dev/:
+   -> linking to /docs/dev/background/#%E5%AE%9A%E6%97%B6%E8%84%9A%E6%9C%AC
+- Broken anchor on source page path = /docs/dev/api/:
+   -> linking to #gm_cookie (resolved as: /docs/dev/api/#gm_cookie)
+- Broken anchor on source page path = /docs/dev/meta/:
+   -> linking to /docs/dev/background/#%E5%90%8E%E5%8F%B0%E8%84%9A%E6%9C%AC
+   -> linking to /docs/dev/background/#%E5%AE%9A%E6%97%B6%E8%84%9A%E6%9C%AC
+
+[SUCCESS] Generated static files in "build".
+[INFO] [en] Creating an optimized production build...
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled successfully in 6.21s
+[webpackbar] ✔ Client: Compiled successfully in 6.28s
+[SUCCESS] Generated static files in "build/en".
+[INFO] [ja] Creating an optimized production build...
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled successfully in 5.60s
+[webpackbar] ✔ Client: Compiled successfully in 6.22s
+[WARNING] {"moduleIdentifier":"/app/node_modules/.pnpm/babel-loader@9.2.1_@babel+core@7.26.10_webpack@5.99.6/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[5].use[0]!/app/src/components/GithubStar/index.tsx","moduleName":"./src/components/GithubStar/index.tsx","loc":"5:50-64","message":"export 'getGithubStats' (imported as 'getGithubStats') was not found in '@site/src/service/system' (possible exports: submitFeedback)","compilerPath":"client"}
+[WARNING] {"moduleIdentifier":"/app/node_modules/.pnpm/babel-loader@9.2.1_@babel+core@7.26.10_webpack@5.99.6/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[5].use[0]!/app/src/components/GithubStar/index.tsx","moduleName":"./src/components/GithubStar/index.tsx","loc":"5:50-64","message":"export 'getGithubStats' (imported as 'getGithubStats') was not found in '@site/src/service/system' (possible exports: submitFeedback)","compilerPath":"server"}
+[WARNING] Docusaurus found broken anchors!
+
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /ja/docs/dev/:
+   -> linking to /ja/docs/dev/background/#%E5%AE%9A%E6%97%B6%E8%84%9A%E6%9C%AC
+- Broken anchor on source page path = /ja/docs/dev/api/:
+   -> linking to #gm_cookie (resolved as: /ja/docs/dev/api/#gm_cookie)
+- Broken anchor on source page path = /ja/docs/dev/meta/:
+   -> linking to /ja/docs/dev/background/#%E5%90%8E%E5%8F%B0%E8%84%9A%E6%9C%AC
+   -> linking to /ja/docs/dev/background/#%E5%AE%9A%E6%97%B6%E8%84%9A%E6%9C%AC
+
+[SUCCESS] Generated static files in "build/ja".
+[INFO] [ru] Creating an optimized production build...
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled successfully in 5.95s
+[webpackbar] ✔ Client: Compiled successfully in 6.00s
+[WARNING] {"moduleIdentifier":"/app/node_modules/.pnpm/babel-loader@9.2.1_@babel+core@7.26.10_webpack@5.99.6/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[5].use[0]!/app/src/components/GithubStar/index.tsx","moduleName":"./src/components/GithubStar/index.tsx","loc":"5:50-64","message":"export 'getGithubStats' (imported as 'getGithubStats') was not found in '@site/src/service/system' (possible exports: submitFeedback)","compilerPath":"client"}
+[WARNING] {"moduleIdentifier":"/app/node_modules/.pnpm/babel-loader@9.2.1_@babel+core@7.26.10_webpack@5.99.6/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[5].use[0]!/app/src/components/GithubStar/index.tsx","moduleName":"./src/components/GithubStar/index.tsx","loc":"5:50-64","message":"export 'getGithubStats' (imported as 'getGithubStats') was not found in '@site/src/service/system' (possible exports: submitFeedback)","compilerPath":"server"}
+[WARNING] Docusaurus found broken anchors!
+
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /ru/docs/dev/:
+   -> linking to /ru/docs/dev/background/#%E5%AE%9A%E6%97%B6%E8%84%9A%E6%9C%AC
+- Broken anchor on source page path = /ru/docs/dev/api/:
+   -> linking to #gm_cookie (resolved as: /ru/docs/dev/api/#gm_cookie)
+- Broken anchor on source page path = /ru/docs/dev/meta/:
+   -> linking to /ru/docs/dev/background/#%E5%90%8E%E5%8F%B0%E8%84%9A%E6%9C%AC
+   -> linking to /ru/docs/dev/background/#%E5%AE%9A%E6%97%B6%E8%84%9A%E6%9C%AC
+
+[SUCCESS] Generated static files in "build/ru".
+[INFO] [vi] Creating an optimized production build...
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled successfully in 5.83s
+[webpackbar] ✔ Client: Compiled successfully in 5.89s
+[WARNING] {"moduleIdentifier":"/app/node_modules/.pnpm/babel-loader@9.2.1_@babel+core@7.26.10_webpack@5.99.6/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[5].use[0]!/app/src/components/GithubStar/index.tsx","moduleName":"./src/components/GithubStar/index.tsx","loc":"5:50-64","message":"export 'getGithubStats' (imported as 'getGithubStats') was not found in '@site/src/service/system' (possible exports: submitFeedback)","compilerPath":"client"}
+[WARNING] {"moduleIdentifier":"/app/node_modules/.pnpm/babel-loader@9.2.1_@babel+core@7.26.10_webpack@5.99.6/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[5].use[0]!/app/src/components/GithubStar/index.tsx","moduleName":"./src/components/GithubStar/index.tsx","loc":"5:50-64","message":"export 'getGithubStats' (imported as 'getGithubStats') was not found in '@site/src/service/system' (possible exports: submitFeedback)","compilerPath":"server"}
+[WARNING] Docusaurus found broken anchors!
+
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /vi/docs/dev/:
+   -> linking to /vi/docs/dev/background/#%E5%AE%9A%E6%97%B6%E8%84%9A%E6%9C%AC
+- Broken anchor on source page path = /vi/docs/dev/api/:
+   -> linking to #gm_cookie (resolved as: /vi/docs/dev/api/#gm_cookie)
+- Broken anchor on source page path = /vi/docs/dev/meta/:
+   -> linking to /vi/docs/dev/background/#%E5%90%8E%E5%8F%B0%E8%84%9A%E6%9C%AC
+   -> linking to /vi/docs/dev/background/#%E5%AE%9A%E6%97%B6%E8%84%9A%E6%9C%AC
+
+[SUCCESS] Generated static files in "build/vi".
+[INFO] [de] Creating an optimized production build...
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled successfully in 6.05s
+[webpackbar] ✔ Client: Compiled successfully in 6.08s
+[WARNING] {"moduleIdentifier":"/app/node_modules/.pnpm/babel-loader@9.2.1_@babel+core@7.26.10_webpack@5.99.6/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[5].use[0]!/app/src/components/GithubStar/index.tsx","moduleName":"./src/components/GithubStar/index.tsx","loc":"5:50-64","message":"export 'getGithubStats' (imported as 'getGithubStats') was not found in '@site/src/service/system' (possible exports: submitFeedback)","compilerPath":"client"}
+[WARNING] {"moduleIdentifier":"/app/node_modules/.pnpm/babel-loader@9.2.1_@babel+core@7.26.10_webpack@5.99.6/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[5].use[0]!/app/src/components/GithubStar/index.tsx","moduleName":"./src/components/GithubStar/index.tsx","loc":"5:50-64","message":"export 'getGithubStats' (imported as 'getGithubStats') was not found in '@site/src/service/system' (possible exports: submitFeedback)","compilerPath":"server"}
+[WARNING] Docusaurus found broken anchors!
+
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /de/docs/dev/:
+   -> linking to /de/docs/dev/background/#%E5%AE%9A%E6%97%B6%E8%84%9A%E6%9C%AC
+- Broken anchor on source page path = /de/docs/dev/api/:
+   -> linking to #gm_cookie (resolved as: /de/docs/dev/api/#gm_cookie)
+- Broken anchor on source page path = /de/docs/dev/meta/:
+   -> linking to /de/docs/dev/background/#%E5%90%8E%E5%8F%B0%E8%84%9A%E6%9C%AC
+   -> linking to /de/docs/dev/background/#%E5%AE%9A%E6%97%B6%E8%84%9A%E6%9C%AC
+
+[SUCCESS] Generated static files in "build/de".
+[INFO] [zh-Hant] Creating an optimized production build...
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled successfully in 6.04s
+[webpackbar] ✔ Client: Compiled successfully in 6.06s
+[WARNING] {"moduleIdentifier":"/app/node_modules/.pnpm/babel-loader@9.2.1_@babel+core@7.26.10_webpack@5.99.6/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[5].use[0]!/app/src/components/GithubStar/index.tsx","moduleName":"./src/components/GithubStar/index.tsx","loc":"5:50-64","message":"export 'getGithubStats' (imported as 'getGithubStats') was not found in '@site/src/service/system' (possible exports: submitFeedback)","compilerPath":"client"}
+[WARNING] {"moduleIdentifier":"/app/node_modules/.pnpm/babel-loader@9.2.1_@babel+core@7.26.10_webpack@5.99.6/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[5].use[0]!/app/src/components/GithubStar/index.tsx","moduleName":"./src/components/GithubStar/index.tsx","loc":"5:50-64","message":"export 'getGithubStats' (imported as 'getGithubStats') was not found in '@site/src/service/system' (possible exports: submitFeedback)","compilerPath":"server"}
+[WARNING] Docusaurus found broken anchors!
+
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /zh-Hant/docs/dev/:
+   -> linking to /zh-Hant/docs/dev/background/#%E5%AE%9A%E6%97%B6%E8%84%9A%E6%9C%AC
+- Broken anchor on source page path = /zh-Hant/docs/dev/api/:
+   -> linking to #gm_cookie (resolved as: /zh-Hant/docs/dev/api/#gm_cookie)
+- Broken anchor on source page path = /zh-Hant/docs/dev/meta/:
+   -> linking to /zh-Hant/docs/dev/background/#%E5%90%8E%E5%8F%B0%E8%84%9A%E6%9C%AC
+   -> linking to /zh-Hant/docs/dev/background/#%E5%AE%9A%E6%97%B6%E8%84%9A%E6%9C%AC
+
+[SUCCESS] Generated static files in "build/zh-Hant".
+[INFO] [es] Creating an optimized production build...
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled successfully in 5.97s
+[webpackbar] ✔ Client: Compiled successfully in 5.99s
+[WARNING] {"moduleIdentifier":"/app/node_modules/.pnpm/babel-loader@9.2.1_@babel+core@7.26.10_webpack@5.99.6/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[5].use[0]!/app/src/components/GithubStar/index.tsx","moduleName":"./src/components/GithubStar/index.tsx","loc":"5:50-64","message":"export 'getGithubStats' (imported as 'getGithubStats') was not found in '@site/src/service/system' (possible exports: submitFeedback)","compilerPath":"client"}
+[WARNING] {"moduleIdentifier":"/app/node_modules/.pnpm/babel-loader@9.2.1_@babel+core@7.26.10_webpack@5.99.6/node_modules/babel-loader/lib/index.js??ruleSet[1].rules[5].use[0]!/app/src/components/GithubStar/index.tsx","moduleName":"./src/components/GithubStar/index.tsx","loc":"5:50-64","message":"export 'getGithubStats' (imported as 'getGithubStats') was not found in '@site/src/service/system' (possible exports: submitFeedback)","compilerPath":"server"}
+[WARNING] Docusaurus found broken anchors!
+
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /es/docs/dev/:
+   -> linking to /es/docs/dev/background/#%E5%AE%9A%E6%97%B6%E8%84%9A%E6%9C%AC
+- Broken anchor on source page path = /es/docs/dev/api/:
+   -> linking to #gm_cookie (resolved as: /es/docs/dev/api/#gm_cookie)
+- Broken anchor on source page path = /es/docs/dev/meta/:
+   -> linking to /es/docs/dev/background/#%E5%90%8E%E5%8F%B0%E8%84%9A%E6%9C%AC
+   -> linking to /es/docs/dev/background/#%E5%AE%9A%E6%97%B6%E8%84%9A%E6%9C%AC
+
+[SUCCESS] Generated static files in "build/es".
+[INFO] [fr] Creating an optimized production build...
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[WARNING] Markdown link with URL `./api.md` in source file "docs/dev/README.md" (15:13) couldn't be resolved.
+Make sure it references a local Markdown file that exists within the current plugin.
+[WARNING] Markdown link with URL `./api.md` in source file "docs/dev/meta.md" (117:37) couldn't be resolved.
+Make sure it references a local Markdown file that exists within the current plugin.
+[webpackbar] ✔ Server: Compiled with some errors in 9.03s
+Browserslist: browsers data (caniuse-lite) is 12 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+Browserslist: browsers data (caniuse-lite) is 14 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[webpackbar] ✔ Client: Compiled with some errors in 19.41s
+[ERROR] Client bundle compiled with errors therefore further build is impossible.
+Error: MDX compilation failed for file "/app/i18n/fr/docusaurus-plugin-content-docs/current/use/5.open-dev.md"
+Cause: Markdown image with URL `./img/5.open-dev.assets/edge-allow-user-scripts.png` in source file "i18n/fr/docusaurus-plugin-content-docs/current/use/5.open-dev.md" (50:1) couldn't be resolved to an existing local image file.
+To ignore this error, use the `siteConfig.markdown.hooks.onBrokenMarkdownImages` option, or apply the `pathname://` protocol to the broken image URLs.
+Details:
+Error: Markdown image with URL `./img/5.open-dev.assets/edge-allow-user-scripts.png` in source file "i18n/fr/docusaurus-plugin-content-docs/current/use/5.open-dev.md" (50:1) couldn't be resolved to an existing local image file.
+To ignore this error, use the `siteConfig.markdown.hooks.onBrokenMarkdownImages` option, or apply the `pathname://` protocol to the broken image URLs.
+    at async Promise.all (index 0)
+ ELIFECYCLE  Command failed with exit code 1.

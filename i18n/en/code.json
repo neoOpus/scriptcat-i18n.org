@@ -28,20 +28,16 @@
     "description": "GitHub star bar subtitle on changelog page"
   },
   "homepage.meta.title": {
-    "message": "ScriptCat - Powerful Browser Script Engine",
-    "description": "Homepage meta title for SEO"
+    "message": "ScriptCat - The Userscript Engine for Your Browser"
   },
   "homepage.meta.description": {
-    "message": "ScriptCat is a powerful open-source browser script engine that lets you easily customize web functionality, eliminate ads, automate tasks, and enhance your browsing experience. Compatible with Tampermonkey with more features.",
-    "description": "Homepage meta description for SEO"
+    "message": "ScriptCat is a powerful open-source userscript engine that allows you to customize websites, block ads, and automate tasks with ease."
   },
   "homepage.og.title": {
-    "message": "ScriptCat - Powerful Browser Script Engine",
-    "description": "Open Graph title for social sharing"
+    "message": "ScriptCat - A Powerful Userscript Engine"
   },
   "homepage.og.description": {
-    "message": "Open-source browser script engine that makes your browser do more. Supports userscripts, background scripts, compatible with Tampermonkey, more powerful features.",
-    "description": "Open Graph description for social sharing"
+    "message": "Elevate your browsing experience with ScriptCat. Fully compatible with Tampermonkey."
   },
   "homepage.twitter.title": {
     "message": "ScriptCat - Powerful Browser Script Engine",
@@ -212,13 +208,16 @@
     "description": "Comparison label: Multi-platform"
   },
   "homepage.scenario.title.solve": {
-    "message": "Scripts That Solve "
+    "message": "Scripts That Solve ",
+    "description": "Scenario section title part 1"
   },
   "homepage.scenario.title.problems": {
-    "message": "Real Problems"
+    "message": "Real Problems",
+    "description": "Scenario section title highlight"
   },
   "homepage.scenario.title.scripts": {
-    "message": ""
+    "message": "",
+    "description": "Scenario section title part 2"
   },
   "homepage.scenario.subtitle": {
     "message": "See how ScriptCat can transform your browsing experience",

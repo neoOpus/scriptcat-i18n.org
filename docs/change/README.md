@@ -241,7 +241,7 @@ Beta 版本更新日志请查看 [Beta 更新日志](./beta.md)
 
 <a name="1.2.1"></a>
 
-## 1.2.1 (2025-12-06)
+## 1.2.1 (2025-12-08)
 
 进行了一些 BUG 修复，处理了后台运行选项
 
@@ -398,7 +398,7 @@ Beta 版本更新日志请查看 [Beta 更新日志](./beta.md)
 - 🐛 兼容较低的浏览器内核 [#647](https://github.com/scriptscat/scriptcat/issues/647) [[bba12d2](https://github.com/scriptscat/scriptcat/commit/bba12d23f04759cb9b7fdb63f0d95ae515ee94a9)] (by 王一之)
 - 🐛 修正 finalUrl 缺失域名 ([#656](https://github.com/scriptscat/scriptcat/issues/656)) [[545d7c8](https://github.com/scriptscat/scriptcat/commit/545d7c8c0dd69c83bd2f0353518aafe6af81c0f4)] (by @cyfung1031)
 
-## 1.0.1 (2025-08-16)
+## 1.0.1 (2025-08-18)
 
 尽快修复一些影响较大的问题
 
@@ -921,7 +921,7 @@ Firefox 的 Manifest V3 版本还在筹备中。
 
 <a name="0.16.3"></a>
 
-## 0.16.3 (2024-05-01)
+## 0.16.3 (2024-05-12)
 
 ### Fixed
 
@@ -939,7 +939,7 @@ Firefox 的 Manifest V3 版本还在筹备中。
 
 <a name="0.16.2"></a>
 
-## 0.16.2 (2024-04-22)
+## 0.16.2 (2024-04-23)
 
 > 后续主要精力将放在`Manifest V3`的支持上，本次版本主要是一些小的改进与修复，详细功能演示请看：[v0.16.2](./v0.16#v0162)
 
@@ -963,7 +963,7 @@ Firefox 的 Manifest V3 版本还在筹备中。
 
 <a name="0.16.1"></a>
 
-## 0.16.1 (2024-02-26)
+## 0.16.1 (2024-02-27)
 
 ### Added
 
@@ -986,7 +986,7 @@ Firefox 的 Manifest V3 版本还在筹备中。
 
 <a name="0.16.0"></a>
 
-## 0.16.0 (2023-12-21)
+## 0.16.0 (2023-12-23)
 
 ### Added
 
@@ -1002,7 +1002,7 @@ Firefox 的 Manifest V3 版本还在筹备中。
 
 <a name="0.16.0-beta"></a>
 
-## 0.16.0-beta (2023-11-28)
+## 0.16.0-beta (2023-11-30)
 
 ### Added
 
@@ -1044,7 +1044,7 @@ Firefox 的 Manifest V3 版本还在筹备中。
 
 <a name="0.15.0"></a>
 
-## 0.15.0 (2023-08-15)
+## 0.15.0 (2023-11-21)
 
 > 添加了新手引导
 
@@ -1103,7 +1103,7 @@ Firefox 的 Manifest V3 版本还在筹备中。
 
 <a name="0.14.0"></a>
 
-## 0.14.0 (2023-06-20)
+## 0.14.0 (2023-06-22)
 
 > 🎉🎉🎉 脚本猫开始支持多国语言，向国际化脚本管理器迈出第一步！ 💥💥💥
 
@@ -1649,7 +1649,7 @@ Firefox 的 Manifest V3 版本还在筹备中。
 - 📄 修改 License 为 GPLv3
   [[dfa0231](https://github.com/scriptscat/scriptcat/commit/dfa0231f2826b910f4e855509f99a97c6a2f7cdd)]
 
-## 0.8.2 (2022-01-22)
+## 0.8.2 (2022-01-25)
 
 > 2021 年的最后一个版本,提前祝大家新年快乐！🎇
 
@@ -1742,7 +1742,7 @@ Firefox 的 Manifest V3 版本还在筹备中。
 - 👔 兼容油猴 match http\*
   [[9ebdeb9](https://github.com/scriptscat/scriptcat/commit/9ebdeb96d9988843de35f0ddad73b179bdfbf863)]
 
-## 0.7.7 (2021-12-17)
+## 0.7.7 (2021-12-22)
 
 ### Fixed
 

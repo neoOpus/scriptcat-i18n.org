@@ -130,9 +130,63 @@ declare function CAT_fileStorage(action: "config"): void;
 当使用了 `early-start` 时，你可以使用此函数来判断脚本是否完全加载
 
 ```js
-function CAT_scriptLoaded(): Promise<void>;
+function CAT_ScriptLoaded(): Promise<void>;
 
 CAT_scriptLoaded().then(() => {
   console.log("脚本完全加载完成");
 });
+```
+### CAT_registerMenuInput
+
+注册一个菜单输入框, 允许用户输入值, 并在输入完成后用回调函数
+
+```typescript
+declare function CAT_registerMenuInput(
+  name: string,
+  listener?: (inputValue?: any) => void,
+  options_or_accessKey?:
+    | {
+        id?: number | string;
+        accessKey?: string; // 菜单快捷键
+        autoClose?: boolean; // 默认为 true，false 时点击后不关闭弹出菜单页面
+        nested?: boolean; // SC特有配置，默认为 true，false 的话浏览器右键菜单项目由三级菜单升至二级菜单
+        individual?: boolean; // SC特有配置，默认为 false，true 表示相同的菜单项不合并显示
+        // 可选输入框
+        inputType?: "text" | "number" | "boolean";
+        title?: string; // title 只适用于输入框类型
+        inputLabel?: string;
+        inputDefaultValue?: string | number | boolean;
+        inputPlaceholder?: string;
+      }
+    | string
+): number;
+```
+
+### CAT_unregisterMenuInput
+
+卸载菜单输入框
+
+```typescript
+declare const CAT_unregisterMenuInput: typeof GM_unregisterMenuCommand;
+```
+
+### CATType.FileStorageFileInfo
+
+```typescript
+interface FileStorageFileInfo {
+  // 文件名
+  name: string;
+  // 文件路径
+  path: string;
+  // 储存空间绝对路径
+  absPath: string;
+  // 文件大小
+  size: number;
+  // 文件摘要
+  digest: string;
+  // 文件创建时间
+  createtime: number;
+  // 文件修改时间
+  updatetime: number;
+}
 ```

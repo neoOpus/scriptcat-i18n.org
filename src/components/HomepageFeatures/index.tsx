@@ -99,8 +99,8 @@ const CommentSlider = ({ rtl = false, initialSlide = 0 }) => {
       onSwiper={(swiper) => console.log(swiper)}
       modules={[Autoplay]}
     >
-      {comments.left.map((item, index) => (
-        <SwiperSlide key={index}>
+      {comments.left.map((item) => (
+        <SwiperSlide key={item.username}>
           <Comment
             avatar={item.avatar}
             username={item.username}
