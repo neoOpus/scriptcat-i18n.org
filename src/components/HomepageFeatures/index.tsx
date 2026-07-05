@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Avatar, Card, Image, Space, Typography } from "antd";
 import Link from "@docusaurus/Link";
 import Meta from "antd/es/card/Meta";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/modules";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import Translate from '@docusaurus/Translate';
 
@@ -258,7 +258,7 @@ export default function HomepageFeatures(): JSX.Element {
           </p>
         </div>
         <div className="flex-1 py-10">
-          <Link to="/docs/dev/backgroud/">
+          <Link to="/docs/dev/background/">
             <Image src="/img/home/feature.png" preview={false} />
           </Link>
         </div>

@@ -21,3 +21,9 @@ yarn-error.log*
 
 .vscode
 .github/copilot-instructions.md
+
+.claude
+
+CLAUDE.md
+
+.omc

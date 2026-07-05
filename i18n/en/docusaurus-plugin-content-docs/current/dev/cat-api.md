@@ -56,7 +56,7 @@ CAT_setProxy([
 CAT_setProxy([
   {
     proxyServer: {
-      scheme: "socks5", 
+      scheme: "socks5",
       host: "127.0.0.1",
       port: 1080
     },
@@ -343,3 +343,58 @@ if (GM_info.version >= "1.0.0") {
 ```
 
 For more examples and detailed usage, please refer to the [example repository](https://github.com/scriptscat/scriptcat/tree/main/example).
+
+### CAT_registerMenuInput
+
+Registers a menu input box, allowing the user to enter a value, and calls a callback function after the input is complete.
+
+```typescript
+declare function CAT_registerMenuInput(
+  name: string,
+  listener?: (inputValue?: any) => void,
+  options_or_accessKey?:
+    | {
+        id?: number | string;
+        accessKey?: string; // Menu shortcut key
+        autoClose?: boolean; // Default is true; if false, the popup menu page will not close after clicking.
+        nested?: boolean; // SC-specific configuration, default is true. If false, the browser right-click menu item is promoted from a third-level menu to a second-level menu.
+        individual?: boolean; // SC-specific configuration, default is false. If true, identical menu items are not merged.
+        // Optional input box fields
+        inputType?: "text" | "number" | "boolean";
+        title?: string; // title is only applicable to input box types
+        inputLabel?: string;
+        inputDefaultValue?: string | number | boolean;
+        inputPlaceholder?: string;
+      }
+    | string
+): number;
+```
+
+### CAT_unregisterMenuInput
+
+Unregisters a menu input box.
+
+```typescript
+declare const CAT_unregisterMenuInput: typeof GM_unregisterMenuCommand;
+```
+
+### CATType.FileStorageFileInfo
+
+```typescript
+interface FileStorageFileInfo {
+  // Filename
+  name: string;
+  // File path
+  path: string;
+  // Absolute path in storage space
+  absPath: string;
+  // File size
+  size: number;
+  // File digest/hash
+  digest: string;
+  // File creation time
+  createtime: number;
+  // File update time
+  updatetime: number;
+}
+```

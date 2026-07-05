@@ -4,7 +4,7 @@ id: background
 
 # Background Scripts
 
-Background scripts are suitable for continuously running scripts. Background scripts are unique to ScriptCat. They run in a sandbox and cannot manipulate DOM objects. You can use GM APIs consistent with Tampermonkey for development, with compatibility notes marked in the documentation.
+Background scripts are designed for long-running processes that need to operate independently of any specific web page. This feature is exclusive to ScriptCat. They run in a sandbox and cannot manipulate DOM objects. You can use GM APIs consistent with Tampermonkey for development, with compatibility notes marked in the documentation.
 
 ## Background Scripts
 
