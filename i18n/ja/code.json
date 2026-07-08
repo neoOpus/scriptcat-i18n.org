@@ -52,8 +52,7 @@
     "description": "The label of the link targeting the tag list page"
   },
   "homepage.hero.title": {
-    "message": "ScriptCat",
-    "description": "The hero title on the homepage"
+    "message": "ブラウザをスクリプト化し、無限の可能性を解き放つ"
   },
   "homepage.hero.subtitle": {
     "message": "ユーザースクリプトを実行できるブラウザ拡張機能、すべてをスクリプト化可能にし、ブラウザでより多くのことを実現！",
@@ -130,5 +129,590 @@
   "homepage.comments.qianyu.content": {
     "message": "最初、人々はこれがニッチなJSプラグインだと思っていました...しかし...",
     "description": "仟羽のコメント内容"
+  },
+  "homepage.comments.wwwwwllllk.username": {
+    "message": "wwwwwllllk",
+    "description": "wwwwwllllk's username in community comments"
+  },
+  "homepage.comments.wwwwwllllk.description": {
+    "message": "Frontend Developer",
+    "description": "wwwwwllllk's description in community comments"
+  },
+  "homepage.comments.wwwwwllllk.content": {
+    "message": "Using ScriptCat to improve my internet experience, meeting like-minded people in the community.",
+    "description": "wwwwwllllk's comment content"
+  },
+  "homepage.comments.oraer.username": {
+    "message": "Oraer",
+    "description": "Oraer's username in community comments"
+  },
+  "homepage.comments.oraer.description": {
+    "message": "Chrome User",
+    "description": "Oraer's description in community comments"
+  },
+  "homepage.comments.oraer.content": {
+    "message": "First encounter with Tampermonkey! Learning Tampermonkey! Surpassing Tampermonkey!",
+    "description": "Oraer's comment content"
+  },
+  "homepage.comments.bigonion.username": {
+    "message": "bigonion",
+    "description": "bigonion's username in community comments"
+  },
+  "homepage.comments.bigonion.description": {
+    "message": "ScriptCat Developer",
+    "description": "bigonion's description in community comments"
+  },
+  "homepage.comments.bigonion.content": {
+    "message": "ScriptCat is the future.",
+    "description": "bigonion's comment content"
+  },
+  "homepage.meta.title": {
+    "message": "ScriptCat - The Userscript Engine for Your Browser"
+  },
+  "homepage.meta.description": {
+    "message": "ScriptCat is a powerful open-source userscript engine that allows you to customize websites, block ads, and automate tasks with ease."
+  },
+  "homepage.og.title": {
+    "message": "ScriptCat - A Powerful Userscript Engine"
+  },
+  "homepage.og.description": {
+    "message": "Elevate your browsing experience with ScriptCat. Fully compatible with Tampermonkey."
+  },
+  "homepage.twitter.title": {
+    "message": "ScriptCat - Powerful Browser Script Engine",
+    "description": "Twitter card title"
+  },
+  "homepage.twitter.description": {
+    "message": "Open-source browser script engine that makes your browser do more",
+    "description": "Twitter card description"
+  },
+  "homepage.hero.title.engine": {
+    "message": "Enhanced Browser Experience",
+    "description": "Gradient text in main title"
+  },
+  "homepage.hero.subtitle.userScript": {
+    "message": "user scripts",
+    "description": "User script highlight"
+  },
+  "homepage.hero.subtitle.possibilities": {
+    "message": ", activating infinite possibilities for your browser!",
+    "description": "Browser possibilities text"
+  },
+  "homepage.hero.subtitle.main": {
+    "message": "ScriptCat is a powerful open-source browser script engine that lets you easily customize web functionality, eliminate ads, automate tasks, and enhance your browsing experience. Compatible with Tampermonkey and provides more features and optimizations.",
+    "description": "Main subtitle description on homepage"
+  },
+  "homepage.hero.button.getStarted": {
+    "message": "Commencer"
+  },
+  "homepage.hero.button.github": {
+    "message": "GitHub"
+  },
+  "homepage.features.title.powerful": {
+    "message": "Powerful Features, ",
+    "description": "Features section title part 1"
+  },
+  "homepage.features.title.features": {
+    "message": "puissantes"
+  },
+  "homepage.features.subtitle": {
+    "message": "ブラウザ拡張機能の枠を超えた、より自由で安全、かつ強力なウェブ体験を"
+  },
+  "homepage.features.compatibility.title": {
+    "message": "Compatibilité parfaite"
+  },
+  "homepage.features.compatibility.description": {
+    "message": "Entièrement compatible avec les scripts Tampermonkey et Violentmonkey, migrez sans effort vos scripts préférés."
+  },
+  "homepage.features.background.title": {
+    "message": "バックグラウンドスクリプト"
+  },
+  "homepage.features.background.description": {
+    "message": "独自のバックグラウンドスクリプトと定期実行機能を備え、DOMに依存しない24時間365日の自動化タスクを実現します。"
+  },
+  "homepage.features.security.title": {
+    "message": "安全性とプライバシー"
+  },
+  "homepage.features.security.description": {
+    "message": "厳格な権限管理システムと透明なスクリプト動作により、悪意のあるスクリプトを効果的に防止し、プライバシーを保護します。"
+  },
+  "homepage.features.editor.title": {
+    "message": "組み込みコードエディタ"
+  },
+  "homepage.features.editor.description": {
+    "message": "構文ハイライト、自動補完、エラー表示を備えた強力なエディタにより、スクリプト作成の効率を大幅に向上させます。"
+  },
+  "homepage.features.api.title": {
+    "message": "強力なAPI"
+  },
+  "homepage.features.api.description": {
+    "message": "GM APIよりも豊富なAPIを提供。ファイルストレージやユーザー設定などの高度な機能をサポートしています。"
+  },
+  "homepage.features.store.title": {
+    "message": "スクリプトストア"
+  },
+  "homepage.features.store.description": {
+    "message": "ワンクリックで人気スクリプトをインストールできるストアを提供。自分の作品を公開してコミュニティと共有することも可能です。"
+  },
+  "homepage.comparison.title.why": {
+    "message": "選ばれる理由"
+  },
+  "homepage.comparison.subtitle": {
+    "message": "他のスクリプトエンジンと比較して、ScriptCatはより多くのメリットと強化された機能を提供します"
+  },
+  "homepage.comparison.feature": {
+    "message": "機能"
+  },
+  "homepage.comparison.feature.compatibility": {
+    "message": "互換性"
+  },
+  "homepage.comparison.feature.background": {
+    "message": "バックグラウンド実行"
+  },
+  "homepage.comparison.feature.opensource": {
+    "message": "オープンソース・無料"
+  },
+  "homepage.comparison.feature.mv3": {
+    "message": "MV3 サポート"
+  },
+  "homepage.comparison.feature.sync": {
+    "message": "クラウド同期"
+  },
+  "homepage.comparison.feature.api": {
+    "message": "強力な API"
+  },
+  "homepage.comparison.feature.community": {
+    "message": "コミュニティサポート"
+  },
+  "homepage.comparison.label.efficient": {
+    "message": "効率的"
+  },
+  "homepage.comparison.label.multiplatform": {
+    "message": "マルチプラットフォーム"
+  },
+  "homepage.scenario.title.solve": {
+    "message": "Scripts That Solve ",
+    "description": "Scenario section title part 1"
+  },
+  "homepage.scenario.title.problems": {
+    "message": "Real Problems",
+    "description": "Scenario section title highlight"
+  },
+  "homepage.scenario.title.scripts": {
+    "message": "",
+    "description": "Scenario section title part 2"
+  },
+  "homepage.scenario.subtitle": {
+    "message": "See how ScriptCat can transform your browsing experience",
+    "description": "Scenario section subtitle"
+  },
+  "homepage.scenario.video.title": {
+    "message": "Video Site Enhancement",
+    "description": "Video scenario title"
+  },
+  "homepage.scenario.video.subtitle": {
+    "message": "Optimize video viewing experience",
+    "description": "Video scenario subtitle"
+  },
+  "homepage.scenario.video.tag": {
+    "message": "Popular Apps",
+    "description": "Video scenario tag"
+  },
+  "homepage.scenario.video.feature.speed": {
+    "message": "Video Speed Control",
+    "description": "Video feature: Speed control"
+  },
+  "homepage.scenario.video.feature.download": {
+    "message": "One-click Video Download",
+    "description": "Video feature: Download"
+  },
+  "homepage.scenario.video.feature.adblock": {
+    "message": "Auto Skip Ads",
+    "description": "Video feature: Ad blocking"
+  },
+  "homepage.scenario.video.feature.ui": {
+    "message": "UI Simplification",
+    "description": "Video feature: UI optimization"
+  },
+  "homepage.scenario.video.sites": {
+    "message": "Supported Sites",
+    "description": "Video scenario supported sites label"
+  },
+  "homepage.scenario.video.getScript": {
+    "message": "Get Script →",
+    "description": "Video scenario get script link"
+  },
+  "homepage.scenario.shopping.title": {
+    "message": "Shopping Assistant",
+    "description": "Shopping scenario title"
+  },
+  "homepage.scenario.shopping.subtitle": {
+    "message": "Make shopping experience easier",
+    "description": "Shopping scenario subtitle"
+  },
+  "homepage.scenario.shopping.tag": {
+    "message": "Practical Tools",
+    "description": "Shopping scenario tag"
+  },
+  "homepage.scenario.shopping.feature.history": {
+    "message": "Price History Query",
+    "description": "Shopping feature: Price history"
+  },
+  "homepage.scenario.shopping.feature.coupon": {
+    "message": "Auto Coupon Search",
+    "description": "Shopping feature: Coupon search"
+  },
+  "homepage.scenario.shopping.feature.compare": {
+    "message": "Price Comparison",
+    "description": "Shopping feature: Price comparison"
+  },
+  "homepage.scenario.shopping.feature.alert": {
+    "message": "Price Drop Alert",
+    "description": "Shopping feature: Price alert"
+  },
+  "homepage.scenario.sites.more": {
+    "message": "+More",
+    "description": "More sites indicator in scenario cards"
+  },
+  "homepage.download.title.ready": {
+    "message": "Ready to",
+    "description": "Download section title part 1"
+  },
+  "homepage.download.title.enhance": {
+    "message": "Enhance Your Browsing Experience",
+    "description": "Download section title highlight"
+  },
+  "homepage.download.title.question": {
+    "message": "?",
+    "description": "Download section title part 2"
+  },
+  "homepage.download.subtitle": {
+    "message": "Install ScriptCat now and unlock infinite possibilities for web browsing",
+    "description": "Download section subtitle"
+  },
+  "homepage.download.edge": {
+    "message": "Edge Extension Store",
+    "description": "Download button: Edge store"
+  },
+  "homepage.download.chrome": {
+    "message": "Chrome Extension Store",
+    "description": "Download button: Chrome store"
+  },
+  "homepage.download.firefox": {
+    "message": "Firefox Extension Store",
+    "description": "Download button: Firefox store"
+  },
+  "homepage.download.github": {
+    "message": "GitHub Download",
+    "description": "Download button: GitHub"
+  },
+  "homepage.download.popup.title": {
+    "message": "ScriptCat Enabled",
+    "description": "Extension popup title"
+  },
+  "homepage.download.popup.text": {
+    "message": "3 scripts are running on current page",
+    "description": "Extension popup text"
+  },
+  "homepage.footer.contributors.title": {
+    "message": "Thanks to all contributors",
+    "description": "Footer contributors section title"
+  },
+  "footer.description": {
+    "message": "ブラウザ体験をより豊かにする強力なブラウザスクリプトエンジン。"
+  },
+  "footer.product.title": {
+    "message": "製品"
+  },
+  "footer.product.features": {
+    "message": "Features",
+    "description": "Footer product features link"
+  },
+  "footer.product.scriptStore": {
+    "message": "Script Store",
+    "description": "Footer product script store link"
+  },
+  "footer.product.changelog": {
+    "message": "Changelog",
+    "description": "Footer product changelog link"
+  },
+  "footer.resources.title": {
+    "message": "リソース"
+  },
+  "footer.resources.devDocs": {
+    "message": "Developer Docs",
+    "description": "Footer resources development docs link"
+  },
+  "footer.resources.apiReference": {
+    "message": "API Reference",
+    "description": "Footer resources API reference link"
+  },
+  "footer.resources.examples": {
+    "message": "Example Scripts",
+    "description": "Footer resources example scripts link"
+  },
+  "footer.resources.faq": {
+    "message": "FAQ",
+    "description": "Footer resources FAQ link"
+  },
+  "footer.community.title": {
+    "message": "コミュニティ"
+  },
+  "footer.community.forum": {
+    "message": "フォーラム"
+  },
+  "footer.community.discord": {
+    "message": "Discord チャンネル"
+  },
+  "footer.community.contributing": {
+    "message": "Contributing Guide",
+    "description": "Footer community contributing guide link"
+  },
+  "footer.community.issues": {
+    "message": "Report Issues",
+    "description": "Footer community report issues link"
+  },
+  "footer.community.contact": {
+    "message": "Contact Team",
+    "description": "Footer community contact team link"
+  },
+  "footer.community.recruiting": {
+    "message": "Recruiting",
+    "description": "Footer community recruiting badge"
+  },
+  "footer.copyright.allRightsReserved": {
+    "message": "All rights reserved."
+  },
+  "footer.copyright.privacy": {
+    "message": "Privacy Policy",
+    "description": "Footer copyright privacy policy link"
+  },
+  "footer.copyright.terms": {
+    "message": "Terms of Use",
+    "description": "Footer copyright terms of use link"
+  },
+  "footer.copyright.license": {
+    "message": "License Agreement",
+    "description": "Footer copyright license link"
+  },
+  "githubStar.install.title": {
+    "message": "Enjoying ScriptCat?",
+    "description": "GitHub star bar title on install-complete page"
+  },
+  "githubStar.install.subtitle": {
+    "message": "Star us on GitHub to help more people discover it 🌟",
+    "description": "GitHub star bar subtitle on install-complete page"
+  },
+  "githubStar.changelog.title": {
+    "message": "ScriptCat keeps getting better 🚀",
+    "description": "GitHub star bar title on changelog page"
+  },
+  "githubStar.changelog.subtitle": {
+    "message": "Find these updates useful? Star us on GitHub to support our work",
+    "description": "GitHub star bar subtitle on changelog page"
+  },
+  "githubStar.home.title": {
+    "message": "ScriptCat is free & open source",
+    "description": "GitHub star bar title on homepage"
+  },
+  "githubStar.home.subtitle": {
+    "message": "Give us a Star if you find it useful — it keeps us going",
+    "description": "GitHub star bar subtitle on homepage"
+  },
+  "githubStar.button.label": {
+    "message": "Star",
+    "description": "GitHub star button label"
+  },
+  "uninstall.title": {
+    "message": "Uninstall Survey",
+    "description": "Title of the uninstall survey page"
+  },
+  "uninstall.description": {
+    "message": "Thank you for using ScriptCat. Please tell us why you're uninstalling.",
+    "description": "Description of the uninstall survey page"
+  },
+  "uninstall.header.title": {
+    "message": "Sorry to see you uninstall ScriptCat",
+    "description": "Main header title on uninstall survey page"
+  },
+  "uninstall.header.subtitle": {
+    "message": "If you'd like, we'd appreciate hearing your thoughts to help us continue improving",
+    "description": "Subtitle on uninstall survey page"
+  },
+  "uninstall.question.reason": {
+    "message": "What's the main reason you're uninstalling ScriptCat?",
+    "description": "Question about uninstall reason"
+  },
+  "uninstall.reason.bug": {
+    "message": "J'ai rencontré des erreurs ou des bugs"
+  },
+  "uninstall.reason.unused": {
+    "message": "Je n'en ai plus besoin"
+  },
+  "uninstall.reason.feature": {
+    "message": "Il manque une fonctionnalité dont j'ai besoin"
+  },
+  "uninstall.reason.better": {
+    "message": "J'ai trouvé une meilleure alternative"
+  },
+  "uninstall.reason.other": {
+    "message": "Other reasons",
+    "description": "Uninstall reason: other"
+  },
+  "uninstall.bug.alert.title": {
+    "message": "Encountered a bug?",
+    "description": "Bug alert title"
+  },
+  "uninstall.bug.alert.description": {
+    "message": "If you encountered an error or bug, we recommend submitting an issue directly on GitHub for more timely feedback and technical support.",
+    "description": "Bug alert description"
+  },
+  "uninstall.bug.alert.button": {
+    "message": "Report Issue on GitHub",
+    "description": "Bug alert button text"
+  },
+  "uninstall.feature.alert.title": {
+    "message": "Missing a feature?",
+    "description": "Feature alert title"
+  },
+  "uninstall.feature.alert.description": {
+    "message": "We highly value user feature requests! We recommend describing your needed features in detail on GitHub, so we can better understand your needs and prioritize implementation.",
+    "description": "Feature alert description"
+  },
+  "uninstall.feature.alert.button": {
+    "message": "Suggest Feature on GitHub",
+    "description": "Feature alert button text"
+  },
+  "uninstall.question.feedback": {
+    "message": "Would you mind sharing more details if convenient?",
+    "description": "Question about detailed feedback"
+  },
+  "uninstall.feedback.placeholder": {
+    "message": "Please share your specific issues, suggestions, or other thoughts...",
+    "description": "Placeholder text for feedback textarea"
+  },
+  "uninstall.button.submit": {
+    "message": "Submit Feedback",
+    "description": "Submit button text"
+  },
+  "uninstall.sidebar.reinstall.title": {
+    "message": "You're Always Welcome Back",
+    "description": "Sidebar reinstall title"
+  },
+  "uninstall.reinstall.message": {
+    "message": "If you change your mind, you can always reinstall:",
+    "description": "Reinstall message"
+  },
+  "uninstall.sidebar.help.title": {
+    "message": "Need Help?",
+    "description": "Sidebar help title"
+  },
+  "uninstall.sidebar.help.description": {
+    "message": "Having trouble? We're here to help you solve it",
+    "description": "Sidebar help description"
+  },
+  "uninstall.sidebar.help.github": {
+    "message": "GitHub Issues",
+    "description": "GitHub issues button"
+  },
+  "uninstall.sidebar.help.docs": {
+    "message": "View Documentation",
+    "description": "View docs button"
+  },
+  "homepage.hero.browser.crx": {
+    "message": "Download Installation Package for Manual Install",
+    "description": "Button text for manual installation"
+  },
+  "uninstall.reason.no_need": {
+    "message": "No longer need ScriptCat",
+    "description": "Uninstall reason: no longer need"
+  },
+  "uninstall.thanks.submitAnother": {
+    "message": "Submit Other Feedback",
+    "description": "Submit another feedback button"
+  },
+  "uninstall.reason.features": {
+    "message": "Missing features I need",
+    "description": "Uninstall reason: missing features"
+  },
+  "uninstall.thanks.backHome": {
+    "message": "Back to Home",
+    "description": "Back to home button"
+  },
+  "uninstall.thanks.message": {
+    "message": "Your feedback is invaluable to us and will help us improve ScriptCat.",
+    "description": "Thank you page message"
+  },
+  "uninstall.thanks.considerReinstall": {
+    "message": "If you change your mind, you're always welcome back",
+    "description": "Consider reinstall message"
+  },
+  "uninstall.thanks.title": {
+    "message": "Thank you for your feedback!",
+    "description": "Thank you page title"
+  },
+  "homepage.hero.button.browseScripts": {
+    "message": "Browse Script Library",
+    "description": "Button text for browsing scripts"
+  },
+  "uninstall.warning.selectReason": {
+    "message": "Please select an uninstall reason",
+    "description": "Warning when no reason is selected"
+  },
+  "homepage.features.tampermonkey.title": {
+    "message": "Tampermonkey Compatible",
+    "description": "Feature title: Tampermonkey compatibility"
+  },
+  "uninstall.reason.alternative": {
+    "message": "Found a better alternative",
+    "description": "Uninstall reason: found alternative"
+  },
+  "homepage.hero.browser.edge": {
+    "message": "Add to Edge Browser",
+    "description": "Button text for Edge browser"
+  },
+  "homepage.hero.trustBadges.title": {
+    "message": "Trusted and supported by the tech community",
+    "description": "Trust badges section title"
+  },
+  "homepage.hero.browser.chrome": {
+    "message": "Add to Chrome Browser",
+    "description": "Button text for Chrome browser"
+  },
+  "homepage.features.tampermonkey.description": {
+    "message": "Fully compatible with Tampermonkey script format, seamlessly migrate existing script libraries with zero cost switching.",
+    "description": "Feature description: Tampermonkey compatibility"
+  },
+  "homepage.hero.browser.default": {
+    "message": "Install Extension to Browser",
+    "description": "Default button text for browser installation"
+  },
+  "uninstall.success.submitted": {
+    "message": "Thank you for your feedback!",
+    "description": "Success message after submission"
+  },
+  "uninstall.reason.bugs": {
+    "message": "Encountered errors or bugs",
+    "description": "Uninstall reason: bugs"
+  },
+  "homepage.hero.subtitle.highlight": {
+    "message": "A browser extension for executing",
+    "description": "Highlighted subtitle on homepage"
+  },
+  "uninstall.thanks.reportIssue": {
+    "message": "Report Issue",
+    "description": "Report issue button"
+  },
+  "uninstall.error.submit": {
+    "message": "Submission failed, please try again later",
+    "description": "Error message when submission fails"
+  },
+  "homepage.hero.browser.firefox": {
+    "message": "Add to Firefox Browser",
+    "description": "Button text for Firefox browser"
+  },
+  "homepage.features.title.possibilities": {
+    "message": "Infinite Possibilities",
+    "description": "Features section title highlight"
   }
 }

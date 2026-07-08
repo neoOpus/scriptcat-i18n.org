@@ -1009,5 +1009,102 @@
   "homepage.comments.bigonion.content": {
     "message": "Scriptcat is the future.",
     "description": "bigonion的评论内容"
+  },
+  "homepage.hero.subtitle": {
+    "message": "Une extension de navigateur qui peut exécuter des scripts utilisateur, tout peut être scripté, permettez à votre navigateur de faire plus !",
+    "description": "The hero subtitle on the homepage"
+  },
+  "homepage.features.powerful.title": {
+    "message": "Fonctionnalités puissantes",
+    "description": "Title for powerful features section"
+  },
+  "homepage.features.powerful.description": {
+    "message": "Entièrement compatible avec Tampermonkey, scripts d'arrière-plan, scripts programmés, API riche",
+    "description": "Description for powerful features section"
+  },
+  "homepage.features.easy.title": {
+    "message": "Facile à utiliser",
+    "description": "Title for easy to use section"
+  },
+  "homepage.features.easy.description": {
+    "message": "Éditeur intégré, autocomplétion intelligente, vérification de syntaxe, développement de scripts plus efficace",
+    "description": "Description for easy to use section"
+  },
+  "homepage.features.secure.title": {
+    "message": "Sécurisé et fiable",
+    "description": "Title for secure and reliable section"
+  },
+  "homepage.features.secure.description": {
+    "message": "Mécanisme de bac à sable, gestion des permissions, garantit l'exécution sécurisée des scripts",
+    "description": "Description for secure and reliable section"
+  },
+  "homepage.og.title": {
+    "message": "ScriptCat - A Powerful Userscript Engine"
+  },
+  "homepage.og.description": {
+    "message": "Elevate your browsing experience with ScriptCat. Fully compatible with Tampermonkey."
+  },
+  "homepage.twitter.title": {
+    "message": "ScriptCat - Powerful Browser Script Engine",
+    "description": "Twitter card title"
+  },
+  "homepage.twitter.description": {
+    "message": "Open-source browser script engine that makes your browser do more",
+    "description": "Twitter card description"
+  },
+  "homepage.hero.button.getStarted": {
+    "message": "Commencer"
+  },
+  "homepage.hero.button.github": {
+    "message": "GitHub"
+  },
+  "homepage.features.title.features": {
+    "message": "puissantes"
+  },
+  "homepage.features.compatibility.title": {
+    "message": "Compatibilité parfaite"
+  },
+  "homepage.features.compatibility.description": {
+    "message": "Entièrement compatible avec les scripts Tampermonkey et Violentmonkey, migrez sans effort vos scripts préférés."
+  },
+  "githubStar.install.title": {
+    "message": "Enjoying ScriptCat?",
+    "description": "GitHub star bar title on install-complete page"
+  },
+  "githubStar.install.subtitle": {
+    "message": "Star us on GitHub to help more people discover it 🌟",
+    "description": "GitHub star bar subtitle on install-complete page"
+  },
+  "githubStar.changelog.title": {
+    "message": "ScriptCat keeps getting better 🚀",
+    "description": "GitHub star bar title on changelog page"
+  },
+  "githubStar.changelog.subtitle": {
+    "message": "Find these updates useful? Star us on GitHub to support our work",
+    "description": "GitHub star bar subtitle on changelog page"
+  },
+  "githubStar.home.title": {
+    "message": "ScriptCat is free & open source",
+    "description": "GitHub star bar title on homepage"
+  },
+  "githubStar.home.subtitle": {
+    "message": "Give us a Star if you find it useful — it keeps us going",
+    "description": "GitHub star bar subtitle on homepage"
+  },
+  "githubStar.button.label": {
+    "message": "Star",
+    "description": "GitHub star button label"
+  },
+  "uninstall.reason.bug": {
+    "message": "J'ai rencontré des erreurs ou des bugs"
+  },
+  "uninstall.reason.unused": {
+    "message": "Je n'en ai plus besoin"
+  },
+  "uninstall.reason.feature": {
+    "message": "Il manque une fonctionnalité dont j'ai besoin"
+  },
+  "uninstall.reason.better": {
+    "message": "J'ai trouvé une meilleure alternative"
   }
 }

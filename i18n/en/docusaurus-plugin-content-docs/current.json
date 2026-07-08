@@ -3,6 +3,10 @@
     "message": "Next",
     "description": "The label for version current"
   },
+  "sidebar.dev.category.Agent 智能助手": {
+    "message": "Intelligent Agent",
+    "description": "The label for category Agent in sidebar"
+  },
   "sidebar.use.category.服务协议": {
     "message": "Service Agreement",
     "description": "The label for category 服务协议 in sidebar use"

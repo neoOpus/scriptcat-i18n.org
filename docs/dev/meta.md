@@ -84,11 +84,11 @@ ScriptCat 不支持自动检查 CSP 限制来决定注入方式采用`content`�
 
 ### background
 
-表示本脚本为后台脚本,需要运行在后台环境,具体请看[后台脚本](./background.md#后台脚本)
+表示本脚本为后台脚本,需要运行在后台环境,具体请看[后台脚本](background#后台脚本)
 
 ### crontab
 
-表示脚本为定时脚本,需要有 cron 表达式值,只能存在一个 cron 表达式,会在后台环境中定时运行,具体请看[定时脚本](./background.md#定时脚本)
+表示脚本为定时脚本,需要有 cron 表达式值,只能存在一个 cron 表达式,会在后台环境中定时运行,具体请看[定时脚本](background#定时脚本)
 
 ### match
 
@@ -114,7 +114,7 @@ ScriptCat 不支持自动检查 CSP 限制来决定注入方式采用`content`�
 
 ### grant
 
-申请 API 权限,需要申请了 API 之后才能调用,api 列表请看:[API 文档](./api.md)和[CAT API 文档](./cat-api.md).
+申请 API 权限,需要申请了 API 之后才能调用,api 列表请看:[API 文档](api)和[CAT API 文档](cat-api).
 
 两个特殊的值:
 
