@@ -19,14 +19,14 @@ ScriptCat v1.4 引入了 Agent 智能助手系统，它为用户脚本提供了 
 
 | 模块 | 权限声明 | 说明 |
 |------|---------|------|
-| [对话] (agent-conversation) | `@grant CAT.agent.conversation` | 创建 AI 对话、发送消息、流式接收、自定义工具 |
-| [DOM 操作] (agent-dom) | `@grant CAT.agent.dom` | 页面导航、截图、点击、填充、滚动、DOM 监控 |
-| [Skill] (agent-skill) | `@grant CAT.agent.skills` | 安装/卸载/调用 Skill 扩展包 |
-| [定时任务] (agent-task) | `@grant CAT.agent.task` | Cron 定时任务、事件监听 |
-| [模型] (agent-model) | `@grant CAT.agent.model` | 查询已配置的模型信息（只读） |
-| [OPFS 文件] (agent-opfs) | `@grant CAT.agent.opfs` | 读写 Agent 工作区文件 |
-| [MCP] (agent-mcp) | `@grant CAT.agent.mcp` | 管理 MCP 服务器连接 |
-| [Skill 开发] (agent-skill-dev) | — | SKILL.cat.md + SkillScript 开发指南 |
+| [对话](agent-conversation) | `@grant CAT.agent.conversation` | 创建 AI 对话、发送消息、流式接收、自定义工具 |
+| [DOM 操作](agent-dom) | `@grant CAT.agent.dom` | 页面导航、截图、点击、填充、滚动、DOM 监控 |
+| [Skill](agent-skill) | `@grant CAT.agent.skills` | 安装/卸载/调用 Skill 扩展包 |
+| [定时任务](agent-task) | `@grant CAT.agent.task` | Cron 定时任务、事件监听 |
+| [模型](agent-model) | `@grant CAT.agent.model` | 查询已配置的模型信息（只读） |
+| [OPFS 文件](agent-opfs) | `@grant CAT.agent.opfs` | 读写 Agent 工作区文件 |
+| [MCP](agent-mcp) | `@grant CAT.agent.mcp` | 管理 MCP 服务器连接 |
+| [Skill 开发](agent-skill-dev) | — | SKILL.cat.md + SkillScript 开发指南 |
 
 ## 快速上手
 
