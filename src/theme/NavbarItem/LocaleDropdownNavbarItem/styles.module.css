@@ -13,17 +13,19 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  min-width: 210px;
+  min-width: 230px;
 }
 
 .langNative {
   font-weight: 600;
   white-space: nowrap;
+  line-height: 1.2;
 }
 
 .langEn {
   color: var(--ifm-color-emphasis-600);
   font-size: 12px;
+  line-height: 1.2;
   margin-inline-start: auto;
   padding-inline-start: 14px;
   white-space: nowrap;

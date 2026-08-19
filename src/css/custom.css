@@ -81,3 +81,12 @@ body.landing-page .navbar {
 .dropdown__menu .dropdown__link--active {
   background: var(--ifm-color-primary-lightest);
 }
+
+/* ---- Landing language picker (antd): uniform row widths so the English
+   column right-aligns consistently, mirroring the docs-navbar dropdown. ---- */
+.ant-dropdown-menu {
+  min-width: 252px;
+}
+.ant-dropdown-menu-item > a {
+  width: 100%;
+}

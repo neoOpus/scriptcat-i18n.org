@@ -240,7 +240,9 @@ function ChineseGlyph({ style }: { style: CSSProperties }) {
 
 /**
  * Renders the flag for a locale at 3:2 with rounded corners.
- * size: "md" (32px wide — picker rows), "sm" (18px — compact buttons).
+ * size: "md" (24px wide — picker rows), "sm" (18px — compact buttons).
+ * 24x16 keeps rows tidy next to 12-14px text (32px read too large);
+ * sm stays 18px for the navbar buttons.
  */
 export function Flag({
   locale,
@@ -249,11 +251,11 @@ export function Flag({
   locale: string;
   size?: "sm" | "md";
 }): ReactNode {
-  const width = size === "md" ? 32 : 18;
-  const height = size === "md" ? 22 : 12;
+  const width = size === "md" ? 24 : 18;
+  const height = size === "md" ? 16 : 12;
 
   if (locale === "zh-Hant") {
-    return <ChineseGlyph style={{ width, height, fontSize: size === "md" ? 15 : 9 }} />;
+    return <ChineseGlyph style={{ width, height, fontSize: size === "md" ? 12 : 9 }} />;
   }
 
   const body = FLAGS[locale];
