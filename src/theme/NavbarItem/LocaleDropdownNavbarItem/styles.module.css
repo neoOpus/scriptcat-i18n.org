@@ -1,0 +1,30 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+.langBtnLabel {
+  margin-inline-start: 5px;
+}
+
+.langItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 210px;
+}
+
+.langNative {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.langEn {
+  color: var(--ifm-color-emphasis-600);
+  font-size: 12px;
+  margin-inline-start: auto;
+  padding-inline-start: 14px;
+  white-space: nowrap;
+}
