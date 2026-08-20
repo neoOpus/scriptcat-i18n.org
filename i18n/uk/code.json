@@ -1142,5 +1142,8 @@
   "uninstall.warning.selectReason": {
     "message": "Виберіть причину видалення",
     "description": "Warning when no reason is selected"
+  },
+  "home.hero.en": {
+    "message": "Суперсили для вашого браузера."
   }
 }
