@@ -1,8 +1,6 @@
 ---
-id: meta
+title: 描述文档
 ---
-
-# 描述文档
 
 `==UserScript==` 中的内容,用于描述脚本所需要的权限和脚本的信息作用等,在脚本的最开始的位置.
 
@@ -84,11 +82,11 @@ ScriptCat 不支持自动检查 CSP 限制来决定注入方式采用`content`�
 
 ### background
 
-表示本脚本为后台脚本,需要运行在后台环境,具体请看[后台脚本](./background.md#后台脚本)
+表示本脚本为后台脚本,需要运行在后台环境,具体请看[后台脚本](pathname:///docs/dev/background.md#后台脚本-background)
 
 ### crontab
 
-表示脚本为定时脚本,需要有 cron 表达式值,只能存在一个 cron 表达式,会在后台环境中定时运行,具体请看[定时脚本](./background.md#定时脚本)
+表示脚本为定时脚本,需要有 cron 表达式值,只能存在一个 cron 表达式,会在后台环境中定时运行,具体请看[定时脚本](pathname:///docs/dev/background.md#定时脚本crontab)
 
 ### match
 
@@ -114,7 +112,7 @@ ScriptCat 不支持自动检查 CSP 限制来决定注入方式采用`content`�
 
 ### grant
 
-申请 API 权限,需要申请了 API 之后才能调用,api 列表请看:[API 文档](./api.md)和[CAT API 文档](./cat-api.md).
+申请 API 权限,需要申请了 API 之后才能调用,api 列表请看:[API 文档](pathname:///docs/dev/api.md)和[CAT API 文档](pathname:///docs/dev/cat-api.md).
 
 两个特殊的值:
 
@@ -123,7 +121,7 @@ ScriptCat 不支持自动检查 CSP 限制来决定注入方式采用`content`�
 
 ### connect
 
-获取网站的访问权限,请看`GM_cookie`和`GM_xmlhttpRequest`
+获取网站的访问权限,请看`GM_cookie`和`GM_xmlhttpRequest`；`GM_download` 的 `native` 模式也会遵循 `@connect`（未声明的域名会弹窗询问，这与 TM 不同）
 
 ### resource
 
@@ -199,6 +197,42 @@ ScriptCat 不支持自动检查 CSP 限制来决定注入方式采用`content`�
 ### icon64， icon64URL
 
 64x64 大小的脚本图标
+
+### copyright
+
+脚本版权信息
+
+### tag
+
+脚本标签，使用逗号或空格分隔
+
+### compatible
+
+在 GreasyFork 上展示的兼容性信息
+
+### scriptUrl
+
+订阅脚本所引用的用户脚本 URL
+
+### unwrap
+
+使用户脚本绕过沙盒封装，直接注入并运行在页面原生的全局作用域中。脚本可以直接访问和修改页面真实的全局变量，但无法使用 `GM.*` 等用户脚本特权 API。常用于需要与页面原生脚本深度交互、或从普通页面脚本迁移而来的场景。
+
+### cloudCat
+
+标记脚本可导出为 CloudCat 云端脚本包（仅 SC 支持）
+
+### cloudServer
+
+脚本使用的 CloudCat 云服务
+
+### exportValue
+
+导出为云端脚本时需要一并导出的脚本存储值
+
+### exportCookie
+
+导出为云端脚本时需要一并导出的 Cookie
 
 ### 附注
 

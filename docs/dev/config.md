@@ -1,8 +1,6 @@
 ---
-id: config
+title: 用户配置
 ---
-
-# 用户配置
 
 `==UserConfig==` 中的内容,应该在`==UserScript==` 后方,表示脚本的一些用户配置.配置信息的描述使用[yaml](https://yaml.org/)格式来进行编写:
 
@@ -57,6 +55,11 @@ group1:
     description: 这是一个长文本类型的配置
     type: textarea
     default: 默认值
+  configI:
+    title: 配置I
+    description: 这是一个时间类型的配置
+    type: time
+    default: "12:00"
 ---
 group2: #第二组配置
   configX:

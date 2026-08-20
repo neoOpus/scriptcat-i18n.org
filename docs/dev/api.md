@@ -1,14 +1,12 @@
 ---
-id: api
+title: API 文档
 ---
-
-# API 文档
 
 ## 说明
 
 本扩展 API 定义参考 [Tampermonkey 文档](https://www.tampermonkey.net/documentation.php)，由于时间和精力问题，只实现了部分 API，后续将继续迭代。本扩展进行扩充或者与原 GM 不同的 API 将在文档中特殊标注（使用 * 号）。对于某些 API 还提供了同步函数，同步函数规则：`GM.*`，具体请看文档内容。
 
-API 的详细定义，请看 `scriptcat.d.ts` 或者内置编辑器提示，文档更新可能不会及时。对于本扩展特有的 API，请看 [CatApi 文档](cat-api.md)。
+API 的详细定义，请看 `scriptcat.d.ts` 或者内置编辑器提示，文档更新可能不会及时。对于本扩展特有的 API，请看 [CatApi 文档](pathname:///docs/dev/cat-api.md)。
 
 另外可以在 [example](https://github.com/scriptscat/scriptcat/tree/main/example) 查看相关示例。
 
@@ -103,7 +101,7 @@ GM_deleteValues(["a", "b"]);
 
 ### GM_add/removeValueChangeListener
 
-> tabid 于 0.17.0-alpha 后删除，详情见 [GM_cookie](#gm_cookie)
+> tabid 于 0.17.0-alpha 后删除，详情见 [GM_cookie](#gm_cookie-)
 
 对值的监听操作，add 会返回一个监听 id，使用 remove 可以取消监听。可以使用这个方法实现一个简单的通信，使用 [**storageName**](meta.md#storagename-) 可以实现跨脚本通信。
 
@@ -283,6 +281,14 @@ declare namespace GMTypes {
 const tab = GM_openInTab("https://example.com", { active: false });
 tab.onclose = () => console.log("已关闭");
 tab.close();
+```
+
+### GM_closeInTab
+
+关闭一个由 `GM_openInTab` 打开的标签页。
+
+```typescript
+declare function GM_closeInTab(tabId: string): void;
 ```
 
 ### GM_get/saveTab/GM_getTabs
@@ -500,7 +506,7 @@ declare namespace GMTypes {
     password?: string;
     nocache?: boolean;
     redirect?: "follow" | "error" | "manual"; // 为了与tm保持一致, 在v0.17.0后废弃maxRedirects, 使用redirect替代, 会强制使用fetch模式
-
+    
     onload?: Listener<XHRResponse>;
     onloadstart?: Listener<XHRResponse>;
     onloadend?: Listener<XHRResponse>;
@@ -525,6 +531,7 @@ GM_xmlhttpRequest({
 
 * 下载文件，可设置 header 等内容，相比 TM 多了 cookie 和 anonymous 的功能。如果为 blob url，将会直接打开下载，只有 onload 事件，这是与 TM 不同的一个特性（为后台脚本无法创建下载而服务，可能会在一些生成报表的场景使用到）。
 * 返回 Promise 对象，并提供 `abort()` 方法。
+* 与 TM 不同：`native` 下载模式（默认）会遵循 `@connect`。当下载地址的域名不在脚本 `@connect` 声明内时，会弹窗询问用户，允许后才下载；已在 `@connect` 内的域名静默下载，黑名单域名始终拒绝。`browser` 下载模式不受此限制。（TM 的 `@connect` 仅作用于 `GM_xmlhttpRequest`，不影响 `GM_download`。）
 
 ```typescript
 declare function GM_download(details: GMTypes.DownloadDetails): GMTypes.AbortHandle<boolean>;
@@ -571,7 +578,7 @@ dl.abort();
 
 异步操作页面 Cookie，支持跨域、HttpOnly 和分区。
 
-> v0.17.0-alpha 后删除 store 与 tabid 相关的参数，现在会根据当前所在的窗口来决定获取隐身窗口还是普通窗口的 cookie。
+> v0.17.0-alpha 后删除 store 与 tabid 相关的参数，现在会根据当前所在的窗口来决定获取隐身窗口还是普通窗口的 cookie。  
 
 必须使用 `@connect` 声明操作的 host，且经过用户授权才可使用。虽然兼容 TM 的 `GM_cookie.list` 操作，但是为了统一，不建议这样。
 

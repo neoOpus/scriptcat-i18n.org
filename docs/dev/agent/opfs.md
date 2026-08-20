@@ -1,9 +1,6 @@
 ---
-id: agent-opfs
-sidebar_position: 7
+title: OPFS 文件 API
 ---
-
-# OPFS 文件 API
 
 `@grant CAT.agent.opfs`
 
@@ -60,7 +57,7 @@ const result = await CAT.agent.opfs.read(path, format?);
 | 参数 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `path` | `string` | — | 文件路径（必填） |
-| `format` | `"text" \| "bloburl"` | `"text"` | 读取格式 |
+| `format` | `"text" \| "blob"` | `"text"` | 读取格式 |
 
 **返回值 ReadResult：**
 
@@ -69,8 +66,8 @@ const result = await CAT.agent.opfs.read(path, format?);
 | `path` | `string` | 始终 | 文件路径 |
 | `size` | `number` | 始终 | 文件大小 |
 | `content` | `string` | format="text" | 文件文本内容 |
-| `blobUrl` | `string` | format="bloburl" | blob URL |
-| `mimeType` | `string` | format="bloburl" | MIME 类型 |
+| `data` | `Blob` | format="blob" | 文件的 Blob 对象（通过结构化克隆传输） |
+| `mimeType` | `string` | format="blob" | 自动识别的 MIME 类型 |
 
 **两种读取模式：**
 
@@ -79,10 +76,11 @@ const result = await CAT.agent.opfs.read(path, format?);
 const config = await CAT.agent.opfs.read("data/config.json");
 const data = JSON.parse(config.content);
 
-// Blob URL 模式 — 适合图片、二进制文件
-const image = await CAT.agent.opfs.read("images/chart.png", "bloburl");
-// image.blobUrl = "blob:chrome-extension://xxx/yyy"
-// 可以在 ISOLATED world 的 executeScript 中使用这个 URL
+// Blob 模式 — 适合图片、二进制文件
+const image = await CAT.agent.opfs.read("images/chart.png", "blob");
+// image.data 是一个真正的 Blob 对象（不是受作用域限制的 blob: URL）
+// 可按需在任意上下文中用 URL.createObjectURL(image.data) 生成本地 URL，
+// 或直接把 Blob 传给接受 Blob 的 API（如 fetch 的 body、FormData 等）
 ```
 
 **支持的 MIME 类型自动识别：**
@@ -184,24 +182,8 @@ if (imageBlock) {
 }
 ```
 
-## Blob URL 使用注意事项
+## Blob 数据使用注意事项
 
-- Blob URL 格式为 `blob:chrome-extension://xxx/yyy`
-- **只能在 ISOLATED world 中使用**（`executeScript` 的默认环境）
-- 在 MAIN world（页面环境）中无法访问扩展的 blob URL
-- Blob URL 的生命周期与扩展 session 绑定
-
-```javascript
-// 正确：在 ISOLATED world 中使用 blob URL
-const img = await CAT.agent.opfs.read("images/photo.png", "bloburl");
-await CAT.agent.dom.executeScript(`
-  const img = document.createElement("img");
-  img.src = "${img.blobUrl}";
-  document.body.appendChild(img);
-`, { world: "ISOLATED" });
-
-// 错误：MAIN world 无法访问
-await CAT.agent.dom.executeScript(`
-  fetch("${img.blobUrl}") // 会失败！
-`, { world: "MAIN" });
-```
+- `read(path, "blob")` 返回的是通过[结构化克隆](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Workers_API/Structured_clone_algorithm)传输的真实 `Blob` 对象，不是受扩展源作用域限制的 `blob:` URL 引用，因此没有跨执行环境访问受限的问题
+- 如需生成可在页面中直接使用的临时 URL，调用 `URL.createObjectURL(result.data)` 即可；用完后建议调用 `URL.revokeObjectURL()` 释放
+- 也可以将 `Blob` 直接传给接受 `Blob`/`File` 的 Web API（如 `fetch` 的 `body`、`FormData.append`、`<input type="file">` 的 `DataTransfer` 等）

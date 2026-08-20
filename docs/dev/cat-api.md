@@ -1,8 +1,6 @@
 ---
-id: cat-api
+title: CatApi 文档
 ---
-
-# CatApi 文档
 
 ## 说明
 
@@ -22,9 +20,9 @@ id: cat-api
 请先了解[PAC](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Proxy_servers_and_tunneling/Proxy_Auto-Configuration_PAC_file)和[PAC 中 Chromium 完整网址限制](https://github.com/FelisCatus/SwitchyOmega/wiki/Chromium-%E5%AE%8C%E6%95%B4%E7%BD%91%E5%9D%80%E9%99%90%E5%88%B6)
 
 ```typescript
-declare function CAT_setProxy(rule: CAT_Types.ProxyRule[] | string): void;
+declare function CAT_setProxy(rule: CATType.ProxyRule[] | string): void;
 
-declare namespace CAT_Types {
+declare namespace CATType {
   interface ProxyRule {
     proxyServer: ProxyServer;
     matchUrl: string[];
@@ -130,15 +128,40 @@ declare function CAT_fileStorage(action: "config"): void;
 当使用了 `early-start` 时，你可以使用此函数来判断脚本是否完全加载
 
 ```js
-function CAT_ScriptLoaded(): Promise<void>;
+function CAT_scriptLoaded(): Promise<void>;
 
 CAT_scriptLoaded().then(() => {
   console.log("脚本完全加载完成");
 });
 ```
+
+### CAT_createBlobUrl
+
+从 Blob 对象创建 blob URL，由 ScriptCat 管理 URL 生命周期。
+
+```typescript
+declare function CAT_createBlobUrl(blob: Blob): Promise<string>;
+```
+
+### CAT_fetchBlob
+
+获取 blob URL 并返回 Blob 数据，是 `GM_xmlhttpRequest` 流式（stream）响应的辅助函数。
+
+```typescript
+declare function CAT_fetchBlob(url: string): Promise<Blob>;
+```
+
+### CAT_fetchDocument
+
+获取 URL 并将其解析为 Document（优先在页面上下文中执行）。
+
+```typescript
+declare function CAT_fetchDocument(url: string): Promise<Document | undefined>;
+```
+
 ### CAT_registerMenuInput
 
-注册一个菜单输入框, 允许用户输入值, 并在输入完成后用回调函数
+注册一个带输入框的菜单项，允许用户输入一个值，回调函数会接收到用户的输入内容。
 
 ```typescript
 declare function CAT_registerMenuInput(
@@ -147,46 +170,25 @@ declare function CAT_registerMenuInput(
   options_or_accessKey?:
     | {
         id?: number | string;
-        accessKey?: string; // 菜单快捷键
-        autoClose?: boolean; // 默认为 true，false 时点击后不关闭弹出菜单页面
-        nested?: boolean; // SC特有配置，默认为 true，false 的话浏览器右键菜单项目由三级菜单升至二级菜单
-        individual?: boolean; // SC特有配置，默认为 false，true 表示相同的菜单项不合并显示
-        // 可选输入框
+        accessKey?: string;
+        autoClose?: boolean;
+        nested?: boolean;
+        individual?: boolean;
+        /** 输入框类型 */
         inputType?: "text" | "number" | "boolean";
-        title?: string; // title 只适用于输入框类型
+        /** 弹窗标题 */
+        title?: string;
+        /** 输入框旁的标签文本 */
         inputLabel?: string;
+        /** 输入框默认值 */
         inputDefaultValue?: string | number | boolean;
+        /** 占位提示文本 */
         inputPlaceholder?: string;
       }
     | string
 ): number;
-```
 
-### CAT_unregisterMenuInput
-
-卸载菜单输入框
-
-```typescript
+/** 取消注册（等同于 GM_unregisterMenuCommand） */
 declare const CAT_unregisterMenuInput: typeof GM_unregisterMenuCommand;
 ```
 
-### CATType.FileStorageFileInfo
-
-```typescript
-interface FileStorageFileInfo {
-  // 文件名
-  name: string;
-  // 文件路径
-  path: string;
-  // 储存空间绝对路径
-  absPath: string;
-  // 文件大小
-  size: number;
-  // 文件摘要
-  digest: string;
-  // 文件创建时间
-  createtime: number;
-  // 文件修改时间
-  updatetime: number;
-}
-```

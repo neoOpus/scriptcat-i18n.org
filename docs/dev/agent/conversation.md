@@ -1,9 +1,6 @@
 ---
-id: agent-conversation
-sidebar_position: 2
+title: 对话 API
 ---
-
-# 对话 API
 
 `@grant CAT.agent.conversation`
 
@@ -28,7 +25,6 @@ const conv = await CAT.agent.conversation.create(options?);
 | `commands` | `Record<string, CommandHandler>` | — | 自定义对话命令 |
 | `ephemeral` | `boolean` | `false` | 临时对话，不持久化到存储 |
 | `cache` | `boolean` | `true` | 启用 Prompt Caching（减少 Token 消耗） |
-| `background` | `boolean` | `false` | 后台对话，UI 断开后继续执行，可通过 `attach()` 重新连接 |
 
 ### 自定义工具
 
@@ -81,7 +77,7 @@ const conv = await CAT.agent.conversation.create({
 });
 ```
 
-内置命令：`/new`（新建对话）、`/reset`（重置上下文）、`/compact`（压缩历史消息）。
+内置命令：`/new`（清空对话历史），可以被自定义处理器覆盖。
 
 ## 获取已有对话
 
@@ -164,7 +160,11 @@ const messages = await conv.getMessages();
 | `id` | `string` | 消息 ID |
 | `role` | `"user" \| "assistant" \| "system" \| "tool"` | 消息角色 |
 | `content` | `string \| ContentBlock[]` | 消息内容 |
-| `thinking` | `string` | 思考过程（assistant 消息） |
+| `thinking` | `{ content: string }` | 思考过程（assistant 消息，注意是对象而非字符串） |
+| `error` | `string` | 本轮出错时的错误信息 |
+| `modelId` | `string` | 本条消息使用的模型 ID |
+| `durationMs` | `number` | 本轮回复总耗时（毫秒） |
+| `parentId` | `string` | 父消息 ID（用于分支） |
 | `toolCalls` | `ToolCall[]` | 工具调用记录（assistant 消息） |
 | `toolCallId` | `string` | 对应的工具调用 ID（tool 消息） |
 | `usage` | `{ inputTokens, outputTokens }` | Token 用量 |
@@ -186,16 +186,6 @@ await conv.save();
 
 将对话元数据保存到存储。临时对话（`ephemeral: true`）默认不保存，调用此方法可以将其转为持久化。
 
-### attach — 重新连接后台对话
-
-```javascript
-const stream = await conv.attach();
-for await (const chunk of stream) {
-  // 接收后台对话的实时事件
-}
-```
-
-当对话以 `background: true` 创建并且仍在后台运行时，可以通过 `attach()` 重新连接，接收后续的流式事件。
 
 ### 实例属性
 

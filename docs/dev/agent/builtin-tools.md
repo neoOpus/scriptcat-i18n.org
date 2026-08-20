@@ -1,9 +1,6 @@
 ---
-id: agent-builtin-tools
-sidebar_position: 10
+title: 内置工具参考
 ---
-
-# 内置工具参考
 
 Agent 内置了一系列工具供 AI 在对话中自动调用。这些工具在持久化对话中默认可用，脚本开发者通常不需要直接调用它们——AI 会根据用户意图自动选择合适的工具。
 
@@ -202,16 +199,16 @@ Agent 内置了一系列工具供 AI 在对话中自动调用。这些工具在�
 |------|------|------|------|
 | `code` | `string` | 是 | JavaScript 代码 |
 | `target` | `string` | 是 | `"page"` 或 `"sandbox"` |
-| `tab_id` | `number` | 否 | 页面目标时指定标签页（默认当前活动标签） |
-| `world` | `string` | 否 | `"MAIN"` 或 `"ISOLATED"`（默认），仅 page 模式 |
+| `tab_id` | `number` | 否 | 页面目标时指定标签页（默认当前活动标签），沙箱模式忽略 |
 
 **执行环境对比：**
 
 | 环境 | DOM | 页面 JS | 扩展 blob URL | 适用场景 |
 |------|-----|---------|---------------|---------|
-| page + ISOLATED | 可 | 不可 | 可 | DOM 读取、内容提取 |
-| page + MAIN | 可 | 可 | 不可 | 调用页面函数 |
-| sandbox | 不可 | 不可 | 不可 | 纯计算 |
+| `target: "page"`（固定为 MAIN world） | 可 | 可 | 不可 | 读取/操作 DOM、调用页面函数、读取页面变量 |
+| `target: "sandbox"` | 不可 | 不可 | 不可 | 纯计算 |
+
+> `page` 模式固定运行在页面的 MAIN world，与页面共享 `window`，因此无法访问扩展自身的 blob URL（例如 `opfs_read` 以 blob 模式返回的地址）；需要处理 blob URL 时应改用 Skill 中的 SkillScript。
 
 ## 子代理
 
@@ -250,12 +247,6 @@ Agent 内置了一系列工具供 AI 在对话中自动调用。这些工具在�
 | `subject` | `string` | 是 | 任务标题 |
 | `description` | `string` | 否 | 详细描述 |
 
-### get_task
-
-| 参数 | 类型 | 必填 |
-|------|------|------|
-| `task_id` | `string` | 是 |
-
 ### update_task
 
 | 参数 | 类型 | 必填 | 说明 |
@@ -268,11 +259,5 @@ Agent 内置了一系列工具供 AI 在对话中自动调用。这些工具在�
 ### list_tasks
 
 无参数，返回所有任务的简要列表。
-
-### delete_task
-
-| 参数 | 类型 | 必填 |
-|------|------|------|
-| `task_id` | `string` | 是 |
 
 > 任务管理工具主要供 AI 在处理复杂多步骤任务时自行跟踪进度，任务数据不持久化。

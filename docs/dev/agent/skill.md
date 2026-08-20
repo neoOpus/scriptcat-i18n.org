@@ -1,15 +1,12 @@
 ---
-id: agent-skill
-sidebar_position: 4
+title: Skill 管理 API
 ---
-
-# Skill 管理 API
 
 `@grant CAT.agent.skills`
 
 Skill 管理 API 允许脚本查询、安装、卸载和调用 Skill 扩展包。
 
-关于 Skill 的开发和打包，请参阅 [Skill 开发指南](../agent-skill-dev)。官方 Skill 示例仓库：[scriptscat/skills](https://github.com/scriptscat/skills)。
+关于 Skill 的开发和打包，请参阅 [Skill 开发指南](../skill-dev)。官方 Skill 示例仓库：[scriptscat/skills](https://github.com/scriptscat/skills)。
 
 ## list — 列出已安装 Skill
 
@@ -23,14 +20,14 @@ const skills = await CAT.agent.skills.list();
 |------|------|------|
 | `name` | `string` | Skill 名称 |
 | `description` | `string` | Skill 描述 |
-| `version` | `string` | 版本号（semver） |
 | `toolNames` | `string[]` | 包含的 SkillScript 工具名列表 |
 | `referenceNames` | `string[]` | 包含的参考资料文件名列表 |
 | `hasConfig` | `boolean` | 是否有配置字段声明 |
 | `enabled` | `boolean` | 是否启用（默认 `true`） |
-| `installUrl` | `string` | 安装来源 URL（用于检查更新） |
 | `installtime` | `number` | 安装时间戳 |
 | `updatetime` | `number` | 更新时间戳 |
+
+> 注意：`version` 与 `installUrl`（用于管理页的更新检查功能）不会通过此脚本 API 返回，仅供内部更新检查逻辑与管理页 UI 使用。
 
 ## get — 获取 Skill 详情
 

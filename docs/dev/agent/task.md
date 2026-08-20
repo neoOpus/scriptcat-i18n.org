@@ -1,9 +1,6 @@
 ---
-id: agent-task
-sidebar_position: 5
+title: 定时任务 API
 ---
-
-# 定时任务 API
 
 `@grant CAT.agent.task`
 
@@ -58,6 +55,7 @@ const task = await CAT.agent.task.create(options);
 | `notify` | `boolean` | 是否通知 |
 | `nextruntime` | `number` | 下次执行时间戳 |
 | `lastruntime` | `number` | 上次执行时间戳 |
+| `conversationId` | `string` | internal 模式下关联的对话 ID（可选） |
 | `lastRunStatus` | `"success" \| "error"` | 上次执行状态 |
 | `lastRunError` | `string` | 上次执行错误信息 |
 | `createtime` | `number` | 创建时间戳 |

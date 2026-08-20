@@ -1,9 +1,6 @@
 ---
-id: agent
-sidebar_position: 1
+title: Agent 智能助手
 ---
-
-# Agent 智能助手
 
 :::caution 测试阶段
 Agent 功能目前仍处于测试阶段，以下 API 和行为可能会在正式发布前进行调整。
@@ -19,14 +16,14 @@ ScriptCat v1.4 引入了 Agent 智能助手系统，它为用户脚本提供了 
 
 | 模块 | 权限声明 | 说明 |
 |------|---------|------|
-| [对话](./agent-conversation) | `@grant CAT.agent.conversation` | 创建 AI 对话、发送消息、流式接收、自定义工具 |
-| [DOM 操作](./agent-dom) | `@grant CAT.agent.dom` | 页面导航、截图、点击、填充、滚动、DOM 监控 |
-| [Skill](./agent-skill) | `@grant CAT.agent.skills` | 安装/卸载/调用 Skill 扩展包 |
-| [定时任务](./agent-task) | `@grant CAT.agent.task` | Cron 定时任务、事件监听 |
-| [模型](./agent-model) | `@grant CAT.agent.model` | 查询已配置的模型信息（只读） |
-| [OPFS 文件](./agent-opfs) | `@grant CAT.agent.opfs` | 读写 Agent 工作区文件 |
-| [MCP](./agent-mcp) | `@grant CAT.agent.mcp` | 管理 MCP 服务器连接 |
-| [Skill 开发](./agent-skill-dev) | — | SKILL.cat.md + SkillScript 开发指南 |
+| [对话](./conversation) | `@grant CAT.agent.conversation` | 创建 AI 对话、发送消息、流式接收、自定义工具 |
+| [DOM 操作](./dom) | `@grant CAT.agent.dom` | 页面导航、截图、点击、填充、滚动、DOM 监控 |
+| [Skill](./skill) | `@grant CAT.agent.skills` | 安装/卸载/调用 Skill 扩展包 |
+| [定时任务](./task) | `@grant CAT.agent.task` | Cron 定时任务、事件监听 |
+| [模型](./model) | `@grant CAT.agent.model` | 查询已配置的模型信息（只读） |
+| [OPFS 文件](./opfs) | `@grant CAT.agent.opfs` | 读写 Agent 工作区文件 |
+| [MCP](./mcp) | — | 配置 MCP 服务器连接（仅管理页，无脚本 API） |
+| [Skill 开发](./skill-dev) | — | SKILL.cat.md + SkillScript 开发指南 |
 
 ## 快速上手
 
@@ -104,4 +101,4 @@ Skill 是提示词 + 工具脚本 + 参考资料的扩展包，可以为 Agent �
 
 通过 URL 安装的 Skill 会记录安装来源，管理页面中可检查更新并一键升级（基于 `version` 字段的 semver 比较）。
 
-详见 [Skill 管理 API](./agent-skill) 和 [Skill 开发指南](./agent-skill-dev)。
+详见 [Skill 管理 API](./skill) 和 [Skill 开发指南](./skill-dev)。

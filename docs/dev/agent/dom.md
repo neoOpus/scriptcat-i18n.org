@@ -1,9 +1,6 @@
 ---
-id: agent-dom
-sidebar_position: 3
+title: DOM 操作 API
 ---
-
-# DOM 操作 API
 
 `@grant CAT.agent.dom`
 
@@ -238,26 +235,18 @@ const result = await CAT.agent.dom.executeScript(code, options?);
 |------|------|--------|------|
 | `code` | `string` | — | JavaScript 代码（必填） |
 | `options.tabId` | `number` | 当前激活标签 | 指定标签页 |
-| `options.world` | `"MAIN" \| "ISOLATED"` | `"ISOLATED"` | 执行环境 |
 
-**两种执行环境：**
-
-| 环境 | 说明 | 适用场景 |
-|------|------|---------|
-| **ISOLATED** | 扩展隔离环境，与页面 JS 隔离 | DOM 操作、读取内容、使用扩展 blob URL |
-| **MAIN** | 页面原始环境，共享 `window` 对象 | 调用页面 JS 函数、读取页面变量 |
+> 代码固定运行在页面的 **MAIN world**（与页面原生 JS 共享同一个 `window`），因此可以直接调用页面自身的函数、读取页面变量；但也因此**无法访问扩展的 blob URL**（例如通过 `URL.createObjectURL()` 从 `CAT.agent.opfs.read` 以 `"blob"` 模式返回的 `Blob` 创建的 `blob:` URL），因为 blob URL 的作用域限定在扩展源内。若需要在隔离环境中操作 blob URL，请改用 [Skill](../skill-dev) 中的 SkillScript。
 
 ```javascript
-// ISOLATED — 安全地读取 DOM
-const title = await CAT.agent.dom.executeScript(
-  "return document.querySelector('h1')?.textContent",
-  { world: "ISOLATED" }
+// 调用页面上的 JS 函数 / 读取页面变量
+const data = await CAT.agent.dom.executeScript(
+  "return window.__APP_STATE__"
 );
 
-// MAIN — 调用页面上的 JS 函数
-const data = await CAT.agent.dom.executeScript(
-  "return window.__APP_STATE__",
-  { world: "MAIN" }
+// 读取 DOM 内容
+const title = await CAT.agent.dom.executeScript(
+  "return document.querySelector('h1')?.textContent"
 );
 ```
 
@@ -289,6 +278,8 @@ const result = await CAT.agent.dom.stopMonitor(tabId);
 |------|------|------|
 | `dialogs` | `Array<{ type, message }>` | 弹窗列表 |
 | `addedNodes` | `Array<{ tag, id?, class?, role?, text }>` | 新增的 DOM 节点摘要 |
+
+> `addedNodes` 按节点 ID 去重，且最多返回 50 个；已从页面移除或不可见的节点会被自动跳过，`text` 截取自节点 `outerHTML` 的纯文本，最长 300 字符。
 
 ### peekMonitor — 查看监控状态
 
