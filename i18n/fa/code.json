@@ -1142,5 +1142,8 @@
   "uninstall.warning.selectReason": {
     "message": "لطفاً یک دلیل حذف نصب را انتخاب کنید",
     "description": "Warning when no reason is selected"
+  },
+  "home.hero.en": {
+    "message": "ابرقدرت برای مرورگر شما."
   }
 }
