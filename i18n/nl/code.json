@@ -1142,5 +1142,8 @@
   "uninstall.warning.selectReason": {
     "message": "Selecteer een verwijderingsreden",
     "description": "Warning when no reason is selected"
+  },
+  "home.hero.en": {
+    "message": "Superkrachten voor je browser."
   }
 }
