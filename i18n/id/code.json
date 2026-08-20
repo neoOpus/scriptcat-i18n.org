@@ -1142,5 +1142,8 @@
   "uninstall.warning.selectReason": {
     "message": "Silakan pilih alasan penghapusan",
     "description": "Warning when no reason is selected"
+  },
+  "home.hero.en": {
+    "message": "Kekuatan super untuk browser Anda."
   }
 }
