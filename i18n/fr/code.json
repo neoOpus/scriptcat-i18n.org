@@ -1027,5 +1027,8 @@
   "uninstall.warning.selectReason": {
     "message": "Veuillez sélectionner une raison de désinstallation",
     "description": "Warning when no reason is selected"
+  },
+  "home.hero.en": {
+    "message": "Des super-pouvoirs pour votre navigateur."
   }
 }
