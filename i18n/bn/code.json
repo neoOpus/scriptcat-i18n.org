@@ -1142,5 +1142,8 @@
   "uninstall.warning.selectReason": {
     "message": "অনুগ্রহ করে একটি আনইনস্টল কারণ নির্বাচন করুন",
     "description": "Warning when no reason is selected"
+  },
+  "home.hero.en": {
+    "message": "আপনার ব্রাউজারের জন্য সুপারপাওয়ার।"
   }
 }
