@@ -67,9 +67,9 @@ const metadataByLocale = {
   },
   ar: {
     keywords:
-      "scriptcat,userscript,امتداد المتصفح,سكربتات المستخدم,سكربتات الخلفية,سكربتات مجدولة,مدير سكربتات المستخدم,tampermonkey,violentmonkey,greasemonkey,javascript,أتمتة المتصفح",
+      "scriptcat,userscript,امتداد المتصفح,سكرپتات المستخدم,سكرپتات الخلفية,سكرپتات مجدولة,مدير سكرپتات المستخدم,tampermonkey,violentmonkey,greasemonkey,javascript,أتمتة المتصفح",
     description:
-      "ScriptCat هو امتداد متصفح مفتوح المصدر لسكربتات المستخدم وسكربتات الخلفية والسكربتات المجدولة، مع ميزات قوية للإدارة والمزامنة والاشتراك.",
+      "ScriptCat هو امتداد متصفح مفتوح المصدر لسكرپتات المستخدم وسكرپتات الخلفية والسكرپتات المجدولة، مع ميزات قوية للإدارة والمزامنة والاشتراك.",
   },
   it: {
     keywords:
@@ -148,6 +148,32 @@ const config = {
     },
   },
   favicon: "img/logo.png",
+
+  // Self-consistent Noto variable fonts for every script on the site
+  // (Latin/Cyrillic/Greek, Arabic/Persian, Bengali, Armenian, CJK, Korean).
+  // Google Fonts serves these as variable fonts and downloads only the
+  // unicode-range subsets actually used.
+  headTags: [
+    {
+      tagName: "link",
+      attributes: { rel: "preconnect", href: "https://fonts.googleapis.com" },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossorigin: true,
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Arabic:wght@100..900&family=Noto+Sans+Armenian:wght@100..900&family=Noto+Sans+Bengali:wght@100..900&family=Noto+Sans+SC:wght@100..900&family=Noto+Sans+TC:wght@100..900&family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+KR:wght@100..900&display=swap",
+      },
+    },
+  ],
 
   trailingSlash: true,
   // GitHub pages deployment config.

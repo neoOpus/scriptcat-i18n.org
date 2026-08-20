@@ -192,7 +192,8 @@ html[dir="rtl"] .dropdown__menu {
 
 /* Ensure proper font rendering for Arabic */
 html[dir="rtl"] {
-  font-family: 'Segoe UI', 'Tahoma', 'Arial', 'Helvetica Neue', sans-serif;
+  font-family: "Noto Sans Arabic", "Noto Sans", "Segoe UI", 'Tahoma', 'Arial',
+    'Helvetica Neue', sans-serif;
 }
 
 /* Fix any layout issues with flexbox in RTL */
