@@ -1142,5 +1142,8 @@
   "uninstall.warning.selectReason": {
     "message": "Lütfen bir kaldırma nedeni seçin",
     "description": "Warning when no reason is selected"
+  },
+  "home.hero.en": {
+    "message": "Tarayıcınız için süper güçler."
   }
 }
