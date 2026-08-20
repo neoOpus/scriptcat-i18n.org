@@ -1142,5 +1142,8 @@
   "uninstall.warning.selectReason": {
     "message": "Խնդրում ենք ընտրել հեռացման պատճառ",
     "description": "Warning when no reason is selected"
+  },
+  "home.hero.en": {
+    "message": "Գերհզորություններ ձեր բրաուզերի համար։"
   }
 }
