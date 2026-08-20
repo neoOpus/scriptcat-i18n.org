@@ -5,7 +5,7 @@ title: تثبيت واستخدام Skills
 Skill هو حزمة توسعة لـ Agent تحقن معرفة متخصصة وأدوات مخصصة في الذكاء الاصطناعي. تغطي هذه الصفحة كيفية تثبيت Skills وتكوينها وإدارتها.
 
 :::tip مستودع Skills الرسمي
-**[scriptscat/skills](https://github.com/scriptscat/skills)** — Skills جاهزة للاستخدام لأتمتة المتصفح والمهام المجدولة وتحليل الملفات والمساعدة في تطوير السكربتات والمزيد.
+**[scriptscat/skills](https://github.com/scriptscat/skills)** — Skills جاهزة للاستخدام لأتمتة المتصفح والمهام المجدولة وتحليل الملفات والمساعدة في تطوير السكرپتات والمزيد.
 :::
 
 ## طرق التثبيت
@@ -27,7 +27,7 @@ https://raw.githubusercontent.com/scriptscat/skills/main/browser-automation/SKIL
 3. الصق رابط `SKILL.cat.md`
 4. انقر على تثبيت
 
-يجلب ScriptCat تلقائياً `SKILL.cat.md` مع السكربتات وملفات المواد المرجعية التي يصرح عنها.
+يجلب ScriptCat تلقائياً `SKILL.cat.md` مع السكرپتات وملفات المواد المرجعية التي يصرح عنها.
 
 ### الطريقة 2: تثبيت ملف ZIP
 
@@ -44,10 +44,10 @@ https://raw.githubusercontent.com/scriptscat/skills/main/browser-automation/SKIL
 | Skill | الوصف | التثبيت |
 |-------|------|------|
 | [browser-automation](https://github.com/scriptscat/skills/tree/main/browser-automation) | تحليل الصفحات، معالجة الـ DOM، تعبئة النماذج، لقطات الشاشة، التنقل | [تثبيت](https://raw.githubusercontent.com/scriptscat/skills/main/browser-automation/SKILL.cat.md) |
-| [scheduled-tasks](https://github.com/scriptscat/skills/tree/main/scheduled-tasks) | مهام Cron المجدولة (تشغيل تلقائي بواسطة LLM / استدعاء سكربت) | [تثبيت](https://raw.githubusercontent.com/scriptscat/skills/main/scheduled-tasks/SKILL.cat.md) |
+| [scheduled-tasks](https://github.com/scriptscat/skills/tree/main/scheduled-tasks) | مهام Cron المجدولة (تشغيل تلقائي بواسطة LLM / استدعاء سكرپت) | [تثبيت](https://raw.githubusercontent.com/scriptscat/skills/main/scheduled-tasks/SKILL.cat.md) |
 | [skill-creator](https://github.com/scriptscat/skills/tree/main/skill-creator) | يساعد في إنشاء واختبار وتعبئة Skills جديدة | [تثبيت](https://raw.githubusercontent.com/scriptscat/skills/main/skill-creator/SKILL.cat.md) |
 | [file-parser](https://github.com/scriptscat/skills/tree/main/file-parser) | يحلل ملفات Excel وPDF وWord وCSV وPPT | [تثبيت](https://raw.githubusercontent.com/scriptscat/skills/main/file-parser/SKILL.cat.md) |
-| [scriptcat-dev](https://github.com/scriptscat/skills/tree/main/scriptcat-dev) | مساعد تطوير سكربتات ScriptCat/Tampermonkey | [تثبيت](https://raw.githubusercontent.com/scriptscat/skills/main/scriptcat-dev/SKILL.cat.md) |
+| [scriptcat-dev](https://github.com/scriptscat/skills/tree/main/scriptcat-dev) | مساعد تطوير سكرپتات ScriptCat/Tampermonkey | [تثبيت](https://raw.githubusercontent.com/scriptscat/skills/main/scriptcat-dev/SKILL.cat.md) |
 | [synology-office-sheet](https://github.com/scriptscat/skills/tree/main/synology-office-sheet) | قراءة/كتابة جداول بيانات Synology Office | [تثبيت](https://raw.githubusercontent.com/scriptscat/skills/main/synology-office-sheet/SKILL.cat.md) |
 | [wechat-publisher](https://github.com/scriptscat/skills/tree/main/wechat-publisher) | مساعد عمليات الحساب الرسمي WeChat | [تثبيت](https://raw.githubusercontent.com/scriptscat/skills/main/wechat-publisher/SKILL.cat.md) |
 | [xiaohongshu-publisher](https://github.com/scriptscat/skills/tree/main/xiaohongshu-publisher) | مساعد عمليات Xiaohongshu (RED) | [تثبيت](https://raw.githubusercontent.com/scriptscat/skills/main/xiaohongshu-publisher/SKILL.cat.md) |
@@ -92,5 +92,5 @@ const conv = await CAT.agent.conversation.create({
 
 ## معرفة المزيد
 
-- [واجهة برمجة إدارة Skills](./skill.md) — إدارة Skills برمجياً من سكربت
+- [واجهة برمجة إدارة Skills](./skill.md) — إدارة Skills برمجياً من سكرپت
 - [دليل تطوير Skills](./skill-dev.md) — إنشاء Skill خاص بك

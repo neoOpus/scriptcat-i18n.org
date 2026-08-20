@@ -221,7 +221,7 @@ const result = await CAT.agent.dom.waitFor(selector, options?);
 | `element.type` | `string` | نوع الإدخال |
 | `element.visible` | `boolean` | يحدد ما إذا كان مرئياً |
 
-## تنفيذ السكربتات
+## تنفيذ السكرپتات
 
 ### executeScript — تشغيل JavaScript
 

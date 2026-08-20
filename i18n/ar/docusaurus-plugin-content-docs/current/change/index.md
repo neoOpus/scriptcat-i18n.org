@@ -14,7 +14,7 @@ import GithubStar from '@site/src/components/GithubStar';
 
 ## 1.4.0 (2026-06-26)
 
-يجلب هذا الإصدار إعادة هيكلة منخفضة المستوى استعدادًا لـ Firefox MV3، إلى جانب تحسينات تجربة المحرر (قائمة التحرير، تنسيق Ctrl+Shift+F، الإصلاح السريع Monaco)، واختيار محركات بحث متعددة المنصات لاكتشاف السكربتات، وقدرات جديدة مثل `@unwrap` / `window.onurlchange` / `@run-at context-menu`، وتقوية شاملة لموثوقية مزامنة التخزين السحابي، ومجموعة كبيرة من إصلاحات GM API والواجهة والاستقرار (بما في ذلك تسرب ذاكرة طويل الأمد وثغرات أمنية بتلوث النماذج الأولية). يتوفر وكيل الذكاء الاصطناعي ScriptCat كمعاينة في إصدارات dev / Beta ولم يتم تفعيله بعد في الإصدار المستقر.
+يجلب هذا الإصدار إعادة هيكلة منخفضة المستوى استعدادًا لـ Firefox MV3، إلى جانب تحسينات تجربة المحرر (قائمة التحرير، تنسيق Ctrl+Shift+F، الإصلاح السريع Monaco)، واختيار محركات بحث متعددة المنصات لاكتشاف السكرپتات، وقدرات جديدة مثل `@unwrap` / `window.onurlchange` / `@run-at context-menu`، وتقوية شاملة لموثوقية مزامنة التخزين السحابي، ومجموعة كبيرة من إصلاحات GM API والواجهة والاستقرار (بما في ذلك تسرب ذاكرة طويل الأمد وثغرات أمنية بتلوث النماذج الأولية). يتوفر وكيل الذكاء الاصطناعي ScriptCat كمعاينة في إصدارات dev / Beta ولم يتم تفعيله بعد في الإصدار المستقر.
 
 ### 🚀 الميزات الرئيسية الجديدة
 
@@ -22,30 +22,30 @@ import GithubStar from '@site/src/components/GithubStar';
 - ✨ دعم وسم البيانات الوصفية `@unwrap` ([#1213](https://github.com/scriptscat/scriptcat/pull/1213)) (by @cyfung1031)
 - ✨ تنفيذ `window.onurlchange` الخاص بـ TM عبر Navigation API ([#1315](https://github.com/scriptscat/scriptcat/pull/1315)) (by @cyfung1031)
 - ✨ استعادة دعم `@run-at context-menu` ([#1442](https://github.com/scriptscat/scriptcat/pull/1442)) (by @cyfung1031)
-- ✨ يدعم اكتشاف السكربتات اختيار محركات بحث متعددة المنصات ([#1295](https://github.com/scriptscat/scriptcat/pull/1295)) (by @CodFrm)
+- ✨ يدعم اكتشاف السكرپتات اختيار محركات بحث متعددة المنصات ([#1295](https://github.com/scriptscat/scriptcat/pull/1295)) (by @CodFrm)
 - ✨ إضافة المزيد من موفري خدمات الأيقونات ([#1333](https://github.com/scriptscat/scriptcat/pull/1333)) (by @cyfung1031)
-- ✨ إضافة أيقونة التحقق من التحديث في عمود «آخر تحديث» في قائمة السكربتات ([#1304](https://github.com/scriptscat/scriptcat/pull/1304)) (by @CodFrm)
-- ✨ تحسين معالجة تعارضات التحرير وتعارضات أسماء السكربتات ([#1223](https://github.com/scriptscat/scriptcat/pull/1223)) (by @cyfung1031)
+- ✨ إضافة أيقونة التحقق من التحديث في عمود «آخر تحديث» في قائمة السكرپتات ([#1304](https://github.com/scriptscat/scriptcat/pull/1304)) (by @CodFrm)
+- ✨ تحسين معالجة تعارضات التحرير وتعارضات أسماء السكرپتات ([#1223](https://github.com/scriptscat/scriptcat/pull/1223)) (by @cyfung1031)
 
 ### 🧑‍💻 المحرر
 
 - ✨ إضافة قائمة تحرير إلى المحرر (بحث، استبدال، تراجع، إلخ) ([#1303](https://github.com/scriptscat/scriptcat/pull/1303)) (by @CodFrm)
 - ✨ يدعم المحرر تنسيق Ctrl+Shift+F ([#1415](https://github.com/scriptscat/scriptcat/pull/1415)) (by @cyfung1031)
-- ✨ تحسين الإصلاح السريع Monaco وتلميحات البيانات الوصفية لسكربتات المستخدم ([#1461](https://github.com/scriptscat/scriptcat/pull/1461)) (by @cyfung1031)
+- ✨ تحسين الإصلاح السريع Monaco وتلميحات البيانات الوصفية لسكرپتات المستخدم ([#1461](https://github.com/scriptscat/scriptcat/pull/1461)) (by @cyfung1031)
 - 🐛 إصلاح اختصارات Ctrl-F / Ctrl-H ([#1312](https://github.com/scriptscat/scriptcat/pull/1312)) (by @cyfung1031)
 - 🐛 إصلاح ميزة الإصلاح التلقائي ESLint التي لا تعمل [#1079](https://github.com/scriptscat/scriptcat/issues/1079) ([#1184](https://github.com/scriptscat/scriptcat/pull/1184)) (by @cyfung1031)
 - 🐛 إصلاح مشكلات تخطيط CSS للمحرر ([#1460](https://github.com/scriptscat/scriptcat/pull/1460)) (by @cyfung1031)
-- 🐛 إصلاح عرض قائمة السكربتات في ScriptEditor بالسمة الفاتحة ([#1288](https://github.com/scriptscat/scriptcat/pull/1288)) (by @CodFrm)
+- 🐛 إصلاح عرض قائمة السكرپتات في ScriptEditor بالسمة الفاتحة ([#1288](https://github.com/scriptscat/scriptcat/pull/1288)) (by @CodFrm)
 - 🐛 إصلاح وتحسين مشكلات ScriptEditor ([#1258](https://github.com/scriptscat/scriptcat/pull/1258)) (by @cyfung1031)
 
 ### ⚡️ تحسينات الأداء
 
 - 🚑 إصلاح تسرب ذاكرة محتمل أثناء جلسات ScriptCat الطويلة ([#1401](https://github.com/scriptscat/scriptcat/pull/1401)) (by @cyfung1031)
 - ⚡️ إزالة الاعتماد على نظام ملفات Baidu لقواعد DNR العامة، والتحول إلى تعطيل ملفات تعريف الارتباط لكل طلب ([#1377](https://github.com/scriptscat/scriptcat/pull/1377)) (by @cyfung1031)
-- ⚡️ تحسين اختيار محركات البحث متعددة المنصات لاكتشاف السكربتات ([#1379](https://github.com/scriptscat/scriptcat/pull/1379)) (by @cyfung1031)
+- ⚡️ تحسين اختيار محركات البحث متعددة المنصات لاكتشاف السكرپتات ([#1379](https://github.com/scriptscat/scriptcat/pull/1379)) (by @cyfung1031)
 - ⚡️ استخدام خط أحادي المسافة لـ loadingStatus في صفحة التثبيت لتجنب الاهتزاز ([#1381](https://github.com/scriptscat/scriptcat/pull/1381)) (by @cyfung1031)
 - ⚡️ تحسين معالجة pushValue ([#1403](https://github.com/scriptscat/scriptcat/pull/1403)) (by @cyfung1031)
-- ⚡️ فحوصات أذونات أكثر اكتمالًا وتلميحات أفضل لأذونات سكربتات المستخدم ([#1251](https://github.com/scriptscat/scriptcat/pull/1251)) (by @cyfung1031)
+- ⚡️ فحوصات أذونات أكثر اكتمالًا وتلميحات أفضل لأذونات سكرپتات المستخدم ([#1251](https://github.com/scriptscat/scriptcat/pull/1251)) (by @cyfung1031)
 - ⚡️ تحسين إدارة ذاكرة MessageConnect وآلية التنظيف ([#1248](https://github.com/scriptscat/scriptcat/pull/1248)) (by @cyfung1031)
 
 ### 🐛 إصلاحات الأخطاء
@@ -64,17 +64,17 @@ import GithubStar from '@site/src/components/GithubStar';
 - 🐛 إصلاح مشكلات التحديث الديناميكي والعرض لقائمة ScriptEditor ([#1414](https://github.com/scriptscat/scriptcat/pull/1414)) (by @cyfung1031)
 - 🐛 إصلاح مشكلة عدد قواعد الجلسة مع xhr المتزامن ([#1353](https://github.com/scriptscat/scriptcat/pull/1353)) (by @cyfung1031)
 - 🐛 إصلاح تعطل الصفحة بالكامل بسبب تعبير cron غير صالح ([#1327](https://github.com/scriptscat/scriptcat/pull/1327)) (by @cyfung1031)
-- 🐛 إصلاح فشل جميع السكربتات عند انتهاء مهلة سكربت واحد أثناء فحص التحديثات المجمّع ([#1265](https://github.com/scriptscat/scriptcat/pull/1265)) (by @cyfung1031)
+- 🐛 إصلاح فشل جميع السكرپتات عند انتهاء مهلة سكرپت واحد أثناء فحص التحديثات المجمّع ([#1265](https://github.com/scriptscat/scriptcat/pull/1265)) (by @cyfung1031)
 - 🐛 إضافة معالجة extensionEnv لـ isIncognito وuserAgent وrun-in ([#1368](https://github.com/scriptscat/scriptcat/pull/1368)) (by @cyfung1031)
 - 🐛 إصلاح زر دليل الإعداد المخفي جزئيًا [#1396](https://github.com/scriptscat/scriptcat/issues/1396) ([#1398](https://github.com/scriptscat/scriptcat/pull/1398)) (by @cyfung1031)
-- 🐛 إصلاح تلميح الأداة المحجوب في صفحة إدارة السكربتات [#1386](https://github.com/scriptscat/scriptcat/issues/1386) ([#1387](https://github.com/scriptscat/scriptcat/pull/1387)) (by @Xdy1579883916)
+- 🐛 إصلاح تلميح الأداة المحجوب في صفحة إدارة السكرپتات [#1386](https://github.com/scriptscat/scriptcat/issues/1386) ([#1387](https://github.com/scriptscat/scriptcat/pull/1387)) (by @Xdy1579883916)
 - 🐛 إصلاح تغيير حجم الشريط الجانبي غير الطبيعي في وضع البطاقات [#1179](https://github.com/scriptscat/scriptcat/issues/1179) ([#1373](https://github.com/scriptscat/scriptcat/pull/1373)) (by @cyfung1031)
 - 🐛 إصلاح الأصل غير الصحيح عند تثبيت ملفات محلية بالسحب والإفلات ([#1371](https://github.com/scriptscat/scriptcat/pull/1371)) (by @cyfung1031)
 - 🐛 إصلاح رسالة تبديل اللغة ([#1380](https://github.com/scriptscat/scriptcat/pull/1380)) (by @cyfung1031)
 - 🐛 تحسين واجهة عرض السجلات ([#1372](https://github.com/scriptscat/scriptcat/pull/1372)) (by @cyfung1031)
 - 🐛 إصلاح CSS الخاص بـ UserConfigPanel ([#1361](https://github.com/scriptscat/scriptcat/pull/1361)) (by @cyfung1031)
 - 🐛 استخدام `Object.create(null)` للكائن الفارغ في create_context ([#1397](https://github.com/scriptscat/scriptcat/pull/1397)) (by @cyfung1031)
-- 🐛 إصلاح منطق التحديث الصامت وأذونات الاتصال للسكربتات المشتركة ([#1201](https://github.com/scriptscat/scriptcat/pull/1201)) (by @cyfung1031)
+- 🐛 إصلاح منطق التحديث الصامت وأذونات الاتصال للسكرپتات المشتركة ([#1201](https://github.com/scriptscat/scriptcat/pull/1201)) (by @cyfung1031)
 - 🐛 إصلاح زر الاستعلام في صفحة السجلات الذي لا يحدّث الوقت ([#1294](https://github.com/scriptscat/scriptcat/pull/1294)) (by @CodFrm)
 
 ### 🔒 تحسينات الأمان
@@ -85,7 +85,7 @@ import GithubStar from '@site/src/components/GithubStar';
 ### ♻️ إعادة الهيكلة والتوافق
 
 - ♻️ إعادة هيكلة منخفضة المستوى استعدادًا لتكييف Firefox MV3 ([#1457](https://github.com/scriptscat/scriptcat/pull/1457)) ([#1480](https://github.com/scriptscat/scriptcat/pull/1480)) (by @cyfung1031)
-- ♻️ إعادة هيكلة منطق تحديث موارد السكربتات (updateResource) والتحكم في التزامن، واستعادة توافق ذاكرة التخزين المؤقت للموارد ([#1193](https://github.com/scriptscat/scriptcat/pull/1193)) (by @cyfung1031)
+- ♻️ إعادة هيكلة منطق تحديث موارد السكرپتات (updateResource) والتحكم في التزامن، واستعادة توافق ذاكرة التخزين المؤقت للموارد ([#1193](https://github.com/scriptscat/scriptcat/pull/1193)) (by @cyfung1031)
 - ♻️ استبدال jszip بـ JSZipp لمعالجة ZIP (استيراد / تصدير النسخ الاحتياطية) وإزالة الاعتماد غير المستخدم على jszip ([#1479](https://github.com/scriptscat/scriptcat/pull/1479)) (by @cyfung1031)
 - ♻️ توحيد اتصالات Offscreen ↔ ServiceWorker عبر قناة postMessage ([#1299](https://github.com/scriptscat/scriptcat/pull/1299)) (by @CodFrm)
 - ♻️ إعادة هيكلة كود VSCodeConnect ([#1170](https://github.com/scriptscat/scriptcat/pull/1170)) (by @cyfung1031)
@@ -106,7 +106,7 @@ import GithubStar from '@site/src/components/GithubStar';
 
 ### 🐛 إصلاحات الأخطاء
 
-- 🐛 إصلاح أمر البناء في سكربت التغليف MV2 [#1423](https://github.com/scriptscat/scriptcat/issues/1423) (by @CodFrm)
+- 🐛 إصلاح أمر البناء في سكرپت التغليف MV2 [#1423](https://github.com/scriptscat/scriptcat/issues/1423) (by @CodFrm)
 - 🐛 التكيف مع تغييرات WebExtensions API (Firefox 149-152)، بما في ذلك تعديلات CSP ([#1448](https://github.com/scriptscat/scriptcat/pull/1448)) (by @cyfung1031)
 
 <a name="0.16.14"></a>
@@ -115,7 +115,7 @@ import GithubStar from '@site/src/components/GithubStar';
 
 ### 🚀 الميزات الرئيسية الجديدة
 
-- ✨ مزامنة FirefoxMV2 مع العناصر الرئيسية لـ MV3: ترقية TypeScript إلى 4.9، وترقية tsconfig إلى es2022؛ محاذاة قوالب السكربتات (normal/crontab/background) مع MV3؛ تحسين cron مع دعم تعبير `once(...)`؛ دعم متعدد اللغات لمحرر Monaco ([#1331](https://github.com/scriptscat/scriptcat/pull/1331)) (by @cyfung1031)
+- ✨ مزامنة FirefoxMV2 مع العناصر الرئيسية لـ MV3: ترقية TypeScript إلى 4.9، وترقية tsconfig إلى es2022؛ محاذاة قوالب السكرپتات (normal/crontab/background) مع MV3؛ تحسين cron مع دعم تعبير `once(...)`؛ دعم متعدد اللغات لمحرر Monaco ([#1331](https://github.com/scriptscat/scriptcat/pull/1331)) (by @cyfung1031)
 
 ### ♻️ إعادة الهيكلة والتوافق
 
@@ -156,17 +156,17 @@ import GithubStar from '@site/src/components/GithubStar';
 
 ## 1.3.0 (2026-03-10)
 
-يجلب هذا التحديث تخزين Amazon S3، وخيارات تشغيل السكربتات، والتثبيت دون الوصول إلى موقع ويب خارجي، والمزيد. يحسّن بشكل كبير نظام الرسائل وأداء React، ويصلح العديد من مشكلات GM API والواجهة والاستقرار، ويتضمن تحسينات شاملة لجودة الكود.
+يجلب هذا التحديث تخزين Amazon S3، وخيارات تشغيل السكرپتات، والتثبيت دون الوصول إلى موقع ويب خارجي، والمزيد. يحسّن بشكل كبير نظام الرسائل وأداء React، ويصلح العديد من مشكلات GM API والواجهة والاستقرار، ويتضمن تحسينات شاملة لجودة الكود.
 
 ### 🚀 الميزات الرئيسية الجديدة
 
 - ✨ إضافة تخزين Amazon S3 [#1146](https://github.com/scriptscat/scriptcat/issues/1146) ([#1189](https://github.com/scriptscat/scriptcat/pull/1189)) (by @CodFrm)
-- ✨ خيارات تشغيل السكربتات ([#895](https://github.com/scriptscat/scriptcat/pull/895)) (by @CodFrm)
+- ✨ خيارات تشغيل السكرپتات ([#895](https://github.com/scriptscat/scriptcat/pull/895)) (by @CodFrm)
 - ✨ التثبيت دون الوصول إلى موقع ويب خارجي + تعديلات تخطيط صفحة التثبيت ([#842](https://github.com/scriptscat/scriptcat/pull/842)) (by @cyfung1031)
-- ✨ عرض أيقونة رمادية عند تعطيل وظيفة السكربت [#897](https://github.com/scriptscat/scriptcat/issues/897) (by @CodFrm)
+- ✨ عرض أيقونة رمادية عند تعطيل وظيفة السكرپت [#897](https://github.com/scriptscat/scriptcat/issues/897) (by @CodFrm)
 - ✨ تحسين التفاعل عندما يكون عدد العناصر المفتوحة في القائمة 0 [#868](https://github.com/scriptscat/scriptcat/issues/868) (by @CodFrm)
 - ✨ جعل `@noframes` افتراضيًا في القالب لمنع الأخطاء الشائعة ([#900](https://github.com/scriptscat/scriptcat/pull/900)) (by @cyfung1031)
-- ✨ منع اعتبار رابط التثبيت تثبيتًا جديدًا عندما يتغير اسم السكربت ([#824](https://github.com/scriptscat/scriptcat/pull/824)) (by @cyfung1031)
+- ✨ منع اعتبار رابط التثبيت تثبيتًا جديدًا عندما يتغير اسم السكرپت ([#824](https://github.com/scriptscat/scriptcat/pull/824)) (by @cyfung1031)
 - ✨ إصلاح التحقق من تعارض `@grant`، وإضافة تنبيه خطأ للتعريفات المكررة ([#902](https://github.com/scriptscat/scriptcat/pull/902)) (by @cyfung1031)
 - ✨ قبول `@version` بدون قيمة أو بقيمة فارغة ([#1216](https://github.com/scriptscat/scriptcat/pull/1216)) (by @cyfung1031)
 - ✨ تعديل موضع الشريط الجانبي المخفي للمحرر [#1185](https://github.com/scriptscat/scriptcat/issues/1185) ([#1254](https://github.com/scriptscat/scriptcat/pull/1254)) (by @CodFrm)
@@ -188,7 +188,7 @@ import GithubStar from '@site/src/components/GithubStar';
 - ⚡️ تحسين أداء Repo ([#1232](https://github.com/scriptscat/scriptcat/pull/1232)) (by @CodFrm)
 - ⚡️ نقل البيانات الوصفية خارج chrome.storage.session ([#1027](https://github.com/scriptscat/scriptcat/pull/1027)) (by @cyfung1031)
 - ⚡️ تحسين اكتشاف ترميز الأحرف ([#1140](https://github.com/scriptscat/scriptcat/pull/1140)) (by @cyfung1031)
-- ⚡️ تخزين الأيقونات حسب URL لتجنب التخزين المكرر بين السكربتات ([#909](https://github.com/scriptscat/scriptcat/pull/909)) (by @cyfung1031)
+- ⚡️ تخزين الأيقونات حسب URL لتجنب التخزين المكرر بين السكرپتات ([#909](https://github.com/scriptscat/scriptcat/pull/909)) (by @cyfung1031)
 - ⚡️ تحسين كود parseMetadata ([#903](https://github.com/scriptscat/scriptcat/pull/903)) (by @cyfung1031)
 - 🐛 إصلاح تسرب الذاكرة وكشف خصائص الكائنات ([#1242](https://github.com/scriptscat/scriptcat/pull/1242)) (by @cyfung1031)
 - ♻️ إزالة Redux، وتبسيط إدارة الحالة ([#1206](https://github.com/scriptscat/scriptcat/pull/1206)) (by @cyfung1031)
@@ -203,32 +203,32 @@ import GithubStar from '@site/src/components/GithubStar';
 - 🐛 إصلاح تعارض فحص إذن النافذة الخاصة الذي يسبب عمليات إعادة تشغيل متكررة (by @CodFrm)
 - 🐛 إصلاح معالجة تعبير include `*?*` [#1271](https://github.com/scriptscat/scriptcat/issues/1271) ([#1272](https://github.com/scriptscat/scriptcat/pull/1272)) (by @CodFrm)
 - 🔒 تطهير محتوى HTML لإشعارات الإعلانات باستخدام DOMPurify ([#1274](https://github.com/scriptscat/scriptcat/pull/1274)) (by @CodFrm)
-- 🐛 إصلاح عدم عمل عنصر التحكم في إدارة الأذونات بإعدادات السكربت ([#1267](https://github.com/scriptscat/scriptcat/pull/1267)) (by @CodFrm)
+- 🐛 إصلاح عدم عمل عنصر التحكم في إدارة الأذونات بإعدادات السكرپت ([#1267](https://github.com/scriptscat/scriptcat/pull/1267)) (by @CodFrm)
 - 🐛 إصلاح محتوى النافذة المنبثقة الذي يتبع تمرير الشاشة [#1256](https://github.com/scriptscat/scriptcat/issues/1256) ([#1263](https://github.com/scriptscat/scriptcat/pull/1263)) (by @cyfung1031)
 - 🐛 إصلاح فشل تحليل رابط التثبيت [#1235](https://github.com/scriptscat/scriptcat/issues/1235) ([#1260](https://github.com/scriptscat/scriptcat/pull/1260)) (by @cyfung1031)
 - 🐛 إصلاح مكون السحب الذي يسبب تأخر focusin/focusout [#1224](https://github.com/scriptscat/scriptcat/issues/1224) ([#1243](https://github.com/scriptscat/scriptcat/pull/1243)) (by @CodFrm)
 - 🐛 إصلاح عدم عمل واجهة برمجة الإضافة الخارجية ([#1217](https://github.com/scriptscat/scriptcat/pull/1217)) (by @cyfung1031)
 - 🐛 إصلاح مشكلة grant ([#1199](https://github.com/scriptscat/scriptcat/pull/1199)) (by @CodFrm)
 - 🐛 إصلاح عدم وجود UserAgentData في content.js ([#1183](https://github.com/scriptscat/scriptcat/pull/1183)) (by @cyfung1031)
-- 🐛 معالجة مشكلة ترميز السكربتات [#1115](https://github.com/scriptscat/scriptcat/issues/1115) ([#1138](https://github.com/scriptscat/scriptcat/pull/1138)) (by @CodFrm)
-- 🐛 إصلاح عرض أيقونات السكربتات [#1052](https://github.com/scriptscat/scriptcat/issues/1052) ([#1104](https://github.com/scriptscat/scriptcat/pull/1104)) (by @CodFrm)
+- 🐛 معالجة مشكلة ترميز السكرپتات [#1115](https://github.com/scriptscat/scriptcat/issues/1115) ([#1138](https://github.com/scriptscat/scriptcat/pull/1138)) (by @CodFrm)
+- 🐛 إصلاح عرض أيقونات السكرپتات [#1052](https://github.com/scriptscat/scriptcat/issues/1052) ([#1104](https://github.com/scriptscat/scriptcat/pull/1104)) (by @CodFrm)
 - 🐛 إضافة بادئة UnoCSS لحل تعارضات CSS، وإصلاح تخطيط CSS ([#1013](https://github.com/scriptscat/scriptcat/pull/1013)) (by @cyfung1031)
-- 🐛 مسح Alarm الموجود عند اختيار فحص تحديثات سكربتات غير منتظم ([#996](https://github.com/scriptscat/scriptcat/pull/996)) (by @cyfung1031)
-- 🐛 الاستيراد والتصدير - إصلاح تاريخ/وقت التعديل الأخير غير الصحيح للسكربتات ([#951](https://github.com/scriptscat/scriptcat/pull/951)) (by @cyfung1031)
-- 🐛 إصلاح عرض اسم ووصف السكربتات ببادئة لغة i18n [#1123](https://github.com/scriptscat/scriptcat/issues/1123) (by @CodFrm)
+- 🐛 مسح Alarm الموجود عند اختيار فحص تحديثات سكرپتات غير منتظم ([#996](https://github.com/scriptscat/scriptcat/pull/996)) (by @cyfung1031)
+- 🐛 الاستيراد والتصدير - إصلاح تاريخ/وقت التعديل الأخير غير الصحيح للسكرپتات ([#951](https://github.com/scriptscat/scriptcat/pull/951)) (by @cyfung1031)
+- 🐛 إصلاح عرض اسم ووصف السكرپتات ببادئة لغة i18n [#1123](https://github.com/scriptscat/scriptcat/issues/1123) (by @CodFrm)
 - 🐛 إصلاح عدم تنفيذ unregister بشكل صحيح ([#1231](https://github.com/scriptscat/scriptcat/pull/1231)) (by @cyfung1031)
 
 ### ♻️ إعادة الهيكلة والتوافق
 
 - ♻️ تعديلات API userScripts / scripting، وتحسين التوافق (إعادة #704) ([#925](https://github.com/scriptscat/scriptcat/pull/925)) (by @cyfung1031)
 - ♻️ تغييرات متعلقة بـ Cron: إصلاحات أخطاء، i18n، تحسين تعبير once، ترقية مكتبة cron ([#1126](https://github.com/scriptscat/scriptcat/pull/1126)) (by @cyfung1031)
-- ♻️ إعادة هيكلة وتحسين تحميل أيقونات السكربتات ([#893](https://github.com/scriptscat/scriptcat/pull/893)) (by @CodFrm)
+- ♻️ إعادة هيكلة وتحسين تحميل أيقونات السكرپتات ([#893](https://github.com/scriptscat/scriptcat/pull/893)) (by @CodFrm)
 - ♻️ تحسين فك ترميز النصوص ([#1166](https://github.com/scriptscat/scriptcat/pull/1166)) (by @cyfung1031)
 - ⬆️ ترقية إصدار النواة المتوافق مع swc ([#1186](https://github.com/scriptscat/scriptcat/pull/1186)) (by @cyfung1031)
 
 ### 🎨 تحسينات الواجهة
 
-- 🎨 تغيير رقم شارة أيقونة الإضافة الافتراضية إلى عدد السكربتات [#989](https://github.com/scriptscat/scriptcat/issues/989) (by @CodFrm)
+- 🎨 تغيير رقم شارة أيقونة الإضافة الافتراضية إلى عدد السكرپتات [#989](https://github.com/scriptscat/scriptcat/issues/989) (by @CodFrm)
 - 🎨 جعل عنوان URL لصفحة التثبيت أجمل ([#993](https://github.com/scriptscat/scriptcat/pull/993)) (by @cyfung1031)
 - 🐛 إعادة هيكلة DraggableEntry، وإصلاح محاذاة ارتفاع البطاقات ([#1245](https://github.com/scriptscat/scriptcat/pull/1245)) (by @cyfung1031)
 
@@ -254,13 +254,13 @@ import GithubStar from '@site/src/components/GithubStar';
 
 ### تم الإصلاح
 
-- 🐛 إصلاح مشكلة حذف مزامنة السكربتات [#1158](https://github.com/scriptscat/scriptcat/issues/1158) [[5e91a31](https://github.com/scriptscat/scriptcat/commit/5e91a31e02761ba8061e3de1f4d15fc1d964346c)] (by @CodFrm)
+- 🐛 إصلاح مشكلة حذف مزامنة السكرپتات [#1158](https://github.com/scriptscat/scriptcat/issues/1158) [[5e91a31](https://github.com/scriptscat/scriptcat/commit/5e91a31e02761ba8061e3de1f4d15fc1d964346c)] (by @CodFrm)
 - 🐛 متوافق مع TM &#x60;@match www.website.com/*&#x60; ([#1165](https://github.com/scriptscat/scriptcat/issues/1165)) [[da66ff7](https://github.com/scriptscat/scriptcat/commit/da66ff70d25c3087cb8405289dc8b14df9c15f05)] (by @cyfung1031)
-- 🐛 أحدث إصدار من Edge 144 يضيف سكربتات المستخدم [#1157](https://github.com/scriptscat/scriptcat/issues/1157) [[f7c1c73](https://github.com/scriptscat/scriptcat/commit/f7c1c730cf39cae02a9e6f815e3113ea9d2a8a05)] (by @CodFrm)
+- 🐛 أحدث إصدار من Edge 144 يضيف سكرپتات المستخدم [#1157](https://github.com/scriptscat/scriptcat/issues/1157) [[f7c1c73](https://github.com/scriptscat/scriptcat/commit/f7c1c730cf39cae02a9e6f815e3113ea9d2a8a05)] (by @CodFrm)
 - 🐛 إصلاح مشكلة المراقبة المستمرة لـ FileSystemObserver ([#1160](https://github.com/scriptscat/scriptcat/issues/1160)) [[9556769](https://github.com/scriptscat/scriptcat/commit/95567690d1bf77bfe8bedfd6a94c88949a77e115)] (by @cyfung1031)
 - 🐛 تصحيحات طفيفة في locales.ts ([#1154](https://github.com/scriptscat/scriptcat/issues/1154)) [[1c44b68](https://github.com/scriptscat/scriptcat/commit/1c44b680dab3a95a51eb73cf92531efd0a192dc9)] (by @cyfung1031)
 - 🐛 إصلاح مشكلة وقت نافذة التحديث المنبثقة ([#1155](https://github.com/scriptscat/scriptcat/issues/1155)) [[c17f761](https://github.com/scriptscat/scriptcat/commit/c17f761807fb9b14aff09b9b08d19e4cbe72b8a5)] (by @cyfung1031)
-- 🐛 إصلاح عرض اسم ووصف السكربتات ببادئة لغة i18n [#1123](https://github.com/scriptscat/scriptcat/issues/1123) [[7ef7355](https://github.com/scriptscat/scriptcat/commit/7ef7355632fc989fa1cad44fd2069ff840bbd8df)] (by @CodFrm)
+- 🐛 إصلاح عرض اسم ووصف السكرپتات ببادئة لغة i18n [#1123](https://github.com/scriptscat/scriptcat/issues/1123) [[7ef7355](https://github.com/scriptscat/scriptcat/commit/7ef7355632fc989fa1cad44fd2069ff840bbd8df)] (by @CodFrm)
 - 🐛 معالجة مشكلة مرجع القيمة [#1141](https://github.com/scriptscat/scriptcat/issues/1141) ([#1147](https://github.com/scriptscat/scriptcat/issues/1147)) [[0892fcd](https://github.com/scriptscat/scriptcat/commit/0892fcd452758030553c33ddf14f1ce4bc6d3efc)] (by @cyfung1031)
 
 <a name="1.2.4"></a>
@@ -302,9 +302,9 @@ import GithubStar from '@site/src/components/GithubStar';
 
 ### تم الإصلاح
 
-- 🐛 إصلاح مشكلة مطابقة URL للسكربتات المبكرة ([#1096](https://github.com/scriptscat/scriptcat/issues/1096)) [[a77effb](https://github.com/scriptscat/scriptcat/commit/a77effbab5ab4d1752065ef943d9c050ff99c066)] (by @cyfung1031)
+- 🐛 إصلاح مشكلة مطابقة URL للسكرپتات المبكرة ([#1096](https://github.com/scriptscat/scriptcat/issues/1096)) [[a77effb](https://github.com/scriptscat/scriptcat/commit/a77effbab5ab4d1752065ef943d9c050ff99c066)] (by @cyfung1031)
 - 🐛 إصلاح مشكلة العرض القصير جدًا لنافذة التحديث ([#1088](https://github.com/scriptscat/scriptcat/issues/1088)) [[b2b2d5c](https://github.com/scriptscat/scriptcat/commit/b2b2d5c41ff70ee5430f7d8d156f480ac8fc3a1a)] (by @cyfung1031)
-- 🐛 إصلاح العرض غير الطبيعي عند تمكين إشعار سكربت المستخدم ([#1086](https://github.com/scriptscat/scriptcat/issues/1086)) ([959c4db](https://github.com/scriptscat/scriptcat/commit/959c4dbed92f7bfe22a2f8ebb775c4189b5ff076))
+- 🐛 إصلاح العرض غير الطبيعي عند تمكين إشعار سكرپت المستخدم ([#1086](https://github.com/scriptscat/scriptcat/issues/1086)) ([959c4db](https://github.com/scriptscat/scriptcat/commit/959c4dbed92f7bfe22a2f8ebb775c4189b5ff076))
 - 🐛 responseHeaders: &#x60;توافق TM: \\r\\n&#x60; ([#1085](https://github.com/scriptscat/scriptcat/issues/1085)) [[15232c8](https://github.com/scriptscat/scriptcat/commit/15232c8543d93abfdafa1353d39d8a15d1dc385f)] (by @cyfung1031)
 - 🐛 إصلاح مشكلات GM XHR ([#1082](https://github.com/scriptscat/scriptcat/issues/1082)) [[3d987c3](https://github.com/scriptscat/scriptcat/commit/3d987c300242a3c765146359c35ecd6d998f792c)] (by @CodFrm)
 
@@ -322,7 +322,7 @@ import GithubStar from '@site/src/components/GithubStar';
 
 - 🐛 إصلاح مشكلة المزامنة الخلفية المتكررة ([#1076](https://github.com/scriptscat/scriptcat/issues/1076)) [[45dc39b](https://github.com/scriptscat/scriptcat/commit/45dc39baa0f3326cf12e97312ab632dc46ba40f2)] (by @CodFrm)
 - 🐛 إصلاح مشكلة معالجة التبويبات الخاصة [#1066](https://github.com/scriptscat/scriptcat/issues/1066) ([50904fb](https://github.com/scriptscat/scriptcat/commit/50904fb46efdea10fd57677bc2d28c770b47e861))
-- 🐛 إصلاح معالجة السكربتات بدون قواعد مطابقة [#1071](https://github.com/scriptscat/scriptcat/issues/1071) ([560cdc0](https://github.com/scriptscat/scriptcat/commit/560cdc01fc0fc27fb7d0e3b877c63ba431206668))
+- 🐛 إصلاح معالجة السكرپتات بدون قواعد مطابقة [#1071](https://github.com/scriptscat/scriptcat/issues/1071) ([560cdc0](https://github.com/scriptscat/scriptcat/commit/560cdc01fc0fc27fb7d0e3b877c63ba431206668))
 - 🐛 إصلاح مشكلة التغليف في CI التي أزالت الأذونات الاختيارية للخلفية [[1f002f0](https://github.com/scriptscat/scriptcat/commit/1f002f0edf9892f023ae93b8522ff7c5e4a96559)] (by @CodFrm)
 - 🐛 إصلاح تجاهل التبويبات المهملة ([#1058](https://github.com/scriptscat/scriptcat/issues/1058)) [[6165bf4](https://github.com/scriptscat/scriptcat/commit/6165bf48eb1d53ede0561c85c30135446c2ff882)] (by @cyfung1031)
 
@@ -351,24 +351,24 @@ import GithubStar from '@site/src/components/GithubStar';
 
 ## 1.2.0 (2025-11-29)
 
-يجلب هذا التحديث الشريط الجانبي لقائمة السكربتات، وعرض البطاقات، ومنطق فحص تحديثات أكثر ودية، وإعدادات المحرر، والمزيد. تم تحسين استقرار الحقن والتشغيل بشكل كبير، مع إصلاح مشكلات حرجة في CSP وsandbox وGM API، بالإضافة إلى تحسينات في الأداء والبنية.
+يجلب هذا التحديث الشريط الجانبي لقائمة السكرپتات، وعرض البطاقات، ومنطق فحص تحديثات أكثر ودية، وإعدادات المحرر، والمزيد. تم تحسين استقرار الحقن والتشغيل بشكل كبير، مع إصلاح مشكلات حرجة في CSP وsandbox وGM API، بالإضافة إلى تحسينات في الأداء والبنية.
 
 لمزيد من التفاصيل، راجع سجل تغييرات v1.2.0-beta.x ووثائق [v1.2](https://docs.scriptcat.org/docs/change/v1.2/).
 
 ### 🚀 الميزات الرئيسية الجديدة
 
-- ✨ الشريط الجانبي لقائمة السكربتات [#794](https://github.com/scriptscat/scriptcat/issues/794) (by @CodFrm)
+- ✨ الشريط الجانبي لقائمة السكرپتات [#794](https://github.com/scriptscat/scriptcat/issues/794) (by @CodFrm)
 - ✨ عرض البطاقات [#860](https://github.com/scriptscat/scriptcat/issues/860) (by @CodFrm)
 - ✨ منطق فحص تحديثات أكثر ودية [#755](https://github.com/scriptscat/scriptcat/issues/755) (by @cyfung1031)
 - ✨ إضافة إعدادات المحرر وتعريفات أنواع المحرر [#708](https://github.com/scriptscat/scriptcat/pull/708) (by @CodFrm)
-- ✨ عرض عدد السكربتات في النافذة المنبثقة ([#973](https://github.com/scriptscat/scriptcat/issues/973)) [[1134586](https://github.com/scriptscat/scriptcat/commit/1134586ff040ffc0cdddd3538e9ec493950c948a)] (by @cyfung1031)
+- ✨ عرض عدد السكرپتات في النافذة المنبثقة ([#973](https://github.com/scriptscat/scriptcat/issues/973)) [[1134586](https://github.com/scriptscat/scriptcat/commit/1134586ff040ffc0cdddd3538e9ec493950c948a)] (by @cyfung1031)
 - ✨ إضافة قائمة تخطيط لإخفاء الشريط الجانبي للكود [#689](https://github.com/scriptscat/scriptcat/issues/689) [[dd64da7](https://github.com/scriptscat/scriptcat/commit/dd64da719c081acbf21645e2b1e1f38653ffae8c)]
 - ✨ إضافة زر فحص إصدار SC ([#795](https://github.com/scriptscat/scriptcat/issues/795)) [[1680c66](https://github.com/scriptscat/scriptcat/commit/1680c66099120c0e497c1a1f5321f38fe0160ea0)] (by @cyfung1031)
 - ✨ إضافة صفحة استطلاع بعد إلغاء تثبيت الإضافة [[6404c8f](https://github.com/scriptscat/scriptcat/commit/6404c8f74aff09b15725a92f8afdfc0d71ac188f)]
 
 ### 🧩 تغييرات GM API
 
-- ✨ دعم الحقن في بيئة المحتوى، ويمكن الآن حقن السكربتات في بيئة المحتوى [#711](https://github.com/scriptscat/scriptcat/issues/711)
+- ✨ دعم الحقن في بيئة المحتوى، ويمكن الآن حقن السكرپتات في بيئة المحتوى [#711](https://github.com/scriptscat/scriptcat/issues/711)
 - ✨ يدعم GM_openInTab النافذة المثبتة والفتح في نافذة خاصة ومعلمات أخرى [#788](https://github.com/scriptscat/scriptcat/pull/788) (by @cyfung1031)
 - ✨ يدعم GM_registerMenuCommand القائمة الفرعية والفاصل [#831](https://github.com/scriptscat/scriptcat/pull/831) (by @cyfung1031)
 - 🗑 إزالة خيار useOpen من GM_openInTab [#867](https://github.com/scriptscat/scriptcat/pull/867)
@@ -394,8 +394,8 @@ import GithubStar from '@site/src/components/GithubStar';
 
 - 🐛 إصلاح مشكلة sandbox toString [#737](https://github.com/scriptscat/scriptcat/issues/737) [[6ca24c9](https://github.com/scriptscat/scriptcat/commit/6ca24c9b171792035803ac4e1c69e473629f9d18)]
 - 🐛 إصلاح مشكلة عرض الشارة 0 [[026c1d2](https://github.com/scriptscat/scriptcat/commit/026c1d2071dd4cfb6291f005d36717bcdf0a51c3)]
-- 🐛 إصلاح مشكلة CSP لحقن السكربتات [#739](https://github.com/scriptscat/scriptcat/issues/739) [#728](https://github.com/scriptscat/scriptcat/issues/728) [[5da21b5](https://github.com/scriptscat/scriptcat/commit/5da21b5e3d0e7e86a1fd5dff57ba03ea641c19fa)]
-- 🐛 إصلاح عدم توسع سكربت الخلفية في صفحة النافذة المنبثقة [[66ab70f](https://github.com/scriptscat/scriptcat/commit/66ab70fb10c28aaf0c9260a9591aab7e1ae35615)]
+- 🐛 إصلاح مشكلة CSP لحقن السكرپتات [#739](https://github.com/scriptscat/scriptcat/issues/739) [#728](https://github.com/scriptscat/scriptcat/issues/728) [[5da21b5](https://github.com/scriptscat/scriptcat/commit/5da21b5e3d0e7e86a1fd5dff57ba03ea641c19fa)]
+- 🐛 إصلاح عدم توسع سكرپت الخلفية في صفحة النافذة المنبثقة [[66ab70f](https://github.com/scriptscat/scriptcat/commit/66ab70fb10c28aaf0c9260a9591aab7e1ae35615)]
 - 🐛 تعزيز التحقق من أنواع الرسائل [#676](https://github.com/scriptscat/scriptcat/issues/676) [[5073795](https://github.com/scriptscat/scriptcat/commit/50737957507ff9af3aa9ba9a6b7d444b643d1ff2)]
 - 🐛 إصلاح مشكلة document في GM xhr [#716](https://github.com/scriptscat/scriptcat/issues/716) [[1c46546](https://github.com/scriptscat/scriptcat/commit/1c465462f4e14ae461d54358710f5caf74208af3)]
 
@@ -425,8 +425,8 @@ import GithubStar from '@site/src/components/GithubStar';
 
 ### تمت الإضافة
 
-- ✨ إضافة إعدادات بيئة تشغيل السكربتات [#628](https://github.com/scriptscat/scriptcat/issues/628) [[0d4a89e](https://github.com/scriptscat/scriptcat/commit/0d4a89efaecf0331dcc7fbb6df006b93a1525846)]
-- ✨ الطي افتراضيًا عند عدم وجود سكربتات في الخلفية [#626](https://github.com/scriptscat/scriptcat/issues/626) ([9d0aac6](https://github.com/scriptscat/scriptcat/commit/9d0aac6aae11b96707ca1f7c024a24e9d55f217b))
+- ✨ إضافة إعدادات بيئة تشغيل السكرپتات [#628](https://github.com/scriptscat/scriptcat/issues/628) [[0d4a89e](https://github.com/scriptscat/scriptcat/commit/0d4a89efaecf0331dcc7fbb6df006b93a1525846)]
+- ✨ الطي افتراضيًا عند عدم وجود سكرپتات في الخلفية [#626](https://github.com/scriptscat/scriptcat/issues/626) ([9d0aac6](https://github.com/scriptscat/scriptcat/commit/9d0aac6aae11b96707ca1f7c024a24e9d55f217b))
 - ✨ دعم Dropbox [#575](https://github.com/scriptscat/scriptcat/issues/575) [[2c66f21](https://github.com/scriptscat/scriptcat/commit/2c66f21f5118bd83a0eaa0f1baa3a31f2233e5b2)]
 - ✨ تحسين external.Tampermonkey للتحقق من حالة تثبيت SC عندما لا يكون TM مثبتًا ولكن كليهما مفعل ([#703](https://github.com/scriptscat/scriptcat/issues/703)) [[d0115c3](https://github.com/scriptscat/scriptcat/commit/d0115c33657260d803b6091139601b1b20407d4e)] (by @cyfung1031)
 - ✨ إضافة @early-start للتحميل أسرع من الصفحة ([#649](https://github.com/scriptscat/scriptcat/issues/649)) [[eb097dd](https://github.com/scriptscat/scriptcat/commit/eb097dd146dcd6f8ca712ed883571dbfb3d09f20)]
@@ -452,8 +452,8 @@ import GithubStar from '@site/src/components/GithubStar';
 - 🐛 إصلاح مشكلة عدم إمكانية إغلاق صفحة مصادقة التخزين السحابي تلقائيًا [[7748088](https://github.com/scriptscat/scriptcat/commit/7748088e63c1fc660b6a6ae5613cf04f9da99b8c)]
 - 🐛 إصلاح مشكلة `@connect` \\* التي لا تعمل [#623](https://github.com/scriptscat/scriptcat/issues/623) [[76481c8](https://github.com/scriptscat/scriptcat/commit/76481c845b34414a7f15ed18ec61f7dff7eef091)]
 - 🐛 إضافة اختبارات وحدة وإصلاح مشكلة `@exclude` ([#618](https://github.com/scriptscat/scriptcat/issues/618)) [[0046bb7](https://github.com/scriptscat/scriptcat/commit/0046bb78800a2c46edaac785b8e9592327772a3b)] (by @cyfung1031)
-- 🐛 إصلاح مشكلة عدم قدرة بعض روابط .user.js على تثبيت السكربتات [#599](https://github.com/scriptscat/scriptcat/issues/599) [[ccd2639](https://github.com/scriptscat/scriptcat/commit/ccd2639858f0f3cde28f284376fe8ed998d935ae)]
-- 🐛 إصلاح فشل إنشاء سكربتات جديدة [[d42d6e7](https://github.com/scriptscat/scriptcat/commit/d42d6e7d408a84674facf9ab0da6eac0e384502f)]
+- 🐛 إصلاح مشكلة عدم قدرة بعض روابط .user.js على تثبيت السكرپتات [#599](https://github.com/scriptscat/scriptcat/issues/599) [[ccd2639](https://github.com/scriptscat/scriptcat/commit/ccd2639858f0f3cde28f284376fe8ed998d935ae)]
+- 🐛 إصلاح فشل إنشاء سكرپتات جديدة [[d42d6e7](https://github.com/scriptscat/scriptcat/commit/d42d6e7d408a84674facf9ab0da6eac0e384502f)]
 - 🐛 إصلاح البيانات الوصفية ([#610](https://github.com/scriptscat/scriptcat/issues/610)) [[4d98cce](https://github.com/scriptscat/scriptcat/commit/4d98cce0ca1281cc58f551ea4e6700e340780d3f)] (by @cyfung1031)
 - 🐛 إصلاح شارة النافذة المنبثقة ([#605](https://github.com/scriptscat/scriptcat/issues/605)) [[eff9230](https://github.com/scriptscat/scriptcat/commit/eff92309de99abb0cf48ef4727afaa113bc2fbb6)] (by @cyfung1031)
 - 🐛 إصلاح ScriptEditor.tsx ([#603](https://github.com/scriptscat/scriptcat/issues/603)) [[a9aadba](https://github.com/scriptscat/scriptcat/commit/a9aadba372b813c16bdc5f0aeb07c68981f48c63)] (by @cyfung1031)

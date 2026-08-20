@@ -167,10 +167,10 @@
     "description": "محتوى تعليق bigonion"
   },
   "homepage.meta.title": {
-    "message": "ScriptCat - محرك سكربتات المستخدم لمتصفحك"
+    "message": "ScriptCat - محرك سكرپتات المستخدم لمتصفحك"
   },
   "homepage.meta.description": {
-    "message": "ScriptCat هو محرك سكربتات متصفح مفتوح المصدر وقوي يتيح لك تخصيص وظائف الويب بسهولة، وإزالة الإعلانات، وأتمتة المهام، وتحسين تجربة التصفح. متوافق مع Tampermonkey مع المزيد من الميزات."
+    "message": "ScriptCat هو محرك سكرپتات متصفح مفتوح المصدر وقوي يتيح لك تخصيص وظائف الويب بسهولة، وإزالة الإعلانات، وأتمتة المهام، وتحسين تجربة التصفح. متوافق مع Tampermonkey مع المزيد من الميزات."
   },
   "homepage.og.title": {
     "message": "ScriptCat - A Powerful Userscript Engine"
@@ -225,22 +225,22 @@
     "message": "Entièrement compatible avec les scripts Tampermonkey et Violentmonkey, migrez sans effort vos scripts préférés."
   },
   "homepage.features.background.title": {
-    "message": "سكربتات الخلفية"
+    "message": "سكرپتات الخلفية"
   },
   "homepage.features.background.description": {
-    "message": "تسمح سكربتات الخلفية الفريدة والمهام المجدولة بالأتمتة على مدار الساعة طوال أيام الأسبوع، بشكل مستقل عن DOM."
+    "message": "تسمح سكرپتات الخلفية الفريدة والمهام المجدولة بالأتمتة على مدار الساعة طوال أيام الأسبوع، بشكل مستقل عن DOM."
   },
   "homepage.features.security.title": {
     "message": "الأمان والخصوصية"
   },
   "homepage.features.security.description": {
-    "message": "نظام صارم للتحكم في الأذونات وسلوك شفاف للسكربتات يمنع السكربتات الضارة بفعالية ويحمي خصوصيتك."
+    "message": "نظام صارم للتحكم في الأذونات وسلوك شفاف للسكرپتات يمنع السكرپتات الضارة بفعالية ويحمي خصوصيتك."
   },
   "homepage.features.editor.title": {
     "message": "محرر أكواد مدمج"
   },
   "homepage.features.editor.description": {
-    "message": "محرر قوي مع تمييز الصيغة والإكمال التلقائي وتلميحات الأخطاء لجعل كتابة السكربتات أكثر كفاءة."
+    "message": "محرر قوي مع تمييز الصيغة والإكمال التلقائي وتلميحات الأخطاء لجعل كتابة السكرپتات أكثر كفاءة."
   },
   "homepage.features.api.title": {
     "message": "واجهات برمجة تطبيقات قوية"
@@ -249,25 +249,25 @@
     "message": "يوفر واجهات برمجة تطبيقات أغنى من GM، ويدعم ميزات متقدمة مثل تخزين الملفات وتكوين المستخدم."
   },
   "homepage.features.store.title": {
-    "message": "متجر السكربتات"
+    "message": "متجر السكرپتات"
   },
   "homepage.features.store.description": {
-    "message": "يوفر متجرًا لتثبيت السكربتات الشائعة بنقرة واحدة، أو نشر أعمالك لمشاركتها مع المجتمع."
+    "message": "يوفر متجرًا لتثبيت السكرپتات الشائعة بنقرة واحدة، أو نشر أعمالك لمشاركتها مع المجتمع."
   },
   "homepage.comparison.title.why": {
     "message": "لماذا تختارنا؟"
   },
   "homepage.comparison.subtitle": {
-    "message": "بالمقارنة مع محركات السكربتات الأخرى، يقدم ScriptCat مزيدًا من المزايا والميزات المحسنة"
+    "message": "بالمقارنة مع محركات السكرپتات الأخرى، يقدم ScriptCat مزيدًا من المزايا والميزات المحسنة"
   },
   "homepage.comparison.feature": {
     "message": "الميزة"
   },
   "homepage.comparison.feature.compatibility": {
-    "message": "توافق السكربتات"
+    "message": "توافق السكرپتات"
   },
   "homepage.comparison.feature.background": {
-    "message": "سكربتات الخلفية"
+    "message": "سكرپتات الخلفية"
   },
   "homepage.comparison.feature.opensource": {
     "message": "مفتوح المصدر ومجاني"
@@ -431,7 +431,7 @@
     "description": "Footer product features link"
   },
   "footer.product.scriptStore": {
-    "message": "متجر السكربتات",
+    "message": "متجر السكرپتات",
     "description": "Footer product script store link"
   },
   "footer.product.changelog": {
@@ -450,7 +450,7 @@
     "description": "Footer resources API reference link"
   },
   "footer.resources.examples": {
-    "message": "أمثلة السكربتات",
+    "message": "أمثلة السكرپتات",
     "description": "Footer resources example scripts link"
   },
   "footer.resources.faq": {
@@ -751,7 +751,7 @@
     "message": "ثبّت مجانًا لـ {browser}"
   },
   "home.cta.secondary": {
-    "message": "تصفح السكربتات"
+    "message": "تصفح السكرپتات"
   },
   "home.cta.stores": {
     "message": "يدعم Edge · Chrome · Firefox · الحزمة اليدوية"
@@ -769,10 +769,10 @@
     "message": "مرجع الواجهة البرمجية"
   },
   "home.dev.bg.d": {
-    "message": "لا حاجة لتبويب مثبَّت — السكربتات تستمر في العمل في الخلفية."
+    "message": "لا حاجة لتبويب مثبَّت — السكرپتات تستمر في العمل في الخلفية."
   },
   "home.dev.bg.t": {
-    "message": "سكربتات الخلفية"
+    "message": "سكرپتات الخلفية"
   },
   "home.dev.debug.d": {
     "message": "السجلات وسجل التشغيل وتتبع الأخطاء — المشاكل في لمحة."
@@ -784,7 +784,7 @@
     "message": "اقرأ الوثائق"
   },
   "home.dev.editor.d": {
-    "message": "تلوين الصيغة والإكمال الذكي وتلميحات الأخطاء تجعل كتابة السكربتات سلسة."
+    "message": "تلوين الصيغة والإكمال الذكي وتلميحات الأخطاء تجعل كتابة السكرپتات سلسة."
   },
   "home.dev.editor.t": {
     "message": "محرر مدمج"
@@ -804,7 +804,7 @@
     "message": "تشغيل"
   },
   "home.dev.sub": {
-    "message": "سكربتات الخلفية، واجهات برمجة غنية، محرر مدمج وأدوات تصحيح — من أول سطر لك حتى الإنتاج، كل ذلك في مكان واحد."
+    "message": "سكرپتات الخلفية، واجهات برمجة غنية، محرر مدمج وأدوات تصحيح — من أول سطر لك حتى الإنتاج، كل ذلك في مكان واحد."
   },
   "home.dev.title1": {
     "message": "حوّل متصفحك إلى "
@@ -819,16 +819,16 @@
     "message": "واجهات برمجة قوية"
   },
   "home.feat.bg.d": {
-    "message": "ميزة فريدة: السكربتات تستمر في العمل في الخلفية دون تبويب مفتوح."
+    "message": "ميزة فريدة: السكرپتات تستمر في العمل في الخلفية دون تبويب مفتوح."
   },
   "home.feat.bg.t": {
-    "message": "سكربتات الخلفية"
+    "message": "سكرپتات الخلفية"
   },
   "home.feat.compat.b": {
     "message": "يدعم واجهات GM_* · كتلة بيانات وصفية متطابقة"
   },
   "home.feat.compat.d": {
-    "message": "متوافق تمامًا مع صيغة سكربتات المستخدم وواجهات GM — انقل سكربتاتك الحالية دون أي تعديلات وبدون تكلفة انتقال."
+    "message": "متوافق تمامًا مع صيغة سكرپتات المستخدم وواجهات GM — انقل سكرپتاتك الحالية دون أي تعديلات وبدون تكلفة انتقال."
   },
   "home.feat.compat.t": {
     "message": "متوافق مع Tampermonkey"
@@ -840,25 +840,25 @@
     "message": "الميزات الأساسية · لماذا ScriptCat"
   },
   "home.feat.secure.d": {
-    "message": "أذونات شفافة وقابلة للتحكم وسلوك مرئي — السكربتات الضارة تتوقف عند المصدر."
+    "message": "أذونات شفافة وقابلة للتحكم وسلوك مرئي — السكرپتات الضارة تتوقف عند المصدر."
   },
   "home.feat.secure.t": {
     "message": "آمن وموثوق"
   },
   "home.feat.store.d": {
-    "message": "ثبّت آلاف السكربتات المجتمعية بنقرة واحدة، أو انشر سكربتاتك وابنِ النظام البيئي معًا."
+    "message": "ثبّت آلاف السكرپتات المجتمعية بنقرة واحدة، أو انشر سكرپتاتك وابنِ النظام البيئي معًا."
   },
   "home.feat.store.stat": {
-    "message": "{count} سكربتًا مجتمعيًا"
+    "message": "{count} سكرپتًا مجتمعيًا"
   },
   "home.feat.store.t": {
-    "message": "متجر السكربتات"
+    "message": "متجر السكرپتات"
   },
   "home.feat.sub": {
     "message": "من التوافق إلى الأمان، من المستخدمين العاديين إلى المطورين — ScriptCat يغطي كل ذلك."
   },
   "home.feat.sync.d": {
-    "message": "السكربتات والإعدادات تتزامن بين الأجهزة — لا شيء يضيع عند التغيير أو إعادة التثبيت."
+    "message": "السكرپتات والإعدادات تتزامن بين الأجهزة — لا شيء يضيع عند التغيير أو إعادة التثبيت."
   },
   "home.feat.sync.t": {
     "message": "مزامنة سحابية"
@@ -870,19 +870,19 @@
     "message": "وراحة بال"
   },
   "home.hero.browse": {
-    "message": "تصفح السكربتات"
+    "message": "تصفح السكرپتات"
   },
   "home.hero.chip.background": {
-    "message": "3 سكربتات تعمل في الخلفية"
+    "message": "3 سكرپتات تعمل في الخلفية"
   },
   "home.hero.chip.installed": {
-    "message": "تم تثبيت السكربت"
+    "message": "تم تثبيت السكرپت"
   },
   "home.hero.chip.installedSub": {
     "message": "محسّن الفيديو v2.1"
   },
   "home.hero.eyebrow": {
-    "message": "محرك سكربتات مستخدم مفتوح المصدر · متوافق مع Tampermonkey"
+    "message": "محرك سكرپتات مستخدم مفتوح المصدر · متوافق مع Tampermonkey"
   },
   "home.hero.installTo": {
     "message": "أضِف إلى {browser}"
@@ -891,13 +891,13 @@
     "message": "تخطي الإعلانات تلقائيًا"
   },
   "home.hero.mock.add": {
-    "message": "أضف من متجر السكربتات"
+    "message": "أضف من متجر السكرپتات"
   },
   "home.hero.mock.dark": {
     "message": "الوضع الداكن للصفحات"
   },
   "home.hero.mock.running": {
-    "message": "3 سكربتات تعمل على هذه الصفحة"
+    "message": "3 سكرپتات تعمل على هذه الصفحة"
   },
   "home.hero.mock.skip": {
     "message": "تخطي الإعلانات"
@@ -909,7 +909,7 @@
     "message": "متصفحات أخرى"
   },
   "home.hero.subhead": {
-    "message": "احجب الإعلانات، عزز الفيديو، وأتمت الأشياء المملة — ثبّت السكربتات المجتمعية من المتجر بنقرة واحدة، مع سكربتات الخلفية وواجهات برمجة قوية للمطورين. متوافق مع Tampermonkey، فسكربتاتك الحالية تنتقل دون أي تكلفة."
+    "message": "احجب الإعلانات، عزز الفيديو، وأتمت الأشياء المملة — ثبّت السكرپتات المجتمعية من المتجر بنقرة واحدة، مع سكرپتات الخلفية وواجهات برمجة قوية للمطورين. متوافق مع Tampermonkey، فسكرپتاتك الحالية تنتقل دون أي تكلفة."
   },
   "home.hero.title1": {
     "message": "امنح متصفحك"
@@ -957,7 +957,7 @@
     "message": "القائمة"
   },
   "home.nav.store": {
-    "message": "متجر السكربتات"
+    "message": "متجر السكرپتات"
   },
   "home.nav.theme": {
     "message": "تبديل المظهر"
@@ -966,7 +966,7 @@
     "message": "احجب الإعلانات والنوافذ المنبثقة لصفحة نظيفة ومرتبة."
   },
   "home.sc.adblock.l": {
-    "message": "سكربتات حجب الإعلانات"
+    "message": "سكرپتات حجب الإعلانات"
   },
   "home.sc.adblock.t": {
     "message": "حجب الإعلانات · ويب أنظف"
@@ -975,7 +975,7 @@
     "message": "تسجيل تلقائي، إجراءات جماعية، صندوق أدوات صغير عملي."
   },
   "home.sc.auto.l": {
-    "message": "سكربتات الإنتاجية"
+    "message": "سكرپتات الإنتاجية"
   },
   "home.sc.auto.t": {
     "message": "إنتاجية · أتمتة"
@@ -984,7 +984,7 @@
     "message": "للجميع · لا حاجة للبرمجة"
   },
   "home.sc.featured.btn": {
-    "message": "تصفح سكربتات الفيديو"
+    "message": "تصفح سكرپتات الفيديو"
   },
   "home.sc.featured.c1": {
     "message": "التحكم في السرعة"
@@ -1029,7 +1029,7 @@
     "message": "تسوق · مقارنة الأسعار"
   },
   "home.sc.sub": {
-    "message": "خذ سكربتًا من المتجر — الإعلانات والفيديو والتسوق والإنتاجية، كل ذلك مُدار لك."
+    "message": "خذ سكرپتًا من المتجر — الإعلانات والفيديو والتسوق والإنتاجية، كل ذلك مُدار لك."
   },
   "home.sc.title1": {
     "message": "بدون كود، فقط "
@@ -1050,7 +1050,7 @@
     "message": "30 ثانية"
   },
   "home.step.title2": {
-    "message": " حتى أول سكربت لك"
+    "message": " حتى أول سكرپت لك"
   },
   "home.step1.d": {
     "message": "أضفه من متجر Chrome / Edge / Firefox بنقرة واحدة، أو ثبّته يدويًا."
@@ -1062,7 +1062,7 @@
     "message": "ثبّت الإضافة"
   },
   "home.step2.d": {
-    "message": "استكشف آلاف السكربتات في مجتمع ScriptCat واختر ما يعجبك."
+    "message": "استكشف آلاف السكرپتات في مجتمع ScriptCat واختر ما يعجبك."
   },
   "home.step2.p": {
     "message": "بحث: سرعة الفيديو"
@@ -1071,7 +1071,7 @@
     "message": "تصفح المتجر"
   },
   "home.step3.d": {
-    "message": "انقر تثبيت ويعمل السكربت على الصفحة فورًا."
+    "message": "انقر تثبيت ويعمل السكرپت على الصفحة فورًا."
   },
   "home.step3.p": {
     "message": "مثبَّت · نشط الآن"
@@ -1086,7 +1086,7 @@
     "message": "موثوق من المستخدمين والمطورين حول العالم"
   },
   "home.trust.scripts": {
-    "message": "سكربتات مجتمعية"
+    "message": "سكرپتات مجتمعية"
   },
   "home.trust.stars": {
     "message": "نجوم GitHub"
@@ -1109,5 +1109,8 @@
   "uninstall.reinstall.firefox": {
     "message": "إضافات Firefox",
     "description": "Reinstall from Firefox Add-ons button"
+  },
+  "home.hero.en": {
+    "message": "قوى خارقة لمتصفحك."
   }
 }

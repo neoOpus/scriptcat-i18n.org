@@ -4,7 +4,7 @@ title: واجهة برمجة إدارة Skills
 
 `@grant CAT.agent.skills`
 
-تتيح واجهة برمجة إدارة Skills للسكربت الاستعلام عن حزم توسعة Skill وتثبيتها وإزالتها واستدعاءها.
+تتيح واجهة برمجة إدارة Skills للسكرپت الاستعلام عن حزم توسعة Skill وتثبيتها وإزالتها واستدعاءها.
 
 لتطوير وتعبئة Skills، راجع [دليل تطوير Skills](../skill-dev). أمثلة Skills الرسمية: [scriptscat/skills](https://github.com/scriptscat/skills).
 

@@ -2,14 +2,14 @@
 title: دليل تطوير Skills
 ---
 
-Skill هو حزمة توسعة لنظام Agent، مكونة من **مطالبة + سكربتات أدوات + مواد مرجعية**. تتيح لك Skills حقن معرفة متخصصة وقدرات أدوات مخصصة في الذكاء الاصطناعي.
+Skill هو حزمة توسعة لنظام Agent، مكونة من **مطالبة + سكرپتات أدوات + مواد مرجعية**. تتيح لك Skills حقن معرفة متخصصة وقدرات أدوات مخصصة في الذكاء الاصطناعي.
 
 ## هيكل دليل Skill
 
 ```
 my-skill/
 ├── SKILL.cat.md          # إلزامي: البيانات الوصفية + المطالبة (ملف الدخول)
-├── scripts/              # اختياري: سكربتات أدوات SkillScript
+├── scripts/              # اختياري: سكرپتات أدوات SkillScript
 │   ├── search.js
 │   └── export.js
 └── references/           # اختياري: ملفات المواد المرجعية
@@ -72,7 +72,7 @@ You can use the following tools to look up weather information:
 | `name` | `string` | نعم | معرف Skill فريد (الإنجليزية بنمط kebab-case موصى بها) |
 | `description` | `string` | نعم | وصف قصير (يظهر في القائمة) |
 | `version` | `string` | لا | الإصدار (صيغة semver، مثل `1.0.0`)، يستخدم لفحوصات التحديث |
-| `scripts` | `string[]` | لا | قائمة أسماء ملفات السكربتات (مثل `["search.js"]`)؛ تُجلب تلقائياً من دليل `scripts/` عند التثبيت عبر رابط |
+| `scripts` | `string[]` | لا | قائمة أسماء ملفات السكرپتات (مثل `["search.js"]`)؛ تُجلب تلقائياً من دليل `scripts/` عند التثبيت عبر رابط |
 | `references` | `string[]` | لا | قائمة أسماء ملفات المواد المرجعية (مثل `["api-docs.md"]`)؛ تُجلب تلقائياً من دليل `references/` عند التثبيت عبر رابط |
 | `config` | `object` | لا | تعريفات حقول التكوين |
 
@@ -105,9 +105,9 @@ You can use the following tools to look up weather information:
 - أعط سيناريوهات الاستخدام النموذجية ونقاط الانتباه
 - إذا كانت هناك مواد مرجعية، اشرح كيفية الرجوع إليها
 
-## سكربتات أدوات SkillScript
+## سكرپتات أدوات SkillScript
 
-SkillScript هو سكربت أداة يمكن للذكاء الاصطناعي استدعاءه. يُسجل كل ملف SkillScript كأداة LLM واحدة.
+SkillScript هو سكرپت أداة يمكن للذكاء الاصطناعي استدعاءه. يُسجل كل ملف SkillScript كأداة LLM واحدة.
 
 ### صيغة البيانات الوصفية
 
@@ -163,7 +163,7 @@ SkillScript هو سكربت أداة يمكن للذكاء الاصطناعي ا
 
 تُحول تعريفات المعاملات تلقائياً إلى JSON Schema ليستخدمها LLM عند استدعاء الأداة.
 
-### كتابة السكربت
+### كتابة السكرپت
 
 ```javascript
 // ==SkillScript==
@@ -244,7 +244,7 @@ return result;
 
 ## مستودع الأمثلة
 
-يوجد مستودع أمثلة Skills تتم صيانته رسمياً، يحتوي على عدة Skills جاهزة للاستخدام وأمثلة لواجهات برمجة السكربتات:
+يوجد مستودع أمثلة Skills تتم صيانته رسمياً، يحتوي على عدة Skills جاهزة للاستخدام وأمثلة لواجهات برمجة السكرپتات:
 
 **[scriptscat/skills](https://github.com/scriptscat/skills)**
 
@@ -256,7 +256,7 @@ return result;
 | `scheduled-tasks/` | مهام Cron المجدولة (وضع داخلي + حدث) | [تثبيت](https://raw.githubusercontent.com/scriptscat/skills/main/scheduled-tasks/SKILL.cat.md) |
 | `skill-creator/` | يساعد في إنشاء واختبار وتعبئة Skills جديدة | [تثبيت](https://raw.githubusercontent.com/scriptscat/skills/main/skill-creator/SKILL.cat.md) |
 | `file-parser/` | يحلل صيغ الملفات الشائعة (Excel, PDF, Word, CSV, PPT) | [تثبيت](https://raw.githubusercontent.com/scriptscat/skills/main/file-parser/SKILL.cat.md) |
-| `scriptcat-dev/` | مساعد تطوير سكربتات ScriptCat/Tampermonkey | [تثبيت](https://raw.githubusercontent.com/scriptscat/skills/main/scriptcat-dev/SKILL.cat.md) |
+| `scriptcat-dev/` | مساعد تطوير سكرپتات ScriptCat/Tampermonkey | [تثبيت](https://raw.githubusercontent.com/scriptscat/skills/main/scriptcat-dev/SKILL.cat.md) |
 | `synology-office-sheet/` | قراءة/كتابة جداول بيانات Synology Office | [تثبيت](https://raw.githubusercontent.com/scriptscat/skills/main/synology-office-sheet/SKILL.cat.md) |
 | `wechat-publisher/` | مساعد عمليات الحساب الرسمي WeChat — جمع المحتوى وكتابة المقالات والنشر | [تثبيت](https://raw.githubusercontent.com/scriptscat/skills/main/wechat-publisher/SKILL.cat.md) |
 | `xiaohongshu-publisher/` | مساعد عمليات Xiaohongshu (RED) — كتابة الملاحظات وتوليد الصور والنشر | [تثبيت](https://raw.githubusercontent.com/scriptscat/skills/main/xiaohongshu-publisher/SKILL.cat.md) |
@@ -268,7 +268,7 @@ return result;
 | `examples/conversation/` | أمثلة واجهة برمجة الحوار — chat, streaming, استدعاءات الأدوات |
 | `examples/dom/` | أمثلة واجهة برمجة DOM — قراءة الصفحات، تعبئة النماذج، إدارة التبويبات |
 | `examples/config/` | أمثلة تكوين Skill — تصريح حقول التكوين واستخدام `CAT_CONFIG` |
-| `examples/page_copilot.user.js` | مثال كامل لسكربت مستخدم — مساعد ذكاء اصطناعي بزر الفأرة الأيمن مع واجهة متدفقة |
+| `examples/page_copilot.user.js` | مثال كامل لسكرپت مستخدم — مساعد ذكاء اصطناعي بزر الفأرة الأيمن مع واجهة متدفقة |
 
 فكرة جيدة أن تبدأ تعلم تطوير Skills من الكود في مستودع الأمثلة.
 
@@ -286,7 +286,7 @@ return result;
 
 يجلب ScriptCat `SKILL.cat.md` أولاً، ثم يجلب الملفات الأخرى بمساراتها النسبية بناءً على `scripts` و `references` المُصرح عنهما في frontmatter. بعد التثبيت، يُسجل `installUrl`، بحيث يمكن لاحقاً التحقق من التحديثات حسب رقم الإصدار.
 
-### التثبيت من سكربت
+### التثبيت من سكرپت
 
 ```javascript
 // ==UserScript==

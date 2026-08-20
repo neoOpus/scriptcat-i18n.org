@@ -14,7 +14,7 @@ title: وثائق واجهة البرمجة
 
 ### GM_info
 
-يحصل على معلومات عن السكربت، بما في ذلك البيانات الوصفية ومعلمات بيئة التشغيل. تتضمن الحقول الشائعة `scriptHandler` و `version` و `scriptMetaStr` و `scriptUpdateURL` و `downloadMode` والمزيد. راجع `scriptcat.d.ts` للتعريف التفصيلي (وإن لم يكن شاملاً).
+يحصل على معلومات عن السكرپت، بما في ذلك البيانات الوصفية ومعلمات بيئة التشغيل. تتضمن الحقول الشائعة `scriptHandler` و `version` و `scriptMetaStr` و `scriptUpdateURL` و `downloadMode` والمزيد. راجع `scriptcat.d.ts` للتعريف التفصيلي (وإن لم يكن شاملاً).
 
 ```js
 console.log(GM_info.scriptHandler);
@@ -26,7 +26,7 @@ console.log(GM_info.scriptMetaStr);
 
 ### GM_log \*
 
-دالة تسجيل. يمكن عرض سجلات سكربت الخلفية في سجل التشغيل في لوحة التحكم (انقر على عمود حالة التشغيل). مقارنة بـ Tampermonkey، تمت إضافة `level` للسجل.
+دالة تسجيل. يمكن عرض سجلات سكرپت الخلفية في سجل التشغيل في لوحة التحكم (انقر على عمود حالة التشغيل). مقارنة بـ Tampermonkey، تمت إضافة `level` للسجل.
 
 ```typescript
 declare function GM_log(message: string, level?: GMTypes.LoggerLevel): void;
@@ -103,7 +103,7 @@ GM_deleteValues(["a", "b"]);
 
 > تمت إزالة `tabid` بعد 0.17.0-alpha — راجع [GM_cookie](#gm_cookie-) للتفاصيل.
 
-يستمع لتغييرات قيمة. `add` يعيد معرف مستمع، ويمكن استخدام `remove` لإلغاء المستمع. يمكن استخدام هذه الطريقة لتنفيذ تواصل بسيط؛ باستخدام [**storageName**](meta.md#storagename-) يمكن تحقيق التواصل بين السكربتات.
+يستمع لتغييرات قيمة. `add` يعيد معرف مستمع، ويمكن استخدام `remove` لإلغاء المستمع. يمكن استخدام هذه الطريقة لتنفيذ تواصل بسيط؛ باستخدام [**storageName**](meta.md#storagename-) يمكن تحقيق التواصل بين السكرپتات.
 
 ```typescript
 // tabid is only present when listening from a background script
@@ -293,7 +293,7 @@ declare function GM_closeInTab(tabId: string): void;
 
 ### GM_get/saveTab/GM_getTabs
 
-طريقة لتخزين البيانات تشبه `GM_setValue`، لكن دورة حياة هذه الطريقة مرتبطة بدورة فتح→إغلاق تبويب متصفح واحد، ولا يمكن استخدامها من سكربت خلفية.
+طريقة لتخزين البيانات تشبه `GM_setValue`، لكن دورة حياة هذه الطريقة مرتبطة بدورة فتح→إغلاق تبويب متصفح واحد، ولا يمكن استخدامها من سكرپت خلفية.
 
 ```typescript
 // Get tab data
@@ -529,9 +529,9 @@ GM_xmlhttpRequest({
 
 ### GM_download
 
-* ينزّل ملفاً، مع إمكانية تكوين الترويسات وخيارات أخرى؛ مقارنة بـ Tampermonkey يدعم أيضاً خياري cookie و anonymous. إذا أُعطي عنوان URL لـ blob، فإنه يفتح التنزيل مباشرة ولا يطلق سوى حدث `onload` — وهذا يختلف عن Tampermonkey ويوجد لدعم سكربتات الخلفية، التي لا يمكنها بخلاف ذلك إنشاء تنزيل (مفيد لسيناريوهات مثل إنشاء التقارير).
+* ينزّل ملفاً، مع إمكانية تكوين الترويسات وخيارات أخرى؛ مقارنة بـ Tampermonkey يدعم أيضاً خياري cookie و anonymous. إذا أُعطي عنوان URL لـ blob، فإنه يفتح التنزيل مباشرة ولا يطلق سوى حدث `onload` — وهذا يختلف عن Tampermonkey ويوجد لدعم سكرپتات الخلفية، التي لا يمكنها بخلاف ذلك إنشاء تنزيل (مفيد لسيناريوهات مثل إنشاء التقارير).
 * يعيد كائن Promise ويوفر طريقة `abort()`.
-* على عكس Tampermonkey، فإن وضع تنزيل `native` في ScriptCat (الافتراضي) يحترم `@connect`: عندما لا يكون مضيف عنوان التنزيل مغطى بتصريحات `@connect` الخاصة بالسكربت، يطلب ScriptCat من المستخدم التأكيد قبل التنزيل؛ المضيفات المغطاة بـ `@connect` تُنزَّل بصمت، والمضيفات في القائمة السوداء تُرفض دائماً. وضع التنزيل `browser` لا يخضع لهذا الفحص. (في Tampermonkey، ينطبق `@connect` فقط على `GM_xmlhttpRequest`، وليس `GM_download`.)
+* على عكس Tampermonkey، فإن وضع تنزيل `native` في ScriptCat (الافتراضي) يحترم `@connect`: عندما لا يكون مضيف عنوان التنزيل مغطى بتصريحات `@connect` الخاصة بالسكرپت، يطلب ScriptCat من المستخدم التأكيد قبل التنزيل؛ المضيفات المغطاة بـ `@connect` تُنزَّل بصمت، والمضيفات في القائمة السوداء تُرفض دائماً. وضع التنزيل `browser` لا يخضع لهذا الفحص. (في Tampermonkey، ينطبق `@connect` فقط على `GM_xmlhttpRequest`، وليس `GM_download`.)
 
 ```typescript
 declare function GM_download(details: GMTypes.DownloadDetails): GMTypes.AbortHandle<boolean>;

@@ -1,5 +1,5 @@
 ---
-title: تفعيل دعم سكربتات المستخدم في المتصفح
+title: تفعيل دعم سكرپتات المستخدم في المتصفح
 ---
 
 import Tabs from '@theme/Tabs';
@@ -35,7 +35,7 @@ import GithubStar from '@site/src/components/GithubStar';
 
 ## تفعيل «User Scripts» {#allow-user-scripts}
 
-[Allow User Scripts](https://developer.chrome.com/docs/extensions/reference/api/userScripts?hl=en#chrome_versions_138_and_newer_allow_user_scripts_toggle) هي ميزة جديدة في Manifest V3 تسمح لسكربتات المستخدم بالعمل في المتصفح.
+[Allow User Scripts](https://developer.chrome.com/docs/extensions/reference/api/userScripts?hl=en#chrome_versions_138_and_newer_allow_user_scripts_toggle) هي ميزة جديدة في Manifest V3 تسمح لسكرپتات المستخدم بالعمل في المتصفح.
 
 <Tabs groupId="browser" queryString>
   <TabItem value="edge" label={<div className="flex items-center gap-1"><Icon height={16} width={16} icon="logos:microsoft-edge" />Edge</div>} default>
@@ -48,7 +48,7 @@ import GithubStar from '@site/src/components/GithubStar';
 
 ![edge-extensions-details](open-dev.assets/edge-extensions-details.png)
 
-③ في صفحة تفاصيل إضافة ScriptCat، ابحث عن خيار `Allow user scripts` وقم بتفعيله. ثم عطّل الإضافة وأعد تفعيلها، أو أعد تشغيل المتصفح حتى تعمل السكربتات.
+③ في صفحة تفاصيل إضافة ScriptCat، ابحث عن خيار `Allow user scripts` وقم بتفعيله. ثم عطّل الإضافة وأعد تفعيلها، أو أعد تشغيل المتصفح حتى تعمل السكرپتات.
 
 > ⚠️⚠️⚠️ بالنسبة للإصدارات الأقدم من Edge (\<=143) أو المستخدمين الذين لا يملكون هذا الخيار، يرجى الرجوع إلى [تفعيل وضع المطور](#enable-developer-mode)
 
@@ -65,7 +65,7 @@ import GithubStar from '@site/src/components/GithubStar';
 
 ![scriptcat-extension-details](open-dev.assets/scriptcat-extension-details.webp)
 
-③ في صفحة تفاصيل إضافة ScriptCat، ابحث عن خيار `Allow user scripts` وقم بتفعيله. ثم عطّل الإضافة وأعد تفعيلها، أو أعد تشغيل المتصفح حتى تعمل السكربتات.
+③ في صفحة تفاصيل إضافة ScriptCat، ابحث عن خيار `Allow user scripts` وقم بتفعيله. ثم عطّل الإضافة وأعد تفعيلها، أو أعد تشغيل المتصفح حتى تعمل السكرپتات.
 
 ![allow-user-scripts-toggle](open-dev.assets/allow-user-scripts-toggle.webp)
 </TabItem>
@@ -77,7 +77,7 @@ import GithubStar from '@site/src/components/GithubStar';
 
 ② في نافذة إعدادات الإضافة، فعّل `Allow user scripts`
 
-③ عطّل الإضافة وأعد تفعيلها، أو أعد تشغيل المتصفح حتى تعمل السكربتات.
+③ عطّل الإضافة وأعد تفعيلها، أو أعد تشغيل المتصفح حتى تعمل السكرپتات.
 
 > ⚠️⚠️⚠️ بالنسبة لإصدارات محرك المتصفح الأقل من 138، أو المستخدمين الذين لا يملكون هذا الخيار، يرجى الرجوع إلى [تفعيل وضع المطور](#enable-developer-mode)
 
@@ -99,7 +99,7 @@ import GithubStar from '@site/src/components/GithubStar';
 
 ![edge-open-dev](./open-dev.assets/edge-developer-mode-toggle.webp)
 
-③ بعد تفعيل وضع المطور، عطّل الإضافة ثم أعد تفعيلها، أو أعد تشغيل المتصفح حتى تعمل السكربتات.
+③ بعد تفعيل وضع المطور، عطّل الإضافة ثم أعد تفعيلها، أو أعد تشغيل المتصفح حتى تعمل السكرپتات.
 
   </TabItem>
   <TabItem value="chrome" label={<div className="flex items-center gap-1"><Icon height={16} width={16} icon="logos:chrome" /><span>Chrome</span></div>}>
@@ -112,7 +112,7 @@ import GithubStar from '@site/src/components/GithubStar';
 
 ![chrome-open-dev](./open-dev.assets/chrome-developer-mode-toggle.webp)
 
-③ بعد تفعيل وضع المطور، عطّل الإضافة ثم أعد تفعيلها، أو أعد تشغيل المتصفح حتى تعمل السكربتات.
+③ بعد تفعيل وضع المطور، عطّل الإضافة ثم أعد تفعيلها، أو أعد تشغيل المتصفح حتى تعمل السكرپتات.
 
   </TabItem>
 
@@ -134,7 +134,7 @@ import GithubStar from '@site/src/components/GithubStar';
 <details>
 <summary>خلفية تقنية: Manifest V3</summary>
 
-بسبب قيود المتصفحات، تُجبر الإضافات على الترقية إلى Manifest V3، وستتوقف إضافات Manifest V2 تماماً بعد يونيو 2025. في ظل قيود Manifest V3، يجب عليك تفعيل وضع المطور أو ميزة سكربتات المستخدم لاستخدام إضافة ScriptCat بشكل طبيعي.
+بسبب قيود المتصفحات، تُجبر الإضافات على الترقية إلى Manifest V3، وستتوقف إضافات Manifest V2 تماماً بعد يونيو 2025. في ظل قيود Manifest V3، يجب عليك تفعيل وضع المطور أو ميزة سكرپتات المستخدم لاستخدام إضافة ScriptCat بشكل طبيعي.
 
 المراجع: [وضع المطور لمستخدمي الإضافات](https://developer.chrome.com/docs/extensions/reference/api/userScripts?hl=en#developer_mode_for_extension_users)، [Manifest V3](https://developer.chrome.com/docs/extensions/develop/migrate/what-is-mv3?hl=en)
 

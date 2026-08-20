@@ -4,7 +4,7 @@ title: واجهة برمجة ملفات OPFS
 
 `@grant CAT.agent.opfs`
 
-تتيح واجهة برمجة ملفات OPFS (Origin Private File System) للسكربت قراءة وكتابة الملفات في مساحة عمل Agent. جميع المسارات نسبية إلى دليل `agents/workspace/`.
+تتيح واجهة برمجة ملفات OPFS (Origin Private File System) للسكرپت قراءة وكتابة الملفات في مساحة عمل Agent. جميع المسارات نسبية إلى دليل `agents/workspace/`.
 
 ## write — كتابة ملف
 

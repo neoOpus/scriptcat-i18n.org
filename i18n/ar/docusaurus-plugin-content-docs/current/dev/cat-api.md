@@ -14,7 +14,7 @@ title: وثائق CatApi
 
 > تم إهماله منذ الإصدار المستقر 0.9.1؛ قد يعود في إصدار تجريبي في المستقبل.
 
-يضبط وكيل (Proxy). لاحظ أن هذه الميزة قد تتعارض مع إضافات مثل Proxy SwitchyOmega. يمكن لعدة سكربتات استخدام وكيل دون تعارض (مثلاً، سكربت يوفر الوصول إلى Google وآخر يوفر الوصول إلى Twitter).
+يضبط وكيل (Proxy). لاحظ أن هذه الميزة قد تتعارض مع إضافات مثل Proxy SwitchyOmega. يمكن لعدة سكرپتات استخدام وكيل دون تعارض (مثلاً، سكرپت يوفر الوصول إلى Google وآخر يوفر الوصول إلى Twitter).
 
 يرجى أولاً قراءة [PAC](https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy_servers_and_tunneling/Proxy_Auto-Configuration_PAC_file) و[قيود Chromium على عناوين URL الكاملة في PAC](https://github.com/FelisCatus/SwitchyOmega/wiki/Chromium-Full-URL-Restriction).
 
@@ -59,7 +59,7 @@ declare function CAT_click(x: number, y: number): void;
 
 ### CAT_userConfig
 
-يمكنك استدعاء هذه الواجهة لفتح صفحة [UserConfig](./config.md) الخاصة بالسكربت.
+يمكنك استدعاء هذه الواجهة لفتح صفحة [UserConfig](./config.md) الخاصة بالسكرپت.
 
 ```ts
 declare function CAT_userConfig(): void;
@@ -124,7 +124,7 @@ declare function CAT_fileStorage(action: "config"): void;
 
 ### CAT_scriptLoaded
 
-عند استخدام `early-start`، يمكنك استخدام هذه الدالة لتحديد ما إذا كان السكربت قد تم تحميله بالكامل.
+عند استخدام `early-start`، يمكنك استخدام هذه الدالة لتحديد ما إذا كان السكرپت قد تم تحميله بالكامل.
 
 ```js
 function CAT_scriptLoaded(): Promise<void>;
