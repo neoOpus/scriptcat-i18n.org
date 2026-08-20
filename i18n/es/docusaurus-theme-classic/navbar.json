@@ -1,0 +1,18 @@
+{
+  "item.label.使用文档": {
+    "message": "Guía del usuario",
+    "description": "The label for the user guide navbar item"
+  },
+  "item.label.开发文档": {
+    "message": "Guía del desarrollador",
+    "description": "The label for the developer guide navbar item"
+  },
+  "item.label.更新日志": {
+    "message": "Registro de cambios",
+    "description": "The label for the changelog navbar item"
+  },
+  "item.label.脚本开发指南": {
+    "message": "Guía de desarrollo de scripts",
+    "description": "The label for the script development guide navbar item"
+  }
+}

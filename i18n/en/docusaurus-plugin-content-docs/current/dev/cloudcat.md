@@ -1,42 +1,41 @@
 ---
-id: cloudcat
+title: Cloud Execution
 ---
 
-# Cloud Execution
+> Several ways to run in the cloud are provided; see [Running Environments](#running-environments) for details. In addition, [CloudCat](https://github.com/scriptscat/cloudcat) is a service for running background scripts in the cloud — a FAAS platform that is still under development.
 
-> Provides multiple cloud execution methods. For details, see [Runtime Environment](#runtime-environment). Additionally, [CloudCat](https://github.com/scriptscat/cloudcat) is a service for cloud execution of background scripts, a FAAS platform currently under development.
+⚠ Please note ⚠, once uploaded to the cloud, the meaning of `once` in a scheduled-script expression changes: the time before `once` is replaced with its minimum value when running.
 
-⚠️ Please note ⚠️: After uploading to the cloud, the `once` semantic in scheduled script expressions will change, replacing the time before `once` with the minimum value for execution.
+For example:
 
-Examples:
+* `* * once * *` => `0 0 * * *`: runs once per day, becomes running at 00:00 every day
+* `* 1-23 once * *` => `0 1 * * *`: runs once between 1:00 and 23:00 every day, becomes running at 01:00 every day
+* `* 1,3,5 once * *` => `0 1 * * *`: runs once at 1:00, 3:00, or 5:00 every day, becomes running at 01:00 every day
+* `* */4 once * *` => `0 0 * * *`: runs once every 4 hours every day, becomes running at 00:00 every day
+* `* 1-23/4 once * *` => `0 1 * * *`: runs once every 4 hours between 1:00 and 23:00 every day, becomes running at 01:00 every day
+* `* 10 once * *` => `0 10 * * *`: runs once at 10:00 every day, becomes running at minute 00 of hour 10 every day
+* `* * * once *` => `0 0 1 * *`: runs once per month, becomes running at 00:00 on the 1st of every month
 
-* `* * once * *` => `0 0 * * *` Run once daily → Run at 00:00 daily
-* `* 1-23 once * *` => `0 1 * * *` Run once between 1-23 hours daily → Run at 01:00 daily
-* `* 1,3,5 once * *` => `0 1 * * *` Run once at 1, 3, or 5 o'clock daily → Run at 01:00 daily
-* `* */4 once * *` => `0 0 * * *` Run once every 4 hours daily → Run at 00:00 daily
-* `* 1-23/4 once * *` => `0 1 * * *` Run once every 4 hours between 1-23 hours daily → Run at 01:00 daily
-* `* 10 once * *` => `0 10 * * *` Run once at 10 o'clock daily → Run at 10:00 daily
-* `* * * once *` => `0 0 1 * *` Run once monthly → Run at 00:00 on the 1st of each month
+## Additional CloudCat Description Values
 
-## CloudCat Additional Metadata
-
-Reference script: [Bilibili Auto Check-in](https://scriptcat.org/script-show-page/48)
+A reference script: [Bilibili Auto Check-in](https://scriptcat.org/script-show-page/48)
 
 ### cloudCat
 
-Declares that this script can run using `CloudCat` method. When a script has this option, a cloud execution button will appear in the script list. Clicking it allows you to select the execution method. For execution methods, see [Runtime Environment](#runtime-environment).
+Declaring this attribute allows the script to run via `CloudCat`. Once a script has this option, a cloud-execution button appears in the script list; clicking it lets you choose an execution method — see [Running Environments](#running-environments).
 
-![CloudCat Button](./cloudcat.assets/image-20220203225847694.png)
+![image-20220203225847694](@site/docs/dev/cloudcat.assets/image-20220203225847694.png)
 
 ### cloudServer
 
-> Related to cloudcat, not yet implemented
+> Related to cloudCat, not yet implemented
 
-Default CloudCat server address
+The default cloudCat server address
+
 
 ### exportValue
 
-Describes values to export to the cloud. Multiple descriptions can exist.
+Describes the Values to export to the cloud; multiple declarations are allowed.
 
 ```ts
 // @exportValue key1,key2,key3
@@ -45,254 +44,48 @@ Describes values to export to the cloud. Multiple descriptions can exist.
 
 ### exportCookie
 
-Describes cookies to export to the cloud. Multiple descriptions can exist. Parameters use `GM_cookie`'s `CookieDetails` format, for example:
+Describes the cookies to export to the cloud; multiple declarations are allowed. Parameters are described using `GM_cookie`'s `CookieDetails`, for example:
 
-```js
-// @exportCookie domain=.example.com,name=sessionId
-// @exportCookie domain=.api.example.com,name=authToken
-// @exportCookie url=https://example.com,name=userPrefs
+```ts
+// The following exports the cookie named cookie1 from https://docs.scriptcat.org/docs/use/
+// @exportCookie url=https://docs.scriptcat.org/docs/use;name=cookie1
+
+// This exports all cookies for the scriptcat.org domain
+// @exportCookie domain=scriptcat.org
+
+// All available parameters:
+// @exportCookie domain=scriptcat.org;url=https://docs.scriptcat.org/docs/use;name=cookie1;path=/docs/use;secure=true;session=true
 ```
 
-## Runtime Environment
+## API Support Changes
+> Currently only the following APIs are supported; unless otherwise noted, they behave the same as the original API.
 
-CloudCat supports multiple runtime environments for different use cases:
+### GM_xmlhttpRequest
 
-### 1. GitHub Actions
 
-Execute scripts using GitHub Actions infrastructure.
+### GM_notification
 
-**Advantages:**
-- Free tier available
-- Reliable infrastructure
-- Good for scheduled tasks
-- Version control integration
 
-**Limitations:**
-- Execution time limits
-- Limited to public repositories (for free tier)
-- Cold start delays
+### GM_log
 
-**Setup:**
-1. Create a GitHub repository
-2. Configure GitHub Actions workflow
-3. Upload script with CloudCat metadata
-4. Configure secrets for sensitive data
+### GM_getValue
 
-### 2. Serverless Functions
+Currently only supports getting Values exported via `@exportValue`; set/delete/list and other methods are not supported.
 
-Execute scripts on serverless platforms (AWS Lambda, Vercel, etc.).
+## Running Environments
 
-**Advantages:**
-- Pay-per-execution
-- Automatic scaling
-- No server management
-- Fast cold starts
+### Local
 
-**Limitations:**
-- Platform-specific limitations
-- Timeout restrictions
-- Memory constraints
+Exports a zip package; after extracting it into a folder, run the following commands to execute it locally (requires a local Node.js environment):
 
-### 3. CloudCat Service
-
-Use the dedicated CloudCat FAAS platform (under development).
-
-**Advantages:**
-- Optimized for userscripts
-- Built-in GM API support
-- Easy deployment
-- Script-specific features
-
-**Limitations:**
-- Still in development
-- Limited availability
-
-## Cloud Script Example
-
-```js
-// ==UserScript==
-// @name         Cloud Auto Check-in
-// @namespace    https://scriptcat.org/
-// @version      1.0.0
-// @description  Automatically check in to various services
-// @author       You
-// @crontab      0 9 * * *
-// @cloudCat
-// @exportValue  username,password
-// @exportCookie domain=.example.com,name=sessionId
-// @exportCookie domain=.api.example.com,name=authToken
-// @grant        GM_setValue
-// @grant        GM_getValue
-// @grant        GM_xmlhttpRequest
-// @grant        GM_cookie
-// @grant        GM_notification
-// ==/UserScript==
-
-(function() {
-    'use strict';
-    
-    async function performCheckin() {
-        try {
-            // Get exported values
-            const username = GM_getValue('username');
-            const password = GM_getValue('password');
-            
-            if (!username || !password) {
-                console.error('Missing credentials');
-                return;
-            }
-            
-            // Perform check-in request
-            const response = await GM.xmlHttpRequest({
-                method: 'POST',
-                url: 'https://api.example.com/checkin',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                data: JSON.stringify({
-                    username: username,
-                    password: password
-                })
-            });
-            
-            if (response.status === 200) {
-                const result = JSON.parse(response.responseText);
-                console.log('Check-in successful:', result);
-                
-                // Send notification
-                GM_notification({
-                    title: 'Check-in Successful',
-                    text: `Earned ${result.points} points`,
-                    timeout: 5000
-                });
-            } else {
-                throw new Error(`Check-in failed: ${response.status}`);
-            }
-            
-        } catch (error) {
-            console.error('Check-in error:', error);
-            
-            GM_notification({
-                title: 'Check-in Failed',
-                text: error.message,
-                timeout: 5000
-            });
-        }
-    }
-    
-    // Execute check-in
-    performCheckin();
-})();
+```bash
+npm i
+node index.js
 ```
 
-## Data Export and Import
 
-### Exporting Values
+### Tencent Cloud
 
-Use `@exportValue` to specify which stored values should be available in the cloud:
+First create a Tencent Cloud key at [**Access Keys**](https://console.cloud.tencent.com/cam/capi) — if using a sub-account, make sure to grant it Cloud Function permissions. Then enable the service at [**Function Service**](https://console.cloud.tencent.com/scf/list), which comes with a certain amount of free usage each month. The region defaults to Shanghai; adjust it if needed. After clicking upload, a scheduled trigger is automatically created based on `@crontab` to run the function on schedule.
 
-```js
-// @exportValue apiKey,refreshToken,userSettings
-```
-
-These values will be automatically synchronized from your local ScriptCat to the cloud environment.
-
-### Exporting Cookies
-
-Use `@exportCookie` to specify which cookies should be available in the cloud:
-
-```js
-// @exportCookie domain=.example.com,name=sessionId
-// @exportCookie url=https://api.example.com,name=authToken
-```
-
-Cookie export supports the same parameters as `GM_cookie`:
-- `domain` - Cookie domain
-- `name` - Cookie name
-- `url` - Specific URL
-- `path` - Cookie path
-
-### Security Considerations
-
-**Data Encryption:**
-- All exported data is encrypted before transmission
-- Use strong encryption keys
-- Regularly rotate sensitive credentials
-
-**Access Control:**
-- Limit cloud execution permissions
-- Use environment-specific credentials
-- Monitor execution logs
-
-**Best Practices:**
-- Don't export unnecessary sensitive data
-- Use token-based authentication when possible
-- Implement proper error handling
-- Log security events
-
-## Deployment Workflow
-
-### 1. Local Development
-- Develop and test script locally
-- Add CloudCat metadata
-- Configure export values and cookies
-
-### 2. Cloud Configuration
-- Set up cloud runtime environment
-- Configure environment variables
-- Set up monitoring and logging
-
-### 3. Deployment
-- Upload script to cloud platform
-- Verify exported data synchronization
-- Test cloud execution
-
-### 4. Monitoring
-- Monitor execution logs
-- Set up alerts for failures
-- Track performance metrics
-
-## Troubleshooting
-
-### Common Issues
-
-1. **Export Data Not Available**
-   - Verify `@exportValue` and `@exportCookie` declarations
-   - Check data synchronization status
-   - Ensure proper permissions
-
-2. **Execution Failures**
-   - Check cloud platform logs
-   - Verify network connectivity
-   - Review timeout settings
-
-3. **Authentication Errors**
-   - Verify exported cookies are valid
-   - Check token expiration
-   - Update credentials if needed
-
-### Debugging
-
-- Use console logging for cloud execution
-- Monitor network requests
-- Check cloud platform metrics
-- Review error notifications
-
-### Performance Optimization
-
-- Minimize exported data size
-- Use efficient API calls
-- Implement proper caching
-- Optimize execution time
-
-## Future Developments
-
-The CloudCat platform is actively being developed with planned features:
-
-- **Enhanced Runtime Support** - More cloud platforms
-- **Better Debugging Tools** - Cloud-specific debugging
-- **Improved Security** - Advanced encryption and access control
-- **Performance Monitoring** - Detailed execution analytics
-- **Cost Optimization** - Intelligent resource management
-
-For the latest updates and documentation, visit the [CloudCat GitHub repository](https://github.com/scriptscat/cloudcat).
+![image-20220203224956248](@site/docs/dev/cloudcat.assets/image-20220203224956248.png)

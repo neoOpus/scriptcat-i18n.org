@@ -1,339 +1,330 @@
 ---
-id: agent-dom
-sidebar_position: 3
+title: DOM Manipulation API
 ---
-
-# DOM 操作 API
 
 `@grant CAT.agent.dom`
 
-DOM 操作 API 提供完整的浏览器页面自动化能力，包括导航、内容读取、截图、表单交互和 DOM 监控。
+The DOM manipulation API provides complete browser page automation: navigation, content reading, screenshots, form interaction, and DOM monitoring.
 
-## 标签页管理
+## Tab management
 
-### listTabs — 列出标签页
+### listTabs — list tabs
 
 ```javascript
 const tabs = await CAT.agent.dom.listTabs();
 ```
 
-返回所有打开的标签页信息。
+Returns information about every open tab.
 
-**返回值 TabInfo[]：**
+**Returns `TabInfo[]`:**
 
-| 字段 | 类型 | 说明 |
+| Field | Type | Description |
 |------|------|------|
-| `tabId` | `number` | 标签页 ID |
-| `url` | `string` | 当前 URL |
-| `title` | `string` | 页面标题 |
-| `active` | `boolean` | 是否为当前激活标签页 |
-| `windowId` | `number` | 所在窗口 ID |
-| `discarded` | `boolean` | 是否已被丢弃（休眠） |
+| `tabId` | `number` | Tab ID |
+| `url` | `string` | Current URL |
+| `title` | `string` | Page title |
+| `active` | `boolean` | Whether this is the currently active tab |
+| `windowId` | `number` | ID of the window it belongs to |
+| `discarded` | `boolean` | Whether it has been discarded (suspended) |
 
-## 导航
+## Navigation
 
-### navigate — 页面导航
+### navigate — navigate a page
 
 ```javascript
 const result = await CAT.agent.dom.navigate(url, options?);
 ```
 
-**参数：**
+**Parameters:**
 
-| 参数 | 类型 | 默认值 | 说明 |
+| Parameter | Type | Default | Description |
 |------|------|--------|------|
-| `url` | `string` | — | 目标 URL（必填） |
-| `options.tabId` | `number` | 当前激活标签 | 指定标签页 |
-| `options.waitUntil` | `boolean` | `true` | 是否等待页面加载完成 |
-| `options.timeout` | `number` | `30000` | 超时毫秒数 |
+| `url` | `string` | — | Target URL (required) |
+| `options.tabId` | `number` | current active tab | Which tab to use |
+| `options.waitUntil` | `boolean` | `true` | Whether to wait for the page to finish loading |
+| `options.timeout` | `number` | `30000` | Timeout in milliseconds |
 
-**返回值 NavigateResult：**
+**Returns `NavigateResult`:**
 
 ```typescript
 { tabId: number; url: string; title: string }
 ```
 
-## 内容读取
+## Reading content
 
-### readPage — 读取页面内容
+### readPage — read page content
 
 ```javascript
 const page = await CAT.agent.dom.readPage(options?);
 ```
 
-将页面 DOM 转换为结构化文本返回，自动移除 `<script>`、`<style>`、`<noscript>`、`<svg>`、`<link[rel=stylesheet]>` 等无关元素。
+Converts the page DOM into structured text, automatically removing irrelevant elements like `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<link[rel=stylesheet]>`.
 
-**参数：**
+**Parameters:**
 
-| 参数 | 类型 | 默认值 | 说明 |
+| Parameter | Type | Default | Description |
 |------|------|--------|------|
-| `options.tabId` | `number` | 当前激活标签 | 指定标签页 |
-| `options.selector` | `string` | — | CSS 选择器，只返回匹配元素的内容 |
-| `options.maxLength` | `number` | — | 内容最大字符数，超出截断 |
-| `options.removeTags` | `string[]` | — | 额外需要移除的标签名 |
+| `options.tabId` | `number` | current active tab | Which tab to use |
+| `options.selector` | `string` | — | CSS selector; only the matched element's content is returned |
+| `options.maxLength` | `number` | — | Max content characters; truncated beyond this |
+| `options.removeTags` | `string[]` | — | Additional tag names to remove |
 
-**返回值 PageContent：**
+**Returns `PageContent`:**
 
-| 字段 | 类型 | 说明 |
+| Field | Type | Description |
 |------|------|------|
-| `title` | `string` | 页面标题 |
-| `url` | `string` | 页面 URL |
-| `html` | `string` | 处理后的页面文本内容 |
-| `truncated` | `boolean` | 是否被截断 |
-| `totalLength` | `number` | 原始内容总长度 |
+| `title` | `string` | Page title |
+| `url` | `string` | Page URL |
+| `html` | `string` | Processed page text content |
+| `truncated` | `boolean` | Whether the content was truncated |
+| `totalLength` | `number` | Total length of the original content |
 
-### screenshot — 截图
+### screenshot — take a screenshot
 
 ```javascript
 const shot = await CAT.agent.dom.screenshot(options?);
 ```
 
-**参数：**
+**Parameters:**
 
-| 参数 | 类型 | 默认值 | 说明 |
+| Parameter | Type | Default | Description |
 |------|------|--------|------|
-| `options.tabId` | `number` | 当前激活标签 | 指定标签页 |
-| `options.quality` | `number` | `80` | JPEG 质量（0-100） |
-| `options.fullPage` | `boolean` | `false` | 全页截图 |
-| `options.selector` | `string` | — | CSS 选择器，只截取匹配元素区域 |
-| `options.saveTo` | `string` | — | 保存到 OPFS 工作区的路径 |
+| `options.tabId` | `number` | current active tab | Which tab to use |
+| `options.quality` | `number` | `80` | JPEG quality (0-100) |
+| `options.fullPage` | `boolean` | `false` | Capture the full page |
+| `options.selector` | `string` | — | CSS selector; only capture the matched element's area |
+| `options.saveTo` | `string` | — | Path to save to in the OPFS workspace |
 
-**返回值 ScreenshotResult：**
+**Returns `ScreenshotResult`:**
 
-| 字段 | 类型 | 说明 |
+| Field | Type | Description |
 |------|------|------|
 | `dataUrl` | `string` | base64 data URL |
-| `path` | `string` | OPFS 保存路径（使用 `saveTo` 时） |
-| `size` | `number` | 文件大小（使用 `saveTo` 时） |
+| `path` | `string` | OPFS save path (when `saveTo` is used) |
+| `size` | `number` | File size (when `saveTo` is used) |
 
-**截图模式选择：**
+**How the capture mode is chosen:**
 
-| 场景 | 行为 |
+| Scenario | Behavior |
 |------|------|
-| 使用 `selector` | 通过 CDP 定位元素边界并裁剪截图 |
-| 后台标签页 | 尝试 CDP 截图，失败则激活标签后使用 `captureVisibleTab` |
-| 前台标签页 | 直接使用 `captureVisibleTab` |
+| `selector` given | Locates the element's bounds via CDP and crops the screenshot |
+| Background tab | Tries a CDP screenshot; if that fails, activates the tab and uses `captureVisibleTab` |
+| Foreground tab | Uses `captureVisibleTab` directly |
 
 ```javascript
-// 保存截图到 OPFS
+// Save a screenshot to OPFS
 const shot = await CAT.agent.dom.screenshot({
   saveTo: "screenshots/page.png",
   quality: 90
 });
-console.log(`已保存到 ${shot.path}，大小 ${shot.size} 字节`);
+console.log(`Saved to ${shot.path}, size ${shot.size} bytes`);
 ```
 
-## 页面交互
+## Page interaction
 
-### click — 点击元素
+### click — click an element
 
 ```javascript
 const result = await CAT.agent.dom.click(selector, options?);
 ```
 
-**参数：**
+**Parameters:**
 
-| 参数 | 类型 | 默认值 | 说明 |
+| Parameter | Type | Default | Description |
 |------|------|--------|------|
-| `selector` | `string` | — | CSS 选择器（必填） |
-| `options.tabId` | `number` | 当前激活标签 | 指定标签页 |
-| `options.trusted` | `boolean` | `false` | 使用 CDP 触发真实鼠标事件 |
+| `selector` | `string` | — | CSS selector (required) |
+| `options.tabId` | `number` | current active tab | Which tab to use |
+| `options.trusted` | `boolean` | `false` | Use CDP to dispatch a real mouse event |
 
-**返回值 ActionResult：**
+**Returns `ActionResult`:**
 
-| 字段 | 类型 | 说明 |
+| Field | Type | Description |
 |------|------|------|
-| `success` | `boolean` | 是否成功 |
-| `navigated` | `boolean` | 点击后是否发生了页面跳转 |
-| `url` | `string` | 跳转后的新 URL |
-| `newTab` | `boolean` | 是否打开了新标签页 |
+| `success` | `boolean` | Whether it succeeded |
+| `navigated` | `boolean` | Whether the click triggered a page navigation |
+| `url` | `string` | The new URL after navigation |
+| `newTab` | `boolean` | Whether a new tab was opened |
 
-**trusted vs 普通点击：**
+**`trusted` vs. a plain click:**
 
-- `trusted: false`（默认）— 通过注入 JS 模拟 `element.click()`，速度快但部分网站可能检测到非真实事件
-- `trusted: true` — 通过 Chrome DevTools Protocol 发送真实鼠标事件，行为与用户操作一致，但需要 debugger 权限
+- `trusted: false` (default) — simulates `element.click()` via injected JS; fast, but some sites may detect it as a non-genuine event
+- `trusted: true` — sends a real mouse event via the Chrome DevTools Protocol, indistinguishable from actual user interaction, but requires debugger permission
 
-### fill — 填充表单
+### fill — fill a form field
 
 ```javascript
 const result = await CAT.agent.dom.fill(selector, value, options?);
 ```
 
-**参数：**
+**Parameters:**
 
-| 参数 | 类型 | 说明 |
+| Parameter | Type | Description |
 |------|------|------|
-| `selector` | `string` | CSS 选择器（必填） |
-| `value` | `string` | 要填入的值（必填） |
-| `options.tabId` | `number` | 指定标签页 |
-| `options.trusted` | `boolean` | 使用 CDP 模拟键盘输入 |
+| `selector` | `string` | CSS selector (required) |
+| `value` | `string` | Value to fill in (required) |
+| `options.tabId` | `number` | Which tab to use |
+| `options.trusted` | `boolean` | Use CDP to simulate keyboard input |
 
-**行为：**
-- 普通模式：设置 `element.value` 并派发 `input` 事件
-- trusted 模式：CDP 聚焦元素 → 逐字符输入
+**Behavior:**
+- Normal mode: sets `element.value` and dispatches an `input` event
+- Trusted mode: CDP focuses the element → types character by character
 
-### scroll — 滚动页面
+### scroll — scroll the page
 
 ```javascript
 const result = await CAT.agent.dom.scroll(direction, options?);
 ```
 
-**参数：**
+**Parameters:**
 
-| 参数 | 类型 | 说明 |
+| Parameter | Type | Description |
 |------|------|------|
-| `direction` | `"up" \| "down" \| "top" \| "bottom"` | 滚动方向（必填） |
-| `options.tabId` | `number` | 指定标签页 |
-| `options.selector` | `string` | 滚动指定容器而非整个页面 |
+| `direction` | `"up" \| "down" \| "top" \| "bottom"` | Scroll direction (required) |
+| `options.tabId` | `number` | Which tab to use |
+| `options.selector` | `string` | Scroll a specific container instead of the whole page |
 
-**返回值 ScrollResult：**
+**Returns `ScrollResult`:**
 
-| 字段 | 类型 | 说明 |
+| Field | Type | Description |
 |------|------|------|
-| `scrollTop` | `number` | 滚动后的位置 |
-| `scrollHeight` | `number` | 内容总高度 |
-| `clientHeight` | `number` | 可视区域高度 |
-| `atBottom` | `boolean` | 是否已滚动到底部 |
+| `scrollTop` | `number` | Scroll position after scrolling |
+| `scrollHeight` | `number` | Total content height |
+| `clientHeight` | `number` | Viewport height |
+| `atBottom` | `boolean` | Whether it's now scrolled to the bottom |
 
-### waitFor — 等待元素
+### waitFor — wait for an element
 
 ```javascript
 const result = await CAT.agent.dom.waitFor(selector, options?);
 ```
 
-轮询等待指定元素出现在页面中（每 500ms 检查一次）。
+Polls for the specified element to appear on the page (checking every 500ms).
 
-**参数：**
+**Parameters:**
 
-| 参数 | 类型 | 默认值 | 说明 |
+| Parameter | Type | Default | Description |
 |------|------|--------|------|
-| `selector` | `string` | — | CSS 选择器（必填） |
-| `options.tabId` | `number` | 当前激活标签 | 指定标签页 |
-| `options.timeout` | `number` | `10000` | 超时毫秒数 |
+| `selector` | `string` | — | CSS selector (required) |
+| `options.tabId` | `number` | current active tab | Which tab to use |
+| `options.timeout` | `number` | `10000` | Timeout in milliseconds |
 
-**返回值 WaitForResult：**
+**Returns `WaitForResult`:**
 
-| 字段 | 类型 | 说明 |
+| Field | Type | Description |
 |------|------|------|
-| `found` | `boolean` | 是否找到元素 |
-| `element` | `object` | 元素信息（仅 found=true 时） |
-| `element.selector` | `string` | 匹配的选择器 |
-| `element.tag` | `string` | 标签名 |
-| `element.text` | `string` | 文本内容 |
+| `found` | `boolean` | Whether the element was found |
+| `element` | `object` | Element info (only when `found=true`) |
+| `element.selector` | `string` | The matched selector |
+| `element.tag` | `string` | Tag name |
+| `element.text` | `string` | Text content |
 | `element.role` | `string` | ARIA role |
 | `element.type` | `string` | input type |
-| `element.visible` | `boolean` | 是否可见 |
+| `element.visible` | `boolean` | Whether it's visible |
 
-## 脚本执行
+## Script execution
 
-### executeScript — 执行 JavaScript
+### executeScript — run JavaScript
 
 ```javascript
 const result = await CAT.agent.dom.executeScript(code, options?);
 ```
 
-**参数：**
+**Parameters:**
 
-| 参数 | 类型 | 默认值 | 说明 |
+| Parameter | Type | Default | Description |
 |------|------|--------|------|
-| `code` | `string` | — | JavaScript 代码（必填） |
-| `options.tabId` | `number` | 当前激活标签 | 指定标签页 |
-| `options.world` | `"MAIN" \| "ISOLATED"` | `"ISOLATED"` | 执行环境 |
+| `code` | `string` | — | JavaScript code (required) |
+| `options.tabId` | `number` | current active tab | Which tab to use |
 
-**两种执行环境：**
-
-| 环境 | 说明 | 适用场景 |
-|------|------|---------|
-| **ISOLATED** | 扩展隔离环境，与页面 JS 隔离 | DOM 操作、读取内容、使用扩展 blob URL |
-| **MAIN** | 页面原始环境，共享 `window` 对象 | 调用页面 JS 函数、读取页面变量 |
+> The code always runs in the page's **MAIN world** (sharing the same `window` object as the page's own JS), so it can call the page's own functions and read page variables directly — but for the same reason it **cannot access the extension's blob URLs** (e.g. a `blob:` URL you create via `URL.createObjectURL()` from the `Blob` returned by `CAT.agent.opfs.read` in `"blob"` mode), since blob URLs are scoped to the extension's own origin. If you need to work with a blob URL in an isolated context, use a SkillScript instead (see [Skill Development](../skill-dev)).
 
 ```javascript
-// ISOLATED — 安全地读取 DOM
-const title = await CAT.agent.dom.executeScript(
-  "return document.querySelector('h1')?.textContent",
-  { world: "ISOLATED" }
+// Call a page's own JS function / read a page variable
+const data = await CAT.agent.dom.executeScript(
+  "return window.__APP_STATE__"
 );
 
-// MAIN — 调用页面上的 JS 函数
-const data = await CAT.agent.dom.executeScript(
-  "return window.__APP_STATE__",
-  { world: "MAIN" }
+// Read DOM content
+const title = await CAT.agent.dom.executeScript(
+  "return document.querySelector('h1')?.textContent"
 );
 ```
 
-> 代码会被包装为 `new Function()` 执行，支持 `return` 返回值。超时时间为 30 秒。
+> The code is wrapped in `new Function()` for execution, and supports a `return` value. The timeout is 30 seconds.
 
-## DOM 监控
+## DOM monitoring
 
-通过 Chrome DevTools Protocol 监控页面 DOM 变化和弹窗事件。
+Uses the Chrome DevTools Protocol to monitor DOM changes and dialog events on a page.
 
-### startMonitor — 开始监控
+### startMonitor — start monitoring
 
 ```javascript
 await CAT.agent.dom.startMonitor(tabId);
 ```
 
-开始监控指定标签页的 DOM 变化和弹窗（alert/confirm/prompt）。
+Starts monitoring the specified tab for DOM changes and dialogs (alert/confirm/prompt).
 
-### stopMonitor — 停止监控
+### stopMonitor — stop monitoring
 
 ```javascript
 const result = await CAT.agent.dom.stopMonitor(tabId);
 ```
 
-停止监控并返回收集到的变化。
+Stops monitoring and returns the changes collected.
 
-**返回值 MonitorResult：**
+**Returns `MonitorResult`:**
 
-| 字段 | 类型 | 说明 |
+| Field | Type | Description |
 |------|------|------|
-| `dialogs` | `Array<{ type, message }>` | 弹窗列表 |
-| `addedNodes` | `Array<{ tag, id?, class?, role?, text }>` | 新增的 DOM 节点摘要 |
+| `dialogs` | `Array<{ type, message }>` | List of dialogs |
+| `addedNodes` | `Array<{ tag, id?, class?, role?, text }>` | Summary of newly added DOM nodes |
 
-### peekMonitor — 查看监控状态
+> `addedNodes` is deduplicated by node ID and capped at 50 entries; nodes that have since been removed from the page or aren't visible are skipped automatically. `text` is plain text extracted from the node's `outerHTML`, truncated to 300 characters.
+
+### peekMonitor — check monitor status
 
 ```javascript
 const status = await CAT.agent.dom.peekMonitor(tabId);
 ```
 
-非破坏性地查看当前监控状态。
+Non-destructively checks the current monitoring status.
 
-**返回值 MonitorStatus：**
+**Returns `MonitorStatus`:**
 
-| 字段 | 类型 | 说明 |
+| Field | Type | Description |
 |------|------|------|
-| `hasChanges` | `boolean` | 是否有变化 |
-| `dialogCount` | `number` | 弹窗数量 |
-| `nodeCount` | `number` | 新增节点数量 |
+| `hasChanges` | `boolean` | Whether there are any changes |
+| `dialogCount` | `number` | Number of dialogs |
+| `nodeCount` | `number` | Number of newly added nodes |
 
-## 完整示例
+## Full example
 
 ```javascript
 // ==UserScript==
-// @name        自动表单填写
+// @name        Auto form filler
 // @match       https://example.com/form
 // @grant       CAT.agent.dom
 // ==/UserScript==
 
-// 等待表单加载
+// Wait for the form to load
 await CAT.agent.dom.waitFor("form#signup", { timeout: 5000 });
 
-// 填写表单
+// Fill in the form
 await CAT.agent.dom.fill("input[name=username]", "test_user");
 await CAT.agent.dom.fill("input[name=email]", "test@example.com");
 
-// 勾选协议
+// Check the agreement box
 await CAT.agent.dom.click("input[type=checkbox]#agree");
 
-// 截图保存填写结果
+// Screenshot the filled-in form
 await CAT.agent.dom.screenshot({
   selector: "form#signup",
   saveTo: "screenshots/form-filled.png"
 });
 
-// 点击提交
+// Click submit
 const result = await CAT.agent.dom.click("button[type=submit]", { trusted: true });
 if (result.navigated) {
-  console.log("表单提交成功，跳转到:", result.url);
+  console.log("Form submitted successfully, navigated to:", result.url);
 }
 ```

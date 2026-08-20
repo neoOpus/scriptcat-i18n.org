@@ -1,9 +1,6 @@
 ---
-id: change
-sidebar_position: 1
+title: Changelog
 ---
-
-# Changelog
 
 For Beta version changelog, please see [Beta Changelog](./beta.md)
 

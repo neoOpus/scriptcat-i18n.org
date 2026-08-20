@@ -1,93 +1,91 @@
 ---
-id: agent-opfs
-sidebar_position: 7
+title: OPFS File API
 ---
-
-# OPFS 文件 API
 
 `@grant CAT.agent.opfs`
 
-OPFS（Origin Private File System）文件 API 允许脚本在 Agent 工作区中读写文件。所有路径相对于 `agents/workspace/` 目录。
+The OPFS (Origin Private File System) file API lets a script read and write files in the Agent workspace. All paths are relative to the `agents/workspace/` directory.
 
-## write — 写入文件
+## write — write a file
 
 ```javascript
 const result = await CAT.agent.opfs.write(path, content);
 ```
 
-**参数：**
+**Parameters:**
 
-| 参数 | 类型 | 说明 |
+| Parameter | Type | Description |
 |------|------|------|
-| `path` | `string` | 文件路径（必填），支持多级目录 |
-| `content` | `string \| Blob` | 文件内容 |
+| `path` | `string` | File path (required); supports nested directories |
+| `content` | `string \| Blob` | File content |
 
-**content 支持的格式：**
+**Supported `content` formats:**
 
-| 格式 | 说明 |
+| Format | Description |
 |------|------|
-| 普通字符串 | 保存为 UTF-8 文本文件 |
-| data URL 字符串 | 自动解码为二进制保存（如 `data:image/png;base64,...`） |
-| `Blob` 对象 | 直接保存二进制数据 |
+| Plain string | Saved as a UTF-8 text file |
+| Data URL string | Automatically decoded and saved as binary (e.g. `data:image/png;base64,...`) |
+| `Blob` object | Binary data saved directly |
 
-**返回值 WriteResult：**
+**Returns `WriteResult`:**
 
-| 字段 | 类型 | 说明 |
+| Field | Type | Description |
 |------|------|------|
-| `path` | `string` | 文件保存路径 |
-| `size` | `number` | 文件大小（字节） |
+| `path` | `string` | Path the file was saved to |
+| `size` | `number` | File size (bytes) |
 
 ```javascript
-// 写入文本文件
+// Write a text file
 await CAT.agent.opfs.write("data/config.json", JSON.stringify({ key: "value" }));
 
-// 写入二进制文件（data URL）
+// Write a binary file (data URL)
 const canvas = document.createElement("canvas");
 const dataUrl = canvas.toDataURL("image/png");
 await CAT.agent.opfs.write("images/chart.png", dataUrl);
 ```
 
-> 如果路径中的父目录不存在，会自动创建。如果文件已存在，内容会被覆盖。
+> Parent directories are created automatically if they don't exist. If the file already exists, its content is overwritten.
 
-## read — 读取文件
+## read — read a file
 
 ```javascript
 const result = await CAT.agent.opfs.read(path, format?);
 ```
 
-**参数：**
+**Parameters:**
 
-| 参数 | 类型 | 默认值 | 说明 |
+| Parameter | Type | Default | Description |
 |------|------|--------|------|
-| `path` | `string` | — | 文件路径（必填） |
-| `format` | `"text" \| "bloburl"` | `"text"` | 读取格式 |
+| `path` | `string` | — | File path (required) |
+| `format` | `"text" \| "blob"` | `"text"` | Read format |
 
-**返回值 ReadResult：**
+**Returns `ReadResult`:**
 
-| 字段 | 类型 | 条件 | 说明 |
+| Field | Type | When present | Description |
 |------|------|------|------|
-| `path` | `string` | 始终 | 文件路径 |
-| `size` | `number` | 始终 | 文件大小 |
-| `content` | `string` | format="text" | 文件文本内容 |
-| `blobUrl` | `string` | format="bloburl" | blob URL |
-| `mimeType` | `string` | format="bloburl" | MIME 类型 |
+| `path` | `string` | always | file path |
+| `size` | `number` | always | File size |
+| `content` | `string` | format="text" | File text content |
+| `data` | `Blob` | format="blob" | The file's Blob object (transferred via structured clone) |
+| `mimeType` | `string` | format="blob" | Auto-detected MIME type |
 
-**两种读取模式：**
+**Two read modes:**
 
 ```javascript
-// 文本模式 — 适合 JSON、文本文件
+// Text mode — suited to JSON and text files
 const config = await CAT.agent.opfs.read("data/config.json");
 const data = JSON.parse(config.content);
 
-// Blob URL 模式 — 适合图片、二进制文件
-const image = await CAT.agent.opfs.read("images/chart.png", "bloburl");
-// image.blobUrl = "blob:chrome-extension://xxx/yyy"
-// 可以在 ISOLATED world 的 executeScript 中使用这个 URL
+// Blob mode — suited to images and binary files
+const image = await CAT.agent.opfs.read("images/chart.png", "blob");
+// image.data is a real Blob object (not a scope-restricted blob: URL)
+// Create a local URL with URL.createObjectURL(image.data) in whatever
+// context needs it, or hand the Blob directly to any API that accepts one
 ```
 
-**支持的 MIME 类型自动识别：**
+**Automatic MIME type detection:**
 
-| 扩展名 | MIME 类型 |
+| Extension | MIME type |
 |--------|----------|
 | `.jpg` / `.jpeg` | `image/jpeg` |
 | `.png` | `image/png` |
@@ -103,27 +101,27 @@ const image = await CAT.agent.opfs.read("images/chart.png", "bloburl");
 | `.html` | `text/html` |
 | `.css` | `text/css` |
 | `.js` | `application/javascript` |
-| 其他 | `application/octet-stream` |
+| other | `application/octet-stream` |
 
-## list — 列出目录
+## list — list a directory
 
 ```javascript
 const entries = await CAT.agent.opfs.list(path?);
 ```
 
-**参数：**
+**Parameters:**
 
-| 参数 | 类型 | 默认值 | 说明 |
+| Parameter | Type | Default | Description |
 |------|------|--------|------|
-| `path` | `string` | `""` | 目录路径，空字符串为根目录 |
+| `path` | `string` | `""` | Directory path; an empty string means the root directory |
 
-**返回值 FileEntry[]：**
+**Returns `FileEntry[]`:**
 
-| 字段 | 类型 | 说明 |
+| Field | Type | Description |
 |------|------|------|
-| `name` | `string` | 文件/目录名 |
-| `type` | `"file" \| "directory"` | 类型 |
-| `size` | `number` | 文件大小（仅 file 类型） |
+| `name` | `string` | File/directory name |
+| `type` | `"file" \| "directory"` | Type |
+| `size` | `number` | File size (`file` type only) |
 
 ```javascript
 const entries = await CAT.agent.opfs.list("data/");
@@ -136,72 +134,56 @@ for (const entry of entries) {
 }
 ```
 
-## delete — 删除文件或目录
+## delete — delete a file or directory
 
 ```javascript
 const result = await CAT.agent.opfs.delete(path);
 ```
 
-支持递归删除目录及其所有内容。
+Supports recursively deleting a directory and everything inside it.
 
-**返回值：**
+**Returns:**
 
 ```typescript
 { success: true }
 ```
 
-## readAttachment — 读取附件
+## readAttachment — read an attachment
 
 ```javascript
 const result = await CAT.agent.opfs.readAttachment(attachmentId);
 ```
 
-读取对话中的附件数据（图片、文件等）。附件 ID 来自消息中的 `ContentBlock.attachmentId`。
+Reads attachment data (images, files, etc.) from a conversation. The attachment ID comes from `ContentBlock.attachmentId` in a message.
 
-**参数：**
+**Parameters:**
 
-| 参数 | 类型 | 说明 |
+| Parameter | Type | Description |
 |------|------|------|
-| `attachmentId` | `string` | 附件 ID（必填） |
+| `attachmentId` | `string` | Attachment ID (required) |
 
-**返回值：**
+**Returns:**
 
-| 字段 | 类型 | 说明 |
+| Field | Type | Description |
 |------|------|------|
-| `id` | `string` | 附件 ID |
-| `data` | `Blob` | 附件二进制数据 |
-| `size` | `number` | 文件大小（字节） |
-| `mimeType` | `string` | MIME 类型 |
+| `id` | `string` | Attachment ID |
+| `data` | `Blob` | Attachment binary data |
+| `size` | `number` | File size (bytes) |
+| `mimeType` | `string` | MIME type |
 
 ```javascript
-// 读取对话中 AI 生成的图片附件
+// Read an image attachment the AI generated in a conversation
 const messages = await conv.getMessages();
 const lastMsg = messages[messages.length - 1];
 const imageBlock = lastMsg.content.find(b => b.type === "image");
 if (imageBlock) {
   const attachment = await CAT.agent.opfs.readAttachment(imageBlock.attachmentId);
-  console.log(`附件大小: ${attachment.size}, 类型: ${attachment.mimeType}`);
+  console.log(`Attachment size: ${attachment.size}, type: ${attachment.mimeType}`);
 }
 ```
 
-## Blob URL 使用注意事项
+## Working with Blob data
 
-- Blob URL 格式为 `blob:chrome-extension://xxx/yyy`
-- **只能在 ISOLATED world 中使用**（`executeScript` 的默认环境）
-- 在 MAIN world（页面环境）中无法访问扩展的 blob URL
-- Blob URL 的生命周期与扩展 session 绑定
-
-```javascript
-// 正确：在 ISOLATED world 中使用 blob URL
-const img = await CAT.agent.opfs.read("images/photo.png", "bloburl");
-await CAT.agent.dom.executeScript(`
-  const img = document.createElement("img");
-  img.src = "${img.blobUrl}";
-  document.body.appendChild(img);
-`, { world: "ISOLATED" });
-
-// 错误：MAIN world 无法访问
-await CAT.agent.dom.executeScript(`
-  fetch("${img.blobUrl}") // 会失败！
-`, { world: "MAIN" });
-```
+- `read(path, "blob")` returns a real `Blob` object transferred via [structured clone](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm) — not a `blob:` URL scoped to the extension's origin, so there's no cross-context access restriction to worry about
+- To get a temporary URL usable in a page, call `URL.createObjectURL(result.data)`; call `URL.revokeObjectURL()` when you're done with it
+- You can also pass the `Blob` directly to any Web API that accepts a `Blob`/`File` (e.g. `fetch`'s `body`, `FormData.append`, a `DataTransfer` for `<input type="file">`)

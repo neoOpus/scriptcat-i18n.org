@@ -1,29 +1,27 @@
 ---
-id: cat-api
+title: CatApi Documentation
 ---
 
-# CatApi Documentation
+## Overview
 
-## Description
+APIs specific to this extension are all defined starting with `CAT_`.
 
-APIs unique to this extension are defined with the CAT_ prefix.
-
-You can also view related examples in [example](https://github.com/scriptscat/scriptcat/tree/main/example).
+You can also find related examples in the [example directory](https://github.com/scriptscat/scriptcat/tree/main/example).
 
 ## Definitions
 
 ### CAT_setProxy
 
-> Deprecated in v0.9.1 stable release, may be added to beta versions in the future
+> Deprecated as of the 0.9.1 stable release; may return in a beta version in the future.
 
-Set proxy configuration. Please note that this feature may conflict with extensions like Proxy SwitchyOmega. Multiple scripts can use proxies without conflicts (e.g., one script provides Google access, another provides Twitter access).
+Sets a proxy. Note that this feature will conflict with extensions like Proxy SwitchyOmega. Multiple scripts can use a proxy without conflicting (for example, one script providing Google access and another providing Twitter access).
 
-Please first understand [PAC](https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy_servers_and_tunneling/Proxy_Auto-Configuration_PAC_file) and [Chromium complete URL restrictions in PAC](https://github.com/FelisCatus/SwitchyOmega/wiki/Chromium-%E5%AE%8C%E6%95%B4%E7%BD%91%E5%9D%80%E9%99%90%E5%88%B6).
+Please first read up on [PAC](https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy_servers_and_tunneling/Proxy_Auto-Configuration_PAC_file) and [Chromium's full URL restrictions in PAC](https://github.com/FelisCatus/SwitchyOmega/wiki/Chromium-Full-URL-Restriction).
 
 ```typescript
-declare function CAT_setProxy(rule: CAT_Types.ProxyRule[] | string): void;
+declare function CAT_setProxy(rule: CATType.ProxyRule[] | string): void;
 
-declare namespace CAT_Types {
+declare namespace CATType {
   interface ProxyRule {
     proxyServer: ProxyServer;
     matchUrl: string[];
@@ -37,316 +35,132 @@ declare namespace CAT_Types {
 }
 ```
 
-#### Example
-
-```javascript
-// Set HTTP proxy for specific URLs
-CAT_setProxy([
-  {
-    proxyServer: {
-      scheme: "http",
-      host: "proxy.example.com",
-      port: 8080
-    },
-    matchUrl: ["*://google.com/*", "*://*.google.com/*"]
-  }
-]);
-
-// Set SOCKS5 proxy
-CAT_setProxy([
-  {
-    proxyServer: {
-      scheme: "socks5",
-      host: "127.0.0.1",
-      port: 1080
-    },
-    matchUrl: ["*://twitter.com/*", "*://*.twitter.com/*"]
-  }
-]);
-```
-
 ### CAT_clearProxy
 
-> Deprecated in v0.9.1 stable release, may be added to beta versions in the future
+> Deprecated as of the 0.9.1 stable release; may return in a beta version in the future.
 
-Clear proxy configuration.
+Clears the proxy.
 
 ```typescript
 declare function CAT_clearProxy(): void;
 ```
 
-#### Example
+### CAT_click
 
-```javascript
-// Clear all proxy settings
-CAT_clearProxy();
+> Deprecated as of the 0.9.1 stable release; may return in a beta version in the future.
+
+A real click. This API is experimental and may change or be removed.
+
+Implemented using [Input.dispatchMouseEvent](https://chromedevtools.github.io/devtools-protocol/tot/Input/#method-dispatchMouseEvent). Make sure the element is within the visible area, and that the coordinates are relative to the window's position.
+
+```ts
+declare function CAT_click(x: number, y: number): void;
 ```
 
-### CAT_createTab
+### CAT_userConfig
 
-Create new browser tabs with enhanced options.
+You can call this API to open the script's [UserConfig](./config.md) page.
 
-```typescript
-declare function CAT_createTab(options: CAT_Types.CreateTabOptions): Promise<number>;
+```ts
+declare function CAT_userConfig(): void;
+```
 
-declare namespace CAT_Types {
-  interface CreateTabOptions {
-    url: string;
-    active?: boolean;
-    pinned?: boolean;
-    index?: number;
-    windowId?: number;
+### CAT_fileStorage
+
+Controls the storage system configured by the manager. An `app/uuid` directory will be created for this API to use; if the `baseDir` parameter is specified, it will be used as the base directory instead.
+
+```ts
+/**
+ * Controls the storage system configured by the manager. An app/uuid directory will be created for this API to use; if the baseDir parameter is specified, it will be used as the base directory instead.
+ * Uploads overwrite files with the same name by default.
+ * @param action Operation type: list lists all files in the given directory, upload uploads a file, download downloads a file, delete deletes a file, config opens the config page. move/mkdir and similar operations are not yet provided.
+ * @param details
+ */
+declare function CAT_fileStorage(
+  action: "list",
+  details: {
+    // File path
+    path?: string;
+    // Base directory; if not set, the script's uuid is used as the directory
+    baseDir?: string;
+    onload?: (files: CATType.FileStorageFileInfo[]) => void;
+    onerror?: (error: CATType.FileStorageError) => void;
   }
-}
-```
-
-#### Example
-
-```javascript
-// Create new tab
-const tabId = await CAT_createTab({
-  url: "https://scriptcat.org",
-  active: true
-});
-
-// Create pinned tab
-await CAT_createTab({
-  url: "https://scriptcat.org",
-  active: false,
-  pinned: true
-});
-```
-
-### CAT_closeTab
-
-Close browser tabs by ID.
-
-```typescript
-declare function CAT_closeTab(tabId: number): Promise<void>;
-```
-
-#### Example
-
-```javascript
-// Close specific tab
-await CAT_closeTab(123);
-```
-
-### CAT_getUserConfig
-
-Get user configuration for the current script.
-
-```typescript
-declare function CAT_getUserConfig(): Promise<CAT_Types.UserConfig>;
-
-declare namespace CAT_Types {
-  interface UserConfig {
-    [key: string]: any;
+): void;
+declare function CAT_fileStorage(
+  action: "download",
+  details: {
+    file: CATType.FileStorageFileInfo; // Some platforms require the file's hash, so the file info must be passed in
+    onload: (data: Blob) => void;
+    // onprogress?: (progress: number) => void;
+    onerror?: (error: CATType.FileStorageError) => void;
+    // public?: boolean;
   }
-}
+): void;
+declare function CAT_fileStorage(
+  action: "delete",
+  details: {
+    path: string;
+    onload?: () => void;
+    onerror?: (error: CATType.FileStorageError) => void;
+    // public?: boolean;
+  }
+): void;
+declare function CAT_fileStorage(
+  action: "upload",
+  details: {
+    path: string;
+    // Base directory; if not set, the script's uuid is used as the directory
+    baseDir?: string;
+    data: Blob;
+    onload?: () => void;
+    // onprogress?: (progress: number) => void;
+    onerror?: (error: CATType.FileStorageError) => void;
+    // public?: boolean;
+  }
+): void;
+declare function CAT_fileStorage(action: "config"): void;
 ```
 
-#### Example
+### CAT_scriptLoaded
 
-```javascript
-// Get user configuration
-const config = await CAT_getUserConfig();
-console.log("User settings:", config);
+When using `early-start`, you can use this function to determine whether the script has fully loaded.
+
+```js
+function CAT_scriptLoaded(): Promise<void>;
+
+CAT_scriptLoaded().then(() => {
+  console.log("Script has fully loaded");
+});
 ```
 
-### CAT_setUserConfig
+### CAT_createBlobUrl
 
-Set user configuration for the current script.
+Create a blob URL from a Blob object. ScriptCat manages the URL lifecycle.
 
 ```typescript
-declare function CAT_setUserConfig(config: CAT_Types.UserConfig): Promise<void>;
+declare function CAT_createBlobUrl(blob: Blob): Promise<string>;
 ```
 
-#### Example
+### CAT_fetchBlob
 
-```javascript
-// Set user configuration
-await CAT_setUserConfig({
-  theme: "dark",
-  autoUpdate: true,
-  refreshInterval: 5000
-});
+Fetch a blob URL and return the Blob data. Helper for `GM_xmlhttpRequest` stream responses.
+
+```typescript
+declare function CAT_fetchBlob(url: string): Promise<Blob>;
+```
+
+### CAT_fetchDocument
+
+Fetch a URL and parse it as a Document (in the content page context if available).
+
+```typescript
+declare function CAT_fetchDocument(url: string): Promise<Document | undefined>;
 ```
 
 ### CAT_registerMenuInput
 
-Register input menu items in the extension popup.
-
-```typescript
-declare function CAT_registerMenuInput(options: CAT_Types.MenuInputOptions): string;
-
-declare namespace CAT_Types {
-  interface MenuInputOptions {
-    title: string;
-    type: "text" | "number" | "password" | "select";
-    value?: any;
-    options?: string[] | { [key: string]: string };
-    placeholder?: string;
-    onchange?: (value: any) => void;
-  }
-}
-```
-
-#### Example
-
-```javascript
-// Register text input
-const inputId = CAT_registerMenuInput({
-  title: "API Key",
-  type: "text",
-  placeholder: "Enter your API key",
-  onchange: (value) => {
-    GM_setValue("apiKey", value);
-  }
-});
-
-// Register select input
-CAT_registerMenuInput({
-  title: "Theme",
-  type: "select",
-  options: {
-    "light": "Light Theme",
-    "dark": "Dark Theme",
-    "auto": "Auto"
-  },
-  value: "auto",
-  onchange: (value) => {
-    GM_setValue("theme", value);
-  }
-});
-```
-
-### CAT_unregisterMenuInput
-
-Unregister previously registered menu input.
-
-```typescript
-declare function CAT_unregisterMenuInput(inputId: string): void;
-```
-
-#### Example
-
-```javascript
-// Unregister menu input
-CAT_unregisterMenuInput(inputId);
-```
-
-### CAT_fetch
-
-Enhanced fetch API with additional ScriptCat features.
-
-```typescript
-declare function CAT_fetch(url: string, options?: CAT_Types.FetchOptions): Promise<Response>;
-
-declare namespace CAT_Types {
-  interface FetchOptions extends RequestInit {
-    timeout?: number;
-    retry?: number;
-    retryDelay?: number;
-  }
-}
-```
-
-#### Example
-
-```javascript
-// Basic fetch
-const response = await CAT_fetch("https://api.example.com/data");
-const data = await response.json();
-
-// Fetch with timeout and retry
-const response2 = await CAT_fetch("https://api.example.com/data", {
-  timeout: 5000,
-  retry: 3,
-  retryDelay: 1000,
-  headers: {
-    "Authorization": "Bearer token"
-  }
-});
-```
-
-## Best Practices
-
-### Error Handling
-
-Always implement proper error handling when using CAT APIs:
-
-```javascript
-try {
-  const result = await CAT_createTab({
-    url: "https://example.com"
-  });
-  console.log("Tab created:", result);
-} catch (error) {
-  console.error("Failed to create tab:", error);
-}
-```
-
-### Permission Management
-
-Ensure your script declares the necessary permissions:
-
-```javascript
-// ==UserScript==
-// @name         CAT API Example
-// @grant        CAT_createTab
-// @grant        CAT_getUserConfig
-// @grant        CAT_setUserConfig
-// ==/UserScript==
-```
-
-### Configuration Management
-
-Use CAT_getUserConfig and CAT_setUserConfig for persistent settings:
-
-```javascript
-// Load configuration on script start
-const config = await CAT_getUserConfig();
-const theme = config.theme || "light";
-
-// Save configuration when changed
-function updateTheme(newTheme) {
-  CAT_setUserConfig({
-    ...config,
-    theme: newTheme
-  });
-}
-```
-
-## Migration Notes
-
-### From Deprecated APIs
-
-If you're using deprecated APIs like CAT_setProxy, consider alternative approaches:
-
-1. Use browser's built-in proxy settings
-2. Implement proxy logic at the application level
-3. Use GM_xmlhttpRequest with custom routing
-
-### Version Compatibility
-
-Always check the ScriptCat version before using newer CAT APIs:
-
-```javascript
-if (GM_info.version >= "1.0.0") {
-  // Use newer CAT APIs
-  await CAT_createTab({url: "https://example.com"});
-} else {
-  // Fallback for older versions
-  GM_openInTab("https://example.com");
-}
-```
-
-For more examples and detailed usage, please refer to the [example repository](https://github.com/scriptscat/scriptcat/tree/main/example).
-
-### CAT_registerMenuInput
-
-Registers a menu input box, allowing the user to enter a value, and calls a callback function after the input is complete.
+Register a menu item with an input field, allowing the user to enter a value. The callback receives the user's input.
 
 ```typescript
 declare function CAT_registerMenuInput(
@@ -355,46 +169,25 @@ declare function CAT_registerMenuInput(
   options_or_accessKey?:
     | {
         id?: number | string;
-        accessKey?: string; // Menu shortcut key
-        autoClose?: boolean; // Default is true; if false, the popup menu page will not close after clicking.
-        nested?: boolean; // SC-specific configuration, default is true. If false, the browser right-click menu item is promoted from a third-level menu to a second-level menu.
-        individual?: boolean; // SC-specific configuration, default is false. If true, identical menu items are not merged.
-        // Optional input box fields
+        accessKey?: string;
+        autoClose?: boolean;
+        nested?: boolean;
+        individual?: boolean;
+        /** Input widget type. */
         inputType?: "text" | "number" | "boolean";
-        title?: string; // title is only applicable to input box types
+        /** Dialog title (for the input popup). */
+        title?: string;
+        /** Label shown next to the input. */
         inputLabel?: string;
+        /** Default value for the input. */
         inputDefaultValue?: string | number | boolean;
+        /** Placeholder text. */
         inputPlaceholder?: string;
       }
     | string
 ): number;
-```
 
-### CAT_unregisterMenuInput
-
-Unregisters a menu input box.
-
-```typescript
+/** Unregister a menu input (alias of `GM_unregisterMenuCommand`). */
 declare const CAT_unregisterMenuInput: typeof GM_unregisterMenuCommand;
 ```
 
-### CATType.FileStorageFileInfo
-
-```typescript
-interface FileStorageFileInfo {
-  // Filename
-  name: string;
-  // File path
-  path: string;
-  // Absolute path in storage space
-  absPath: string;
-  // File size
-  size: number;
-  // File digest/hash
-  digest: string;
-  // File creation time
-  createtime: number;
-  // File update time
-  updatetime: number;
-}
-```

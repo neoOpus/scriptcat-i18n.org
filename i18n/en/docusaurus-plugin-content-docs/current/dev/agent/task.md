@@ -1,200 +1,198 @@
 ---
-id: agent-task
-sidebar_position: 5
+title: Scheduled Task API
 ---
-
-# 定时任务 API
 
 `@grant CAT.agent.task`
 
-定时任务 API 允许脚本创建基于 Cron 表达式的定时任务，支持两种执行模式。
+The scheduled task API lets a script create Cron-expression-based scheduled tasks, with two execution modes.
 
-## 执行模式
+## Execution modes
 
-### Internal 模式
+### Internal mode
 
-由 Agent 系统自动执行：
-- 在 Cron 触发时自动创建或恢复对话
-- 使用配置的 `prompt` 发送给 LLM
-- 可指定模型和 Skill
-- 执行历史和 Token 用量自动记录
+Handled automatically by the Agent system:
+- Automatically creates or resumes a conversation when the Cron schedule fires
+- Sends the configured `prompt` to the LLM
+- A model and Skills can be specified
+- Execution history and token usage are recorded automatically
 
-### Event 模式
+### Event mode
 
-由脚本自行处理：
-- Cron 触发时发送事件通知到脚本
-- 脚本通过 `addListener` 监听事件
-- 完全自定义处理逻辑
+Handled by the script itself:
+- An event notification is sent to the script when the Cron schedule fires
+- The script listens for the event via `addListener`
+- Handling logic is fully custom
 
-## create — 创建任务
+## create — create a task
 
 ```javascript
 const task = await CAT.agent.task.create(options);
 ```
 
-**参数 AgentTaskCreateOptions：**
+**Parameters (`AgentTaskCreateOptions`):**
 
-| 参数 | 类型 | 必填 | 说明 |
+| Parameter | Type | Required | Description |
 |------|------|------|------|
-| `name` | `string` | 是 | 任务名称 |
-| `crontab` | `string` | 是 | 标准 Cron 表达式（5 字段：分 时 日 月 周） |
-| `mode` | `"internal" \| "event"` | 是 | 执行模式 |
-| `enabled` | `boolean` | 否 | 是否启用，默认 `true` |
-| `notify` | `boolean` | 否 | 触发时是否发送浏览器通知 |
-| `prompt` | `string` | 否 | internal 模式的提示词 |
-| `modelId` | `string` | 否 | internal 模式使用的模型 ID |
-| `skills` | `string[]` | 否 | internal 模式加载的 Skill 列表 |
-| `maxIterations` | `number` | 否 | internal 模式最大工具调用轮次，默认 `10` |
+| `name` | `string` | Yes | Task name |
+| `crontab` | `string` | Yes | Standard Cron expression (5 fields: minute hour day month weekday) |
+| `mode` | `"internal" \| "event"` | Yes | Execution mode |
+| `enabled` | `boolean` | No | Whether it's enabled, defaults to `true` |
+| `notify` | `boolean` | No | Whether to send a browser notification when it fires |
+| `prompt` | `string` | No | Prompt for internal mode |
+| `modelId` | `string` | No | Model ID to use in internal mode |
+| `skills` | `string[]` | No | Skills to load in internal mode |
+| `maxIterations` | `number` | No | Max tool-call rounds for internal mode, defaults to `10` |
 
-**返回值 AgentTask：**
+**Returns `AgentTask`:**
 
-| 字段 | 类型 | 说明 |
+| Field | Type | Description |
 |------|------|------|
-| `id` | `string` | 任务 ID |
-| `name` | `string` | 任务名称 |
-| `crontab` | `string` | Cron 表达式 |
-| `mode` | `string` | 执行模式 |
-| `enabled` | `boolean` | 是否启用 |
-| `notify` | `boolean` | 是否通知 |
-| `nextruntime` | `number` | 下次执行时间戳 |
-| `lastruntime` | `number` | 上次执行时间戳 |
-| `lastRunStatus` | `"success" \| "error"` | 上次执行状态 |
-| `lastRunError` | `string` | 上次执行错误信息 |
-| `createtime` | `number` | 创建时间戳 |
+| `id` | `string` | Task ID |
+| `name` | `string` | Task name |
+| `crontab` | `string` | Cron expression |
+| `mode` | `string` | Execution mode |
+| `enabled` | `boolean` | Whether it's enabled |
+| `notify` | `boolean` | Whether notifications are sent |
+| `nextruntime` | `number` | Next run timestamp |
+| `lastruntime` | `number` | Last run timestamp |
+| `conversationId` | `string` | Associated conversation ID in internal mode (optional) |
+| `lastRunStatus` | `"success" \| "error"` | Status of the last run |
+| `lastRunError` | `string` | Error message from the last run |
+| `createtime` | `number` | Creation timestamp |
 
-**Cron 表达式示例：**
+**Cron expression examples:**
 
-| 表达式 | 说明 |
+| Expression | Description |
 |--------|------|
-| `* * * * *` | 每分钟 |
-| `0 9 * * *` | 每天 09:00 |
-| `0 */2 * * *` | 每 2 小时 |
-| `30 8 * * 1-5` | 工作日 08:30 |
-| `0 0 1 * *` | 每月 1 号 00:00 |
+| `* * * * *` | Every minute |
+| `0 9 * * *` | Every day at 09:00 |
+| `0 */2 * * *` | Every 2 hours |
+| `30 8 * * 1-5` | Weekdays at 08:30 |
+| `0 0 1 * *` | 00:00 on the 1st of every month |
 
-## list — 列出所有任务
+## list — list all tasks
 
 ```javascript
 const tasks = await CAT.agent.task.list();
 ```
 
-返回当前脚本创建的所有任务。
+Returns all tasks created by the current script.
 
-## get — 获取任务详情
+## get — get task details
 
 ```javascript
 const task = await CAT.agent.task.get(taskId);
 ```
 
-如果任务不存在返回 `undefined`。
+Returns `undefined` if the task doesn't exist.
 
-## update — 更新任务
+## update — update a task
 
 ```javascript
 const task = await CAT.agent.task.update(taskId, partial);
 ```
 
-**可更新字段：**
+**Updatable fields:**
 
 ```javascript
 await CAT.agent.task.update(task.id, {
-  name: "新名称",
+  name: "New name",
   crontab: "0 10 * * *",
   enabled: false,
-  prompt: "新的提示词",
+  prompt: "New prompt",
   notify: true
 });
 ```
 
-更新后会自动重新计算 `nextruntime`。
+`nextruntime` is automatically recalculated after an update.
 
-## remove — 删除任务
+## remove — delete a task
 
 ```javascript
 const success = await CAT.agent.task.remove(taskId);
 ```
 
-## runNow — 立即执行
+## runNow — run immediately
 
 ```javascript
 await CAT.agent.task.runNow(taskId);
 ```
 
-不等待 Cron 时间，立即触发一次任务执行（非阻塞，后台执行）。
+Triggers the task to run once immediately, without waiting for its Cron schedule (non-blocking, runs in the background).
 
-## addListener — 监听任务触发
+## addListener — listen for task triggers
 
 ```javascript
 const listenerId = await CAT.agent.task.addListener(taskId, callback);
 ```
 
-仅用于 **event 模式** 任务。Cron 触发时执行回调。
+Only used for **event mode** tasks. The callback runs when the Cron schedule fires.
 
-**回调参数 AgentTaskTrigger：**
+**Callback parameter (`AgentTaskTrigger`):**
 
-| 字段 | 类型 | 说明 |
+| Field | Type | Description |
 |------|------|------|
-| `taskId` | `string` | 任务 ID |
-| `name` | `string` | 任务名称 |
-| `crontab` | `string` | Cron 表达式 |
-| `triggeredAt` | `number` | 触发时间戳 |
+| `taskId` | `string` | Task ID |
+| `name` | `string` | Task name |
+| `crontab` | `string` | Cron expression |
+| `triggeredAt` | `number` | Trigger timestamp |
 
-## removeListener — 移除监听
+## removeListener — remove a listener
 
 ```javascript
 await CAT.agent.task.removeListener(listenerId);
 ```
 
-## 完整示例
+## Full examples
 
-### Internal 模式 — AI 自动执行
+### Internal mode — the AI runs it automatically
 
 ```javascript
 // ==UserScript==
-// @name        定时新闻摘要
+// @name        Scheduled news digest
 // @match       *://*/*
 // @grant       CAT.agent.task
 // ==/UserScript==
 
 const task = await CAT.agent.task.create({
-  name: "每日新闻摘要",
-  crontab: "0 9 * * *",       // 每天 9 点
+  name: "Daily news digest",
+  crontab: "0 9 * * *",       // Every day at 9
   mode: "internal",
-  prompt: "请搜索今天的科技新闻，生成一份简短摘要保存到 OPFS",
+  prompt: "Please search today's tech news and save a short summary to OPFS",
   skills: ["web-search"],
   maxIterations: 10,
   notify: true
 });
 
-console.log("任务已创建，下次执行:", new Date(task.nextruntime));
+console.log("Task created, next run:", new Date(task.nextruntime));
 ```
 
-### Event 模式 — 脚本自行处理
+### Event mode — the script handles it itself
 
 ```javascript
 // ==UserScript==
-// @name        定时数据采集
+// @name        Scheduled data collection
 // @match       *://*/*
 // @grant       CAT.agent.task
 // @grant       CAT.agent.dom
 // ==/UserScript==
 
 const task = await CAT.agent.task.create({
-  name: "股票数据采集",
-  crontab: "*/30 9-15 * * 1-5", // 工作日 9-15 点每 30 分钟
+  name: "Stock data collection",
+  crontab: "*/30 9-15 * * 1-5", // Every 30 minutes, 9-15 on weekdays
   mode: "event",
   enabled: true,
   notify: false
 });
 
 await CAT.agent.task.addListener(task.id, async (trigger) => {
-  console.log(`任务触发: ${trigger.name} at ${new Date(trigger.triggeredAt)}`);
+  console.log(`Task triggered: ${trigger.name} at ${new Date(trigger.triggeredAt)}`);
 
-  // 自定义采集逻辑
+  // Custom collection logic
   await CAT.agent.dom.navigate("https://finance.example.com/stock");
   const content = await CAT.agent.dom.readPage({ selector: ".stock-table" });
 
-  // 处理数据...
-  console.log("采集完成");
+  // Process the data...
+  console.log("Collection complete");
 });
 ```

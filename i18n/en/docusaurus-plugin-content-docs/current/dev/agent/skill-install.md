@@ -1,99 +1,96 @@
 ---
-id: agent-skill-install
-sidebar_position: 3.5
+title: Installing and Using Skills
 ---
 
-# Skill 安装与使用
+A Skill is an extension package for Agent that injects domain-specific knowledge and custom tools into the AI. This page covers how to install, configure, and manage Skills.
 
-Skill 是 Agent 的扩展能力包，为 AI 注入专业领域知识和自定义工具。本页介绍如何安装、配置和管理 Skill。
-
-:::tip 官方 Skill 仓库
-**[scriptscat/skills](https://github.com/scriptscat/skills)** — 包含浏览器自动化、定时任务、文件解析、脚本开发助手等开箱即用的 Skill。
+:::tip Official Skill repository
+**[scriptscat/skills](https://github.com/scriptscat/skills)** — ready-to-use Skills for browser automation, scheduled tasks, file parsing, script-development assistance, and more.
 :::
 
-## 安装方式
+## Installation methods
 
-### 方式一：URL 安装
+### Method 1: install from a URL
 
-在浏览器地址栏直接打开 `SKILL.cat.md` 的 URL，ScriptCat 会自动拦截并弹出安装确认页面。
+Open a `SKILL.cat.md` URL directly in your browser's address bar; ScriptCat will intercept it and pop up an install-confirmation page.
 
-例如安装官方的 browser-automation Skill：
+For example, to install the official browser-automation Skill:
 
 ```
 https://raw.githubusercontent.com/scriptscat/skills/main/browser-automation/SKILL.cat.md
 ```
 
-也可以在管理页面操作：
+You can also do this from the management page:
 
-1. 打开 ScriptCat 管理页面 → **Agent → Skills**
-2. 点击右上角 **URL** 按钮
-3. 粘贴 `SKILL.cat.md` 的 URL
-4. 点击安装
+1. Open the ScriptCat management page → **Agent → Skills**
+2. Click the **URL** button in the top right
+3. Paste the `SKILL.cat.md` URL
+4. Click Install
 
-ScriptCat 会自动获取 `SKILL.cat.md` 及其声明的脚本和参考资料文件。
+ScriptCat automatically fetches `SKILL.cat.md` along with the scripts and reference material files it declares.
 
-### 方式二：ZIP 安装
+### Method 2: install a ZIP
 
-1. 打开 ScriptCat 管理页面 → **Agent → Skills**
-2. 点击右上角 **+** 按钮
-3. 选择 `.zip` 格式的 Skill 包
+1. Open the ScriptCat management page → **Agent → Skills**
+2. Click the **+** button in the top right
+3. Select a Skill package in `.zip` format
 
-ZIP 包的目录结构应符合标准 Skill 格式（包含 `SKILL.cat.md`）。
+The ZIP's directory structure should follow the standard Skill format (it must contain `SKILL.cat.md`).
 
-## 官方 Skill 列表
+## Official Skill list
 
-右键`复制链接`，在SKILL管理 URL 粘贴链接也可安装
+Right-click **Copy link**, then paste the link into the Skills management URL field to install.
 
-| Skill | 说明 | 安装 |
+| Skill | Description | Install |
 |-------|------|------|
-| [browser-automation](https://github.com/scriptscat/skills/tree/main/browser-automation) | 页面分析、DOM 操作、表单填写、截图、导航 | [安装](https://raw.githubusercontent.com/scriptscat/skills/main/browser-automation/SKILL.cat.md) |
-| [scheduled-tasks](https://github.com/scriptscat/skills/tree/main/scheduled-tasks) | Cron 定时任务（LLM 自动执行 / 脚本回调） | [安装](https://raw.githubusercontent.com/scriptscat/skills/main/scheduled-tasks/SKILL.cat.md) |
-| [skill-creator](https://github.com/scriptscat/skills/tree/main/skill-creator) | 辅助创建、测试和打包新 Skill | [安装](https://raw.githubusercontent.com/scriptscat/skills/main/skill-creator/SKILL.cat.md) |
-| [file-parser](https://github.com/scriptscat/skills/tree/main/file-parser) | 解析 Excel、PDF、Word、CSV、PPT 文件 | [安装](https://raw.githubusercontent.com/scriptscat/skills/main/file-parser/SKILL.cat.md) |
-| [scriptcat-dev](https://github.com/scriptscat/skills/tree/main/scriptcat-dev) | 脚本猫/油猴脚本开发助手 | [安装](https://raw.githubusercontent.com/scriptscat/skills/main/scriptcat-dev/SKILL.cat.md) |
-| [synology-office-sheet](https://github.com/scriptscat/skills/tree/main/synology-office-sheet) | 读写群晖 Synology Office 电子表格 | [安装](https://raw.githubusercontent.com/scriptscat/skills/main/synology-office-sheet/SKILL.cat.md) |
-| [wechat-publisher](https://github.com/scriptscat/skills/tree/main/wechat-publisher) | 微信公众号运营助手 | [安装](https://raw.githubusercontent.com/scriptscat/skills/main/wechat-publisher/SKILL.cat.md) |
-| [xiaohongshu-publisher](https://github.com/scriptscat/skills/tree/main/xiaohongshu-publisher) | 小红书运营助手 | [安装](https://raw.githubusercontent.com/scriptscat/skills/main/xiaohongshu-publisher/SKILL.cat.md) |
+| [browser-automation](https://github.com/scriptscat/skills/tree/main/browser-automation) | Page analysis, DOM manipulation, form filling, screenshots, navigation | [Install](https://raw.githubusercontent.com/scriptscat/skills/main/browser-automation/SKILL.cat.md) |
+| [scheduled-tasks](https://github.com/scriptscat/skills/tree/main/scheduled-tasks) | Cron scheduled tasks (auto-run by the LLM / script callback) | [Install](https://raw.githubusercontent.com/scriptscat/skills/main/scheduled-tasks/SKILL.cat.md) |
+| [skill-creator](https://github.com/scriptscat/skills/tree/main/skill-creator) | Helps create, test, and package new Skills | [Install](https://raw.githubusercontent.com/scriptscat/skills/main/skill-creator/SKILL.cat.md) |
+| [file-parser](https://github.com/scriptscat/skills/tree/main/file-parser) | Parses Excel, PDF, Word, CSV, and PPT files | [Install](https://raw.githubusercontent.com/scriptscat/skills/main/file-parser/SKILL.cat.md) |
+| [scriptcat-dev](https://github.com/scriptscat/skills/tree/main/scriptcat-dev) | ScriptCat/Tampermonkey script development assistant | [Install](https://raw.githubusercontent.com/scriptscat/skills/main/scriptcat-dev/SKILL.cat.md) |
+| [synology-office-sheet](https://github.com/scriptscat/skills/tree/main/synology-office-sheet) | Read/write Synology Office spreadsheets | [Install](https://raw.githubusercontent.com/scriptscat/skills/main/synology-office-sheet/SKILL.cat.md) |
+| [wechat-publisher](https://github.com/scriptscat/skills/tree/main/wechat-publisher) | WeChat Official Account operations assistant | [Install](https://raw.githubusercontent.com/scriptscat/skills/main/wechat-publisher/SKILL.cat.md) |
+| [xiaohongshu-publisher](https://github.com/scriptscat/skills/tree/main/xiaohongshu-publisher) | Xiaohongshu (RED) operations assistant | [Install](https://raw.githubusercontent.com/scriptscat/skills/main/xiaohongshu-publisher/SKILL.cat.md) |
 
-## 配置 Skill
+## Configuring a Skill
 
-部分 Skill 需要填写配置（如 API Key）：
+Some Skills require configuration (such as an API key):
 
-1. 在 **Agent → Skills** 页面找到已安装的 Skill
-2. 点击 **设置** 图标（齿轮）
-3. 填写配置项并保存
+1. Find the installed Skill on the **Agent → Skills** page
+2. Click the **Settings** icon (gear)
+3. Fill in the configuration fields and save
 
-配置中标记为 `secret` 的字段会在 UI 中遮盖显示。
+Fields marked `secret` in the configuration are masked in the UI.
 
-## 启用 / 禁用
+## Enable / disable
 
-在 Skills 管理页面，通过 Skill 卡片上的开关控制启用状态。禁用的 Skill 不会在对话中加载。
+On the Skills management page, use the toggle on a Skill's card to control whether it's enabled. Disabled Skills are not loaded in conversations.
 
-## 检查更新
+## Checking for updates
 
-通过 URL 安装的 Skill 支持版本检查：
+Skills installed via URL support version checking:
 
-1. 点击 Skills 页面右上角的 **检查更新** 按钮
-2. 有新版本的 Skill 卡片上会出现 **更新** 按钮
-3. 点击即可一键升级
+1. Click the **Check for updates** button in the top right of the Skills page
+2. Skill cards with a new version available will show an **Update** button
+3. Click it to upgrade with one click
 
-更新基于 `SKILL.cat.md` 中声明的 `version` 字段（semver 格式）进行比较。
+Updates are compared using the `version` field (semver format) declared in `SKILL.cat.md`.
 
-## 在对话中使用
+## Using Skills in a conversation
 
-安装的 Skill 会自动在 Agent 对话中可用。AI 会根据对话内容判断何时加载和调用 Skill 的工具。
+Installed Skills are automatically available in Agent conversations. The AI decides when to load and call a Skill's tools based on the conversation content.
 
-你也可以在创建对话时指定加载哪些 Skill：
+You can also specify which Skills to load when creating a conversation:
 
 ```javascript
 const conv = await CAT.agent.conversation.create({
-  skills: "auto"              // 自动加载所有 Skill
-  // 或指定特定 Skill
+  skills: "auto"              // Automatically load all Skills
+  // or specify particular Skills
   // skills: ["browser-automation", "file-parser"]
 });
 ```
 
-## 了解更多
+## Learn more
 
-- [Skill 管理 API](./skill.md) — 通过脚本编程式管理 Skill
-- [Skill 开发指南](./skill-dev.md) — 创建自己的 Skill
+- [Skill Management API](./skill.md) — manage Skills programmatically from a script
+- [Skill Development Guide](./skill-dev.md) — create your own Skill

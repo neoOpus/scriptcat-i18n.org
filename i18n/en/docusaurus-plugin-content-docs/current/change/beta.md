@@ -1,9 +1,6 @@
 ---
-id: beta-changelog
-sidebar_position: 1
+title: Beta Changelog
 ---
-
-# Beta Changelog
 
 ## 1.4.0-beta.4 (2026-06-13)
 

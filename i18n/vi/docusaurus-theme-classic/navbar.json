@@ -1,0 +1,18 @@
+{
+  "item.label.使用文档": {
+    "message": "Hướng dẫn sử dụng",
+    "description": "The label for the user guide navbar item"
+  },
+  "item.label.开发文档": {
+    "message": "Hướng dẫn nhà phát triển",
+    "description": "The label for the developer guide navbar item"
+  },
+  "item.label.更新日志": {
+    "message": "Nhật ký thay đổi",
+    "description": "The label for the changelog navbar item"
+  },
+  "item.label.脚本开发指南": {
+    "message": "Hướng dẫn phát triển script",
+    "description": "The label for the script development guide navbar item"
+  }
+}

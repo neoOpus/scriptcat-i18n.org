@@ -1,120 +1,117 @@
 ---
-id: agent-skill
-sidebar_position: 4
+title: Skill Management API
 ---
-
-# Skill 管理 API
 
 `@grant CAT.agent.skills`
 
-Skill 管理 API 允许脚本查询、安装、卸载和调用 Skill 扩展包。
+The Skill management API lets a script query, install, remove, and call Skill extension packages.
 
-关于 Skill 的开发和打包，请参阅 [Skill 开发指南](../agent-skill-dev)。官方 Skill 示例仓库：[scriptscat/skills](https://github.com/scriptscat/skills)。
+For Skill development and packaging, see the [Skill Development Guide](../skill-dev). Official Skill examples: [scriptscat/skills](https://github.com/scriptscat/skills).
 
-## list — 列出已安装 Skill
+## list — list installed Skills
 
 ```javascript
 const skills = await CAT.agent.skills.list();
 ```
 
-**返回值 SkillSummary[]：**
+**Returns `SkillSummary[]`:**
 
-| 字段 | 类型 | 说明 |
+| Field | Type | Description |
 |------|------|------|
-| `name` | `string` | Skill 名称 |
-| `description` | `string` | Skill 描述 |
-| `version` | `string` | 版本号（semver） |
-| `toolNames` | `string[]` | 包含的 SkillScript 工具名列表 |
-| `referenceNames` | `string[]` | 包含的参考资料文件名列表 |
-| `hasConfig` | `boolean` | 是否有配置字段声明 |
-| `enabled` | `boolean` | 是否启用（默认 `true`） |
-| `installUrl` | `string` | 安装来源 URL（用于检查更新） |
-| `installtime` | `number` | 安装时间戳 |
-| `updatetime` | `number` | 更新时间戳 |
+| `name` | `string` | Skill name |
+| `description` | `string` | Skill description |
+| `toolNames` | `string[]` | Names of the SkillScript tools it contains |
+| `referenceNames` | `string[]` | Names of the reference-material files it contains |
+| `hasConfig` | `boolean` | Whether it declares configuration fields |
+| `enabled` | `boolean` | Whether it's enabled (defaults to `true`) |
+| `installtime` | `number` | Install timestamp |
+| `updatetime` | `number` | Last-updated timestamp |
 
-## get — 获取 Skill 详情
+> Note: `version` and `installUrl` (used by the management page's update-check feature) are not returned through this script API — they're only used internally by the update-check logic and the management page UI.
+
+## get — get Skill details
 
 ```javascript
 const skill = await CAT.agent.skills.get(name);
 ```
 
-返回完整的 `SkillRecord`，如果不存在返回 `null`。
+Returns the full `SkillRecord`, or `null` if it doesn't exist.
 
-**SkillRecord 结构：**
+**`SkillRecord` shape:**
 
-继承 `SkillSummary` 的所有字段，额外包含：
+Inherits all fields from `SkillSummary`, plus:
 
-| 字段 | 类型 | 说明 |
+| Field | Type | Description |
 |------|------|------|
-| `prompt` | `string` | SKILL.cat.md 中 Markdown 正文部分（给 AI 的提示词） |
-| `config` | `Record<string, SkillConfigField>` | 配置字段定义（schema） |
+| `prompt` | `string` | The Markdown body of `SKILL.cat.md` (the prompt given to the AI) |
+| `config` | `Record<string, SkillConfigField>` | Configuration field definitions (schema) |
 
-**SkillConfigField 结构：**
+**`SkillConfigField` shape:**
 
-| 字段 | 类型 | 说明 |
+| Field | Type | Description |
 |------|------|------|
-| `title` | `string` | 显示标题 |
-| `type` | `"text" \| "number" \| "select" \| "switch"` | 字段类型 |
-| `secret` | `boolean` | 是否为敏感信息（UI 中遮盖显示） |
-| `required` | `boolean` | 是否必填 |
-| `default` | `unknown` | 默认值 |
-| `values` | `string[]` | 选项列表（仅 `select` 类型） |
+| `title` | `string` | Display title |
+| `type` | `"text" \| "number" \| "select" \| "switch"` | Field type |
+| `secret` | `boolean` | Whether it's sensitive (masked in the UI) |
+| `required` | `boolean` | Whether it's required |
+| `default` | `unknown` | Default value |
+| `values` | `string[]` | Option list (`select` type only) |
 
-## install — 安装 Skill
+## install — install a Skill
 
 ```javascript
 const record = await CAT.agent.skills.install(skillMd, scripts?, references?);
 ```
 
-**参数：**
+**Parameters:**
 
-| 参数 | 类型 | 说明 |
+| Parameter | Type | Description |
 |------|------|------|
-| `skillMd` | `string` | SKILL.cat.md 文件内容（必填） |
-| `scripts` | `Array<{ name, code }>` | SkillScript 文件列表 |
-| `references` | `Array<{ name, content }>` | 参考资料文件列表 |
+| `skillMd` | `string` | Contents of the `SKILL.cat.md` file (required) |
+| `scripts` | `Array<{ name, code }>` | List of SkillScript files |
+| `references` | `Array<{ name, content }>` | List of reference-material files |
 
-如果同名 Skill 已存在，会执行更新操作。
+If a Skill with the same name already exists, this updates it.
 
 ```javascript
 const record = await CAT.agent.skills.install(
   `---
 name: my-search
-description: 自定义搜索工具
+description: Custom search tool
 ---
 
-当用户需要搜索时，使用 search 工具。`,
+Use the search tool when the user needs to search.`,
   [{ name: "search.js", code: skillScriptCode }],
-  [{ name: "api-docs.md", content: "# API 文档\n..." }]
+  [{ name: "api-docs.md", content: "# API Docs\n..." }]
 );
 ```
 
-## remove — 卸载 Skill
+## remove — uninstall a Skill
 
 ```javascript
 const success = await CAT.agent.skills.remove(name);
 ```
 
-返回 `true` 表示卸载成功，`false` 表示 Skill 不存在。
+Returns `true` if removed successfully, `false` if the Skill doesn't exist.
 
-## call — 直接调用 SkillScript
+## call — call a SkillScript directly
 
 ```javascript
 const result = await CAT.agent.skills.call(skillName, scriptName, params?);
 ```
 
-不经过 AI 对话，直接执行指定 Skill 中的 SkillScript。
+Executes a SkillScript in the specified Skill directly, without going through an AI conversation.
 
-**参数：**
+**Parameters:**
 
-| 参数 | 类型 | 说明 |
+| Parameter | Type | Description |
 |------|------|------|
-| `skillName` | `string` | Skill 名称（必填） |
-| `scriptName` | `string` | SkillScript 名称（必填） |
-| `params` | `Record<string, unknown>` | 传入参数（与 `@param` 声明对应） |
+| `skillName` | `string` | Skill name (required) |
+| `scriptName` | `string` | SkillScript name (required) |
+| `params` | `Record<string, unknown>` | Parameters to pass in (matching the `@param` declarations) |
 
 ```javascript
-// 直接调用 Skill 中的搜索脚本
+// Call the search script inside a Skill directly
 const results = await CAT.agent.skills.call(
   "my-search",
   "search",
@@ -122,4 +119,4 @@ const results = await CAT.agent.skills.call(
 );
 ```
 
-> SkillScript 的执行有超时限制（默认 300 秒，可通过 `@timeout` 自定义）。
+> SkillScript execution has a timeout (300 seconds by default, customizable via `@timeout`).

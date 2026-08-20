@@ -1,35 +1,32 @@
 ---
-id: agent-skill-dev
-sidebar_position: 9
+title: Skill Development Guide
 ---
 
-# Skill 开发指南
+A Skill is an extension package for the Agent system, made up of a **prompt + tool scripts + reference material**. Skills let you inject domain-specific knowledge and custom tool capabilities into the AI.
 
-Skill 是 Agent 系统的扩展包，由**提示词 + 工具脚本 + 参考资料**组合而成。通过 Skill，可以为 AI 注入专业领域知识和自定义工具能力。
-
-## Skill 目录结构
+## Skill directory structure
 
 ```
 my-skill/
-├── SKILL.cat.md          # 必须：元数据 + 提示词（入口文件）
-├── scripts/              # 可选：SkillScript 工具脚本
+├── SKILL.cat.md          # Required: metadata + prompt (entry file)
+├── scripts/              # Optional: SkillScript tool scripts
 │   ├── search.js
 │   └── export.js
-└── references/           # 可选：参考资料文件
+└── references/           # Optional: reference material files
     ├── api-docs.md
     └── examples.json
 ```
 
-> `SKILL.cat.md` 是 Skill 的入口文件。通过 URL 安装时，ScriptCat 会先获取此文件，再根据 frontmatter 中声明的 `scripts` 和 `references` 按相对路径获取其他文件。
+> `SKILL.cat.md` is the Skill's entry file. When installing from a URL, ScriptCat fetches this file first, then fetches the other files by their relative paths based on the `scripts` and `references` declared in its frontmatter.
 
-## SKILL.cat.md 格式
+## SKILL.cat.md format
 
-SKILL.cat.md 使用 YAML frontmatter 声明元数据，Markdown 正文作为给 AI 的提示词。
+`SKILL.cat.md` uses YAML frontmatter to declare metadata, with the Markdown body serving as the prompt given to the AI.
 
 ```markdown
 ---
 name: "weather-assistant"
-description: "天气查询助手，支持全球城市天气查询和预报"
+description: "Weather lookup assistant, supports weather queries and forecasts for cities worldwide"
 config:
   apiKey:
     title: "OpenWeather API Key"
@@ -37,164 +34,164 @@ config:
     secret: true
     required: true
   unit:
-    title: "温度单位"
+    title: "Temperature unit"
     type: "select"
     values: ["celsius", "fahrenheit"]
     default: "celsius"
   detailed:
-    title: "详细模式"
+    title: "Detailed mode"
     type: "switch"
     default: false
   maxDays:
-    title: "预报天数"
+    title: "Forecast days"
     type: "number"
     default: 7
 ---
 
-# 天气查询助手
+# Weather assistant
 
-你可以使用以下工具查询天气信息：
+You can use the following tools to look up weather information:
 
-## 工具说明
+## Tool description
 
-- **get_weather**: 查询指定城市的当前天气和未来预报
-  - 参数 `city` 为城市名称（支持中英文）
-  - 参数 `days` 为预报天数
+- **get_weather**: look up the current weather and forecast for a specified city
+  - The `city` parameter is the city name (Chinese and English names both supported)
+  - The `days` parameter is the number of forecast days
 
-## 使用规则
+## Usage rules
 
-1. 用户询问天气时，先确认城市名称
-2. 默认返回当前天气 + 3 天预报
-3. 温度根据配置的单位显示
+1. When the user asks about weather, confirm the city name first
+2. By default, return current weather + a 3-day forecast
+3. Display temperature according to the configured unit
 ```
 
-### 元数据字段
+### Metadata fields
 
-| 字段 | 类型 | 必填 | 说明 |
+| Field | Type | Required | Description |
 |------|------|------|------|
-| `name` | `string` | 是 | Skill 唯一标识名（建议英文 kebab-case） |
-| `description` | `string` | 是 | 简短描述（显示在列表中） |
-| `version` | `string` | 否 | 版本号（semver 格式，如 `1.0.0`），用于更新检查 |
-| `scripts` | `string[]` | 否 | 脚本文件名列表（如 `["search.js"]`），URL 安装时自动从 `scripts/` 目录获取 |
-| `references` | `string[]` | 否 | 参考资料文件名列表（如 `["api-docs.md"]`），URL 安装时自动从 `references/` 目录获取 |
-| `config` | `object` | 否 | 配置字段定义 |
+| `name` | `string` | Yes | Unique Skill identifier (kebab-case English recommended) |
+| `description` | `string` | Yes | Short description (shown in the list) |
+| `version` | `string` | No | Version (semver format, e.g. `1.0.0`), used for update checks |
+| `scripts` | `string[]` | No | List of script filenames (e.g. `["search.js"]`); fetched automatically from the `scripts/` directory when installing via URL |
+| `references` | `string[]` | No | List of reference-material filenames (e.g. `["api-docs.md"]`); fetched automatically from the `references/` directory when installing via URL |
+| `config` | `object` | No | Configuration field definitions |
 
-### 配置字段类型
+### Configuration field types
 
-| type | 说明 | 特有属性 |
+| type | Description | Type-specific properties |
 |------|------|---------|
-| `text` | 文本输入框 | `secret`: 是否遮盖显示 |
-| `number` | 数字输入框 | — |
-| `select` | 下拉选择 | `values`: 选项列表（`string[]`） |
-| `switch` | 开关 | — |
+| `text` | Text input | `secret`: whether it's masked in the UI |
+| `number` | Number input | — |
+| `select` | Dropdown | `values`: option list (`string[]`) |
+| `switch` | Toggle | — |
 
-**通用属性：**
+**Common properties:**
 
-| 属性 | 类型 | 说明 |
+| Property | Type | Description |
 |------|------|------|
-| `title` | `string` | 显示标题 |
-| `required` | `boolean` | 是否必填 |
-| `default` | `unknown` | 默认值 |
-| `secret` | `boolean` | 是否为敏感信息 |
+| `title` | `string` | Display title |
+| `required` | `boolean` | Whether it's required |
+| `default` | `unknown` | Default value |
+| `secret` | `boolean` | Whether it's sensitive information |
 
-用户在管理页面的 Skill 设置中填写配置值。
+The user fills in these config values in the Skill's settings on the management page.
 
-### 提示词正文
+### The prompt body
 
-Markdown 正文部分会作为 AI 的系统提示词注入。编写建议：
+The Markdown body is injected as the AI's system prompt. Writing tips:
 
-- 描述 Skill 提供的工具及其用途
-- 说明工具参数的含义和使用规则
-- 给出典型使用场景和注意事项
-- 如果有参考资料，说明如何查阅
+- Describe the tools the Skill provides and what they're for
+- Explain what each tool's parameters mean and the rules for using them
+- Give typical usage scenarios and things to watch out for
+- If there's reference material, explain how to consult it
 
-## SkillScript 工具脚本
+## SkillScript tool scripts
 
-SkillScript 是可被 AI 调用的工具脚本。每个 SkillScript 文件会被注册为一个 LLM tool。
+A SkillScript is a tool script the AI can call. Each SkillScript file gets registered as one LLM tool.
 
-### 元数据格式
+### Metadata format
 
 ```javascript
 // ==SkillScript==
 // @name        get_weather
-// @description 查询指定城市的天气信息
-// @param       city string [required] 城市名称，支持中英文
-// @param       days number 预报天数，默认3天
-// @param       format string [json,text] 输出格式
+// @description Look up weather information for a specified city
+// @param       city string [required] City name, Chinese and English names both supported
+// @param       days number Number of forecast days, defaults to 3
+// @param       format string [json,text] Output format
 // @grant       CAT.agent.opfs
 // @require     https://cdn.example.com/utils.js
 // @timeout     60
 // ==SkillScript==
 ```
 
-### 元数据字段
+### Metadata fields
 
-| 标签 | 说明 | 示例 |
+| Tag | Description | Example |
 |------|------|------|
-| `@name` | 工具名称（AI 调用时使用） | `get_weather` |
-| `@description` | 工具描述（AI 据此判断何时调用） | `查询城市天气` |
-| `@param` | 参数定义（可多个） | 见下方 |
-| `@grant` | 需要的 GM API 权限 | `CAT.agent.opfs` |
-| `@require` | 外部库 URL（会被缓存加载） | `https://cdn.example.com/lib.js` |
-| `@timeout` | 执行超时秒数 | `60`（默认 300） |
+| `@name` | Tool name (used when the AI calls it) | `get_weather` |
+| `@description` | Tool description (the AI uses this to decide when to call it) | `Look up city weather` |
+| `@param` | Parameter definition (can appear multiple times) | see below |
+| `@grant` | The GM API permission it needs | `CAT.agent.opfs` |
+| `@require` | External library URL (loaded and cached) | `https://cdn.example.com/lib.js` |
+| `@timeout` | Execution timeout in seconds | `60` (default `300`) |
 
-### @param 语法
+### `@param` syntax
 
 ```
-@param 参数名 类型[枚举值] [required] 描述
+@param paramName type[enumValues] [required] description
 ```
 
-**类型：** `string`、`number`、`boolean`
+**Types:** `string`, `number`, `boolean`
 
-**枚举值（可选）：** 用方括号包裹，逗号分隔
+**Enum values (optional):** wrapped in square brackets, comma-separated
 
-**必填标记：** 描述前加 `[required]`
+**Required marker:** `[required]` before the description
 
 ```javascript
-// 必填字符串参数
-// @param city string [required] 城市名称
+// Required string parameter
+// @param city string [required] City name
 
-// 带枚举的字符串参数
-// @param unit string [celsius,fahrenheit] 温度单位
+// String parameter with an enum
+// @param unit string [celsius,fahrenheit] Temperature unit
 
-// 可选数字参数
-// @param days number 预报天数
+// Optional number parameter
+// @param days number Number of forecast days
 
-// 布尔参数
-// @param detailed boolean 是否返回详细信息
+// Boolean parameter
+// @param detailed boolean Whether to return detailed information
 ```
 
-参数定义会自动转换为 JSON Schema，供 LLM 调用时使用。
+Parameter definitions are automatically converted to JSON Schema for the LLM to use when calling the tool.
 
-### 脚本编写
+### Writing the script
 
 ```javascript
 // ==SkillScript==
 // @name        get_weather
-// @description 查询指定城市的天气信息
-// @param       city string [required] 城市名称
-// @param       days number 预报天数
+// @description Look up weather information for a specified city
+// @param       city string [required] City name
+// @param       days number Number of forecast days
 // @timeout     30
 // ==SkillScript==
 
-// 1. 通过 arguments[0] 接收 AI 传入的参数
+// 1. Receive the parameters the AI passed in via arguments[0]
 const { city, days = 3 } = arguments[0];
 
-// 2. CAT_CONFIG 提供用户在管理页面填写的 Skill 配置
+// 2. CAT_CONFIG provides the Skill configuration the user filled in on the management page
 const apiKey = CAT_CONFIG.apiKey;
 const unit = CAT_CONFIG.unit || "celsius";
 
-// 3. 执行业务逻辑
+// 3. Do the actual work
 const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&cnt=${days}&units=${unit === "celsius" ? "metric" : "imperial"}&appid=${apiKey}`;
 const response = await fetch(url);
 
 if (!response.ok) {
-  throw new Error(`API 请求失败: ${response.status}`);
+  throw new Error(`API request failed: ${response.status}`);
 }
 
 const data = await response.json();
 
-// 4. 通过 return 将结果返回给 AI
+// 4. Return the result to the AI via `return`
 return {
   city: data.city.name,
   country: data.city.country,
@@ -206,90 +203,90 @@ return {
 };
 ```
 
-### 执行环境
+### Execution environment
 
-| 特性 | 说明 |
+| Feature | Description |
 |------|------|
-| **执行位置** | Sandbox 隔离环境（无 DOM 访问） |
-| **参数获取** | `arguments[0]` — AI 传入的参数对象 |
-| **配置获取** | `CAT_CONFIG` — 全局只读对象，包含用户配置 |
-| **返回值** | `return` 语句返回 JSON 可序列化的值 |
-| **异步支持** | 支持 `async/await`、`fetch`、`Promise` |
-| **外部库** | 通过 `@require` 加载，缓存到本地 |
-| **超时** | 默认 300 秒，可通过 `@timeout` 自定义 |
-| **GM API** | 通过 `@grant` 声明后可使用（如 `CAT.agent.opfs`） |
+| **Execution location** | A sandboxed, isolated environment (no DOM access) |
+| **Getting parameters** | `arguments[0]` — the parameter object the AI passed in |
+| **Getting config** | `CAT_CONFIG` — a global, read-only object containing the user's configuration |
+| **Return value** | The `return` statement returns a JSON-serializable value |
+| **Async support** | `async/await`, `fetch`, and `Promise` are all supported |
+| **External libraries** | Loaded via `@require`, cached locally |
+| **Timeout** | 300 seconds by default, customizable via `@timeout` |
+| **GM API** | Usable once declared via `@grant` (e.g. `CAT.agent.opfs`) |
 
-### @require 外部库
+### `@require` external libraries
 
 ```javascript
 // ==SkillScript==
 // @name        analyze
-// @description 数据分析
+// @description Data analysis
 // @require     https://cdn.jsdelivr.net/npm/lodash@4/lodash.min.js
 // ==SkillScript==
 
-// @require 加载的库可直接使用
+// A library loaded via @require can be used directly
 const result = _.groupBy(data, "category");
 return result;
 ```
 
-外部库会在首次加载时缓存，后续执行直接使用缓存版本。
+External libraries are cached the first time they're loaded, and subsequent executions use the cached version directly.
 
-## 参考资料
+## Reference material
 
-`references/` 目录中的文件作为 AI 可查阅的参考资料。当 AI 需要时，会通过内置的 `read_reference` 工具读取这些文件。
+Files in the `references/` directory serve as reference material the AI can consult. When the AI needs them, it reads them via the built-in `read_reference` tool.
 
-适合放入参考资料的内容：
-- API 文档
-- 数据格式说明
-- 使用示例集合
-- 领域知识文档
+Content that's a good fit for reference material:
+- API documentation
+- Data format specifications
+- Collections of usage examples
+- Domain knowledge documents
 
-## 示例仓库
+## Example repository
 
-官方维护了一个 Skill 示例仓库，包含多个开箱即用的 Skill 和脚本 API 示例：
+There's an officially maintained repository of Skill examples, containing several ready-to-use Skills and script API examples:
 
 **[scriptscat/skills](https://github.com/scriptscat/skills)**
 
-**Skill 列表：**
+**Skill list:**
 
-| 目录 | 说明 | 安装 |
+| Directory | Description | Install |
 |------|------|------|
-| `browser-automation/` | 页面分析、DOM 操作、表单填写、截图、导航 | [安装](https://raw.githubusercontent.com/scriptscat/skills/main/browser-automation/SKILL.cat.md) |
-| `scheduled-tasks/` | Cron 定时任务（internal + event 模式） | [安装](https://raw.githubusercontent.com/scriptscat/skills/main/scheduled-tasks/SKILL.cat.md) |
-| `skill-creator/` | 辅助创建、测试和打包新 Skill | [安装](https://raw.githubusercontent.com/scriptscat/skills/main/skill-creator/SKILL.cat.md) |
-| `file-parser/` | 解析常见文件格式（Excel、PDF、Word、CSV、PPT） | [安装](https://raw.githubusercontent.com/scriptscat/skills/main/file-parser/SKILL.cat.md) |
-| `scriptcat-dev/` | 脚本猫/油猴脚本开发助手 | [安装](https://raw.githubusercontent.com/scriptscat/skills/main/scriptcat-dev/SKILL.cat.md) |
-| `synology-office-sheet/` | 读写群晖 Synology Office 电子表格 | [安装](https://raw.githubusercontent.com/scriptscat/skills/main/synology-office-sheet/SKILL.cat.md) |
-| `wechat-publisher/` | 微信公众号运营助手 — 素材收集、文章编写与发布 | [安装](https://raw.githubusercontent.com/scriptscat/skills/main/wechat-publisher/SKILL.cat.md) |
-| `xiaohongshu-publisher/` | 小红书运营助手 — 笔记编写、配图生成与发布 | [安装](https://raw.githubusercontent.com/scriptscat/skills/main/xiaohongshu-publisher/SKILL.cat.md) |
+| `browser-automation/` | Page analysis, DOM manipulation, form filling, screenshots, navigation | [Install](https://raw.githubusercontent.com/scriptscat/skills/main/browser-automation/SKILL.cat.md) |
+| `scheduled-tasks/` | Cron scheduled tasks (internal + event mode) | [Install](https://raw.githubusercontent.com/scriptscat/skills/main/scheduled-tasks/SKILL.cat.md) |
+| `skill-creator/` | Helps create, test, and package new Skills | [Install](https://raw.githubusercontent.com/scriptscat/skills/main/skill-creator/SKILL.cat.md) |
+| `file-parser/` | Parses common file formats (Excel, PDF, Word, CSV, PPT) | [Install](https://raw.githubusercontent.com/scriptscat/skills/main/file-parser/SKILL.cat.md) |
+| `scriptcat-dev/` | ScriptCat/Tampermonkey script development assistant | [Install](https://raw.githubusercontent.com/scriptscat/skills/main/scriptcat-dev/SKILL.cat.md) |
+| `synology-office-sheet/` | Read/write Synology Office spreadsheets | [Install](https://raw.githubusercontent.com/scriptscat/skills/main/synology-office-sheet/SKILL.cat.md) |
+| `wechat-publisher/` | WeChat Official Account operations assistant — content gathering, article writing, and publishing | [Install](https://raw.githubusercontent.com/scriptscat/skills/main/wechat-publisher/SKILL.cat.md) |
+| `xiaohongshu-publisher/` | Xiaohongshu (RED) operations assistant — note writing, image generation, and publishing | [Install](https://raw.githubusercontent.com/scriptscat/skills/main/xiaohongshu-publisher/SKILL.cat.md) |
 
-**示例代码：**
+**Example code:**
 
-| 目录 | 说明 |
+| Directory | Description |
 |------|------|
-| `examples/conversation/` | 对话 API 示例 — 聊天、流式、工具调用 |
-| `examples/dom/` | DOM API 示例 — 页面读取、表单填写、标签管理 |
-| `examples/config/` | Skill Config 示例 — 配置字段声明和 `CAT_CONFIG` 使用 |
-| `examples/page_copilot.user.js` | 完整用户脚本示例 — 右键 AI 助手 + 流式 UI |
+| `examples/conversation/` | Conversation API examples — chat, streaming, tool calls |
+| `examples/dom/` | DOM API examples — reading pages, filling forms, tab management |
+| `examples/config/` | Skill config examples — declaring config fields and using `CAT_CONFIG` |
+| `examples/page_copilot.user.js` | A complete user script example — a right-click AI assistant with a streaming UI |
 
-建议从示例仓库中的代码开始学习 Skill 开发。
+It's a good idea to start learning Skill development from the code in the example repository.
 
-## 安装方式
+## Installation methods
 
-### URL 安装
+### Install from a URL
 
-在浏览器中直接打开 `SKILL.cat.md` 的 URL，ScriptCat 会自动拦截并弹出安装页面。
+Open a `SKILL.cat.md` URL directly in your browser; ScriptCat will intercept it and pop up an install page.
 
-也可以在管理页面 → Agent → Skill 管理中：
+You can also do this from the management page → Agent → Skill management:
 
-1. 点击 URL 安装按钮
-2. 粘贴 `SKILL.cat.md` 的 URL
-3. 确认安装
+1. Click the URL-install button
+2. Paste the `SKILL.cat.md` URL
+3. Confirm the install
 
-ScriptCat 会先获取 `SKILL.cat.md`，然后根据 frontmatter 中的 `scripts` 和 `references` 声明，按相对路径获取其他文件。安装后会记录 `installUrl`，后续可通过版本号检查更新。
+ScriptCat fetches `SKILL.cat.md` first, then fetches the other files by their relative paths based on the `scripts` and `references` declared in its frontmatter. After installing, `installUrl` is recorded, so updates can later be checked by version number.
 
-### 通过脚本安装
+### Install from a script
 
 ```javascript
 // ==UserScript==
@@ -303,21 +300,21 @@ await CAT.agent.skills.install(
 );
 ```
 
-## Skill 加载机制
+## How Skills are loaded
 
-Skill 采用三层渐进加载，优化上下文使用：
+Skills use three-tier progressive loading to optimize context usage:
 
-| 层级 | 时机 | 内容 |
+| Tier | When | Content |
 |------|------|------|
-| **摘要** | 对话开始时 | Skill 名称 + 描述 + 工具列表（注入系统提示词） |
-| **提示词** | AI 主动 `load_skill` 时 | SKILL.cat.md 完整正文 |
-| **工具** | load_skill 后 | SkillScript 注册为可调用的 LLM tool |
+| **Summary** | At the start of a conversation | Skill name + description + tool list (injected into the system prompt) |
+| **Prompt** | When the AI actively calls `load_skill` | The full body of `SKILL.cat.md` |
+| **Tools** | After `load_skill` | SkillScripts are registered as callable LLM tools |
 
-AI 在需要时会自动调用 `load_skill` 加载完整的 Skill 内容和工具。
+The AI calls `load_skill` automatically when it needs to load a Skill's full content and tools.
 
-## 完整示例
+## Full example
 
-### 目录结构
+### Directory structure
 
 ```
 translator-skill/
@@ -333,7 +330,7 @@ translator-skill/
 ```markdown
 ---
 name: "translator"
-description: "多语言翻译工具，支持 100+ 种语言"
+description: "Multilingual translation tool, supports 100+ languages"
 version: "1.0.0"
 scripts:
   - translate.js
@@ -341,26 +338,26 @@ references:
   - language-codes.md
 config:
   apiKey:
-    title: "翻译 API Key"
+    title: "Translation API Key"
     type: "text"
     secret: true
     required: true
   defaultTarget:
-    title: "默认目标语言"
+    title: "Default target language"
     type: "select"
     values: ["zh", "en", "ja", "ko", "fr", "de", "es"]
     default: "zh"
 ---
 
-# 翻译助手
+# Translation assistant
 
-使用 `translate` 工具进行翻译。参考 language-codes.md 获取完整的语言代码列表。
+Use the `translate` tool to translate text. Refer to language-codes.md for the full list of language codes.
 
-## 使用规则
+## Usage rules
 
-- 如果用户没有指定目标语言，使用配置中的默认语言
-- 长文本自动分段翻译
-- 保留原文格式（Markdown、代码块等）
+- If the user hasn't specified a target language, use the default language from the configuration
+- Long text is automatically translated in chunks
+- Preserve the original formatting (Markdown, code blocks, etc.)
 ```
 
 ### scripts/translate.js
@@ -368,10 +365,10 @@ config:
 ```javascript
 // ==SkillScript==
 // @name        translate
-// @description 翻译文本到指定语言
-// @param       text string [required] 要翻译的文本
-// @param       target string 目标语言代码（默认使用配置值）
-// @param       source string 源语言代码（默认自动检测）
+// @description Translate text into a specified language
+// @param       text string [required] The text to translate
+// @param       target string Target language code (uses the config value by default)
+// @param       source string Source language code (auto-detected by default)
 // @timeout     60
 // ==SkillScript==
 
@@ -393,7 +390,7 @@ const response = await fetch("https://api.example.com/translate", {
 });
 
 if (!response.ok) {
-  throw new Error(`翻译失败: ${response.statusText}`);
+  throw new Error(`Translation failed: ${response.statusText}`);
 }
 
 const result = await response.json();
@@ -408,16 +405,16 @@ return {
 ### references/language-codes.md
 
 ```markdown
-# 语言代码参考
+# Language code reference
 
-| 代码 | 语言 |
+| Code | Language |
 |------|------|
-| zh | 中文 |
-| en | 英语 |
-| ja | 日语 |
-| ko | 韩语 |
-| fr | 法语 |
-| de | 德语 |
-| es | 西班牙语 |
+| zh | Chinese |
+| en | English |
+| ja | Japanese |
+| ko | Korean |
+| fr | French |
+| de | German |
+| es | Spanish |
 | ...  | ... |
 ```

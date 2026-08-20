@@ -1,39 +1,36 @@
 ---
-id: agent-builtin-tools
-sidebar_position: 10
+title: Built-in Tools Reference
 ---
 
-# 内置工具参考
+Agent comes with a set of built-in tools that the AI calls automatically during conversations. These tools are available by default in persistent conversations; script developers usually don't need to call them directly — the AI picks the right tool based on user intent.
 
-Agent 内置了一系列工具供 AI 在对话中自动调用。这些工具在持久化对话中默认可用，脚本开发者通常不需要直接调用它们——AI 会根据用户意图自动选择合适的工具。
+Understanding what these tools can do helps you write better system prompts and custom tools.
 
-了解这些工具的能力有助于编写更好的系统提示词和自定义工具。
-
-## 网页数据获取
+## Web Data Fetching
 
 ### web_fetch
 
-抓取 URL 内容，支持 HTML 转文本提取和 LLM 摘要。
+Fetch the content of a URL, with HTML-to-text extraction and LLM summarization support.
 
-| 参数 | 类型 | 必填 | 说明 |
+| Parameter | Type | Required | Description |
 |------|------|------|------|
-| `url` | `string` | 是 | 目标 URL（仅 http/https） |
-| `prompt` | `string` | 否 | 摘要提示词（提供时会用 LLM 提炼内容） |
-| `max_length` | `number` | 否 | 内容最大字符数 |
+| `url` | `string` | Yes | Target URL (http/https only) |
+| `prompt` | `string` | No | Summary prompt (when provided, an LLM is used to distill the content) |
+| `max_length` | `number` | No | max content characters |
 
-**行为细节：**
-- 30 秒请求超时
-- HTML 内容自动提取正文（去除导航、侧边栏等）
-- JSON 响应自动解析
-- 纯文本直接返回
-- 提供 `prompt` 时，会将抓取的内容发送给 LLM 进行摘要
+**Behavior details:**
+- 30-second request timeout
+- HTML content automatically extracts the main body text (strips navigation, sidebars, etc.)
+- JSON responses are parsed automatically
+- Plain text is returned as-is
+- When `prompt` is provided, the fetched content is sent to an LLM for summarization
 
-**返回值：**
+**Return value:**
 ```json
 {
   "url": "https://example.com",
   "content_type": "text/html",
-  "content": "提取后的正文内容...",
+  "content": "Extracted body content...",
   "truncated": false,
   "final_url": "https://example.com/redirected"
 }
@@ -41,238 +38,226 @@ Agent 内置了一系列工具供 AI 在对话中自动调用。这些工具在�
 
 ### web_search
 
-搜索引擎查询，返回结构化搜索结果。
+Query a search engine and return structured search results.
 
-| 参数 | 类型 | 必填 | 说明 |
+| Parameter | Type | Required | Description |
 |------|------|------|------|
-| `query` | `string` | 是 | 搜索关键词 |
-| `max_results` | `number` | 否 | 最大结果数（默认 5，上限 10） |
+| `query` | `string` | Yes | Search keywords |
+| `max_results` | `number` | No | Max number of results (default 5, cap 10) |
 
-**支持的搜索引擎：**
+**Supported search engines:**
 
-| 引擎 | 说明 | 配置要求 |
+| Engine | Description | Configuration required |
 |------|------|---------|
-| DuckDuckGo | 默认引擎 | 无需配置 |
-| Bing | 微软 Bing 搜索 | 需要 API Key |
-| 百度 | 百度搜索 | 无需 API Key |
-| Google Custom Search | Google 自定义搜索 | 需要 API Key + CSE ID |
+| DuckDuckGo | Default engine | None |
+| Bing | Microsoft Bing Search | API key required |
+| Baidu | Baidu Search | No API key required |
+| Google Custom Search | Google Custom Search | API key + CSE ID required |
 
-搜索引擎在管理页面 → Agent → 设置中配置。
+Search engines are configured on the management page → Agent → Settings.
 
-**返回值：**
+**Return value:**
 ```json
 [
   {
-    "title": "搜索结果标题",
+    "title": "Search result title",
     "url": "https://example.com/result",
-    "snippet": "结果摘要文本..."
+    "snippet": "Result summary text..."
   }
 ]
 ```
 
 ### get_tab_content
 
-读取指定标签页的渲染后页面内容，转为带 CSS 选择器注释的结构化 Markdown。
+Read the rendered page content of a specified tab, converted into structured Markdown annotated with CSS selectors.
 
-| 参数 | 类型 | 必填 | 说明 |
+| Parameter | Type | Required | Description |
 |------|------|------|------|
-| `tab_id` | `number` | 是 | 标签页 ID |
-| `selector` | `string` | 否 | CSS 选择器，只提取匹配部分 |
-| `prompt` | `string` | 否 | 摘要提示词 |
-| `max_length` | `number` | 否 | 内容最大字符数 |
+| `tab_id` | `number` | Yes | Tab ID |
+| `selector` | `string` | No | CSS selector; only extract the matching part |
+| `prompt` | `string` | No | summary prompt |
+| `max_length` | `number` | No | max content characters |
 
-与 `web_fetch` 的区别：`get_tab_content` 读取的是**浏览器已渲染**的页面（包括 JS 动态内容），而 `web_fetch` 是发起新的 HTTP 请求。
+Difference from `web_fetch`: `get_tab_content` reads the page **as already rendered by the browser** (including dynamic JS content), whereas `web_fetch` makes a fresh HTTP request.
 
-**返回值：**
+**Return value:**
 ```json
 {
   "tab_id": 123,
   "url": "https://example.com",
-  "title": "页面标题",
-  "content": "结构化内容...",
+  "title": "Page title",
+  "content": "Structured content...",
   "truncated": false,
   "used_selector": "main"
 }
 ```
 
-## 标签页管理
+## Tab Management
 
 ### list_tabs
 
-查询已打开的标签页，支持多种过滤条件。
+Query open tabs, with support for several filter conditions.
 
-| 参数 | 类型 | 必填 | 说明 |
+| Parameter | Type | Required | Description |
 |------|------|------|------|
-| `url_pattern` | `string` | 否 | URL 正则匹配 |
-| `title_pattern` | `string` | 否 | 标题正则匹配 |
-| `active` | `boolean` | 否 | 仅返回活动标签页 |
-| `window_id` | `number` | 否 | 指定窗口 |
-| `audible` | `boolean` | 否 | 仅返回正在播放音频的标签页 |
+| `url_pattern` | `string` | No | URL regex match |
+| `title_pattern` | `string` | No | Title regex match |
+| `active` | `boolean` | No | Only return the active tab |
+| `window_id` | `number` | No | specified window |
+| `audible` | `boolean` | No | Only return tabs currently playing audio |
 
 ### open_tab
 
-打开新标签页或导航已有标签页。
+Open a new tab, or navigate an existing one.
 
-| 参数 | 类型 | 必填 | 说明 |
+| Parameter | Type | Required | Description |
 |------|------|------|------|
-| `url` | `string` | 是 | 目标 URL |
-| `tab_id` | `number` | 否 | 已有标签页 ID（提供时导航该标签页，不提供则打开新标签） |
-| `active` | `boolean` | 否 | 是否激活（默认 `true`） |
-| `window_id` | `number` | 否 | 指定窗口 |
-| `wait_until_loaded` | `boolean` | 否 | 是否等待页面加载完成（默认 `true`） |
+| `url` | `string` | Yes | Target URL |
+| `tab_id` | `number` | No | ID of an existing tab (if provided, that tab is navigated; otherwise a new tab is opened) |
+| `active` | `boolean` | No | Whether to activate it (default `true`) |
+| `window_id` | `number` | No | specified window |
+| `wait_until_loaded` | `boolean` | No | Whether to wait for the page to finish loading (default `true`) |
 
 ### close_tab
 
-关闭标签页。
+Close a tab.
 
-| 参数 | 类型 | 必填 | 说明 |
+| Parameter | Type | Required | Description |
 |------|------|------|------|
-| `tab_id` | `number` | 是 | 标签页 ID |
+| `tab_id` | `number` | Yes | Tab ID |
 
 ### activate_tab
 
-激活标签页并聚焦所在窗口。
+Activate a tab and focus the window it's in.
 
-| 参数 | 类型 | 必填 | 说明 |
+| Parameter | Type | Required | Description |
 |------|------|------|------|
-| `tab_id` | `number` | 是 | 标签页 ID |
+| `tab_id` | `number` | Yes | Tab ID |
 
-## 文件系统（OPFS）
+## File System (OPFS)
 
 ### opfs_write
 
-写入文件到工作区。
+Write a file to the workspace.
 
-| 参数 | 类型 | 必填 | 说明 |
+| Parameter | Type | Required | Description |
 |------|------|------|------|
-| `path` | `string` | 是 | 文件路径 |
-| `content` | `string` | 是 | 文件内容（支持 data URL 二进制） |
+| `path` | `string` | Yes | file path |
+| `content` | `string` | Yes | File content (data URL binary supported) |
 
 ### opfs_read
 
-读取工作区文件。默认自动检测文件类型：文本文件返回内容，二进制文件返回 blob URL。
+Read a file from the workspace. By default the file type is auto-detected: text files return their content, binary files return a blob URL.
 
-| 参数 | 类型 | 必填 | 说明 |
+| Parameter | Type | Required | Description |
 |------|------|------|------|
-| `path` | `string` | 是 | 文件路径 |
-| `mode` | `string` | 否 | `"text"` / `"blob"` / `"auto"`（默认），强制指定返回模式 |
-| `offset` | `number` | 否 | 起始行号（从 1 开始），仅文本模式 |
-| `limit` | `number` | 否 | 读取行数，仅文本模式（文本超过 200 行时必须使用分页） |
+| `path` | `string` | Yes | file path |
+| `mode` | `string` | No | `"text"` / `"blob"` / `"auto"` (default) — forces a specific return mode |
+| `offset` | `number` | No | Starting line number (1-indexed), text mode only |
+| `limit` | `number` | No | Number of lines to read, text mode only (pagination is required once text exceeds 200 lines) |
 
 ### opfs_list
 
-列出目录内容。
+List directory contents.
 
-| 参数 | 类型 | 必填 | 说明 |
+| Parameter | Type | Required | Description |
 |------|------|------|------|
-| `path` | `string` | 否 | 目录路径（默认根目录） |
+| `path` | `string` | No | Directory path (defaults to the root directory) |
 
 ### opfs_delete
 
-删除文件或目录。
+Delete a file or directory.
 
-| 参数 | 类型 | 必填 | 说明 |
+| Parameter | Type | Required | Description |
 |------|------|------|------|
-| `path` | `string` | 是 | 文件/目录路径 |
+| `path` | `string` | Yes | File/directory path |
 
-## 用户交互
+## User Interaction
 
 ### ask_user
 
-向用户发起提问，支持自由输入或结构化选择。
+Ask the user a question, supporting either free-form input or a structured choice.
 
-| 参数 | 类型 | 必填 | 说明 |
+| Parameter | Type | Required | Description |
 |------|------|------|------|
-| `question` | `string` | 是 | 问题内容 |
-| `options` | `string[]` | 否 | 可选项列表（提供时为选择题） |
-| `multiple` | `boolean` | 否 | 是否允许多选（默认 `false`） |
+| `question` | `string` | Yes | The question |
+| `options` | `string[]` | No | List of choices (when provided, this becomes a multiple-choice question) |
+| `multiple` | `boolean` | No | Whether multiple selections are allowed (default `false`) |
 
-**超时：** 5 分钟无响应返回 `{ answer: null, reason: "timeout" }`。
+**Timeout:** returns `{ answer: null, reason: "timeout" }` after 5 minutes with no response.
 
-**返回值：**
+**Return value:**
 ```json
-{ "answer": "用户的回答文本" }
+{ "answer": "The user's answer text" }
 ```
 
 ### execute_script
 
-在页面或沙箱中执行 JavaScript 代码。
+Execute JavaScript code in a page or a sandbox.
 
-| 参数 | 类型 | 必填 | 说明 |
+| Parameter | Type | Required | Description |
 |------|------|------|------|
-| `code` | `string` | 是 | JavaScript 代码 |
-| `target` | `string` | 是 | `"page"` 或 `"sandbox"` |
-| `tab_id` | `number` | 否 | 页面目标时指定标签页（默认当前活动标签） |
-| `world` | `string` | 否 | `"MAIN"` 或 `"ISOLATED"`（默认），仅 page 模式 |
+| `code` | `string` | Yes | JavaScript code |
+| `target` | `string` | Yes | `"page"` or `"sandbox"` |
+| `tab_id` | `number` | No | Which tab to target when `target` is `page` (defaults to the current active tab); ignored for sandbox |
 
-**执行环境对比：**
+**Execution environment comparison:**
 
-| 环境 | DOM | 页面 JS | 扩展 blob URL | 适用场景 |
+| Environment | DOM | Page JS | Extension blob URL | Best for |
 |------|-----|---------|---------------|---------|
-| page + ISOLATED | 可 | 不可 | 可 | DOM 读取、内容提取 |
-| page + MAIN | 可 | 可 | 不可 | 调用页面函数 |
-| sandbox | 不可 | 不可 | 不可 | 纯计算 |
+| `target: "page"` (always MAIN world) | yes | yes | no | Reading/manipulating the DOM, calling page functions, reading page variables |
+| `target: "sandbox"` | no | no | no | Pure computation |
 
-## 子代理
+> `page` mode always runs in the page's MAIN world, sharing `window` with the page — so it cannot access the extension's own blob URLs (e.g. the address `opfs_read` returns in blob mode). Use a SkillScript instead when you need to work with a blob URL.
+
+## Sub-agents
 
 ### agent
 
-生成独立的子代理处理复杂子任务。
+Spawn an independent sub-agent to handle a complex sub-task.
 
-| 参数 | 类型 | 必填 | 说明 |
+| Parameter | Type | Required | Description |
 |------|------|------|------|
-| `prompt` | `string` | 是 | 子任务描述 |
-| `description` | `string` | 否 | 简短标签（3-5 个字，UI 展示用） |
-| `type` | `string` | 否 | 子代理类型（见下方），默认 `"general"` |
-| `tab_id` | `number` | 否 | 传递给子代理的标签页 ID，子代理将在该标签页上操作 |
+| `prompt` | `string` | Yes | Description of the sub-task |
+| `description` | `string` | No | A short label (a few words, for UI display) |
+| `type` | `string` | No | Sub-agent type (see below), defaults to `"general"` |
+| `tab_id` | `number` | No | Tab ID to pass to the sub-agent; the sub-agent will operate on that tab |
 
-**子代理类型：**
+**Sub-agent types:**
 
-| type | 说明 | 可用工具 |
+| type | Description | Available tools |
 |------|------|---------|
-| `researcher` | 信息检索（只读） | web_search、web_fetch、页面内容读取 |
-| `page_operator` | 浏览器自动化 | 标签页管理、DOM 操作、页面交互 |
-| `general` | 通用（默认） | 所有工具 |
+| `researcher` | Information retrieval (read-only) | web_search, web_fetch, page content reading |
+| `page_operator` | Browser automation | Tab management, DOM manipulation, page interaction |
+| `general` | General-purpose (default) | All tools |
 
-**特性：**
-- 子代理拥有独立的对话上下文
-- **不能**使用 `ask_user` 和 `agent`（防止递归）
-- 子代理的事件会通过 `sub_agent_event` 传递给父对话
+**Characteristics:**
+- A sub-agent has its own independent conversation context
+- It **cannot** use `ask_user` or `agent` (to prevent recursion)
+- A sub-agent's events are passed to the parent conversation via `sub_agent_event`
 
-## 任务管理
+## Task Management
 
-这组工具用于在对话中管理临时任务列表（内存中，不持久化）。
+This group of tools manages a temporary task list within a conversation (in memory, not persisted).
 
 ### create_task
 
-| 参数 | 类型 | 必填 | 说明 |
+| Parameter | Type | Required | Description |
 |------|------|------|------|
-| `subject` | `string` | 是 | 任务标题 |
-| `description` | `string` | 否 | 详细描述 |
-
-### get_task
-
-| 参数 | 类型 | 必填 |
-|------|------|------|
-| `task_id` | `string` | 是 |
+| `subject` | `string` | Yes | Task title |
+| `description` | `string` | No | Detailed description |
 
 ### update_task
 
-| 参数 | 类型 | 必填 | 说明 |
+| Parameter | Type | Required | Description |
 |------|------|------|------|
-| `task_id` | `string` | 是 | 任务 ID |
-| `status` | `string` | 否 | `"pending"` / `"in_progress"` / `"completed"` |
-| `subject` | `string` | 否 | 新标题 |
-| `description` | `string` | 否 | 新描述 |
+| `task_id` | `string` | Yes | Task ID |
+| `status` | `string` | No | `"pending"` / `"in_progress"` / `"completed"` |
+| `subject` | `string` | No | New title |
+| `description` | `string` | No | New description |
 
 ### list_tasks
 
-无参数，返回所有任务的简要列表。
+No parameters; returns a brief list of all tasks.
 
-### delete_task
-
-| 参数 | 类型 | 必填 |
-|------|------|------|
-| `task_id` | `string` | 是 |
-
-> 任务管理工具主要供 AI 在处理复杂多步骤任务时自行跟踪进度，任务数据不持久化。
+> The task-management tools are mainly for the AI to track its own progress while handling complex, multi-step tasks; task data is not persisted.

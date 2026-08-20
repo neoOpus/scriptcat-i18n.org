@@ -1,36 +1,33 @@
 ---
-id: agent
-sidebar_position: 1
+title: Agent
 ---
 
-# Agent 智能助手
-
-:::caution 测试阶段
-Agent 功能目前仍处于测试阶段，以下 API 和行为可能会在正式发布前进行调整。
+:::caution Testing Phase
+The Agent feature is currently still in a testing phase; the following APIs and behavior may change before the official release.
 :::
 
-## 概述
+## Overview
 
-ScriptCat v1.4 引入了 Agent 智能助手系统，它为用户脚本提供了 AI 对话、浏览器自动化、文件管理、定时任务等一系列能力。
+ScriptCat v1.4 introduces the Agent system, giving user scripts a set of capabilities including AI conversation, browser automation, file management, and scheduled tasks.
 
-脚本通过 `CAT.agent.*` 命名空间调用这些能力，所有 API 均需要通过 `@grant` 声明对应权限。
+Scripts call these capabilities through the `CAT.agent.*` namespace, and every API requires the corresponding permission to be declared with `@grant`.
 
-## 功能模块
+## Feature Modules
 
-| 模块 | 权限声明 | 说明 |
+| Module | Permission | Description |
 |------|---------|------|
-| [对话](./agent-conversation) | `@grant CAT.agent.conversation` | 创建 AI 对话、发送消息、流式接收、自定义工具 |
-| [DOM 操作](./agent-dom) | `@grant CAT.agent.dom` | 页面导航、截图、点击、填充、滚动、DOM 监控 |
-| [Skill](./agent-skill) | `@grant CAT.agent.skills` | 安装/卸载/调用 Skill 扩展包 |
-| [定时任务](./agent-task) | `@grant CAT.agent.task` | Cron 定时任务、事件监听 |
-| [模型](./agent-model) | `@grant CAT.agent.model` | 查询已配置的模型信息（只读） |
-| [OPFS 文件](./agent-opfs) | `@grant CAT.agent.opfs` | 读写 Agent 工作区文件 |
-| [MCP](./agent-mcp) | `@grant CAT.agent.mcp` | 管理 MCP 服务器连接 |
-| [Skill 开发](./agent-skill-dev) | — | SKILL.cat.md + SkillScript 开发指南 |
+| [Conversation](./conversation) | `@grant CAT.agent.conversation` | Create AI conversations, send messages, stream responses, define custom tools |
+| [DOM Operations](./dom) | `@grant CAT.agent.dom` | Page navigation, screenshots, clicking, filling, scrolling, DOM monitoring |
+| [Skill](./skill) | `@grant CAT.agent.skills` | Install/uninstall/invoke Skill packages |
+| [Scheduled Tasks](./task) | `@grant CAT.agent.task` | Cron scheduled tasks, event listening |
+| [Model](./model) | `@grant CAT.agent.model` | Query configured model information (read-only) |
+| [OPFS Files](./opfs) | `@grant CAT.agent.opfs` | Read/write Agent workspace files |
+| [MCP](./mcp) | — | Configure MCP server connections (management page only, no script API) |
+| [Skill Development](./skill-dev) | — | SKILL.cat.md + SkillScript development guide |
 
-## 快速上手
+## Quick Start
 
-一个最简单的 Agent 脚本：
+The simplest possible Agent script:
 
 ```javascript
 // ==UserScript==
@@ -40,68 +37,68 @@ ScriptCat v1.4 引入了 Agent 智能助手系统，它为用户脚本提供了 
 // ==/UserScript==
 
 const conv = await CAT.agent.conversation.create();
-const reply = await conv.chat("你好，请介绍一下你自己");
+const reply = await conv.chat("Hi, please introduce yourself");
 console.log(reply.content);
 ```
 
-## 架构简述
+## Architecture Overview
 
-Agent 系统跨越浏览器扩展的多个隔离上下文：
+The Agent system spans multiple isolated contexts within the browser extension:
 
 ```
-用户脚本 → Sandbox（隔离执行）
+User script → Sandbox (isolated execution)
               ↓ WindowMessage
-           Offscreen（DOM 访问）
+           Offscreen (DOM access)
               ↓ ExtensionMessage
-           Service Worker（核心调度）
-              ├── LLM Provider（OpenAI / Anthropic）
-              ├── ToolRegistry（工具注册与执行）
-              ├── SkillScriptExecutor（Skill 脚本执行）
-              ├── MCPClient（MCP 协议客户端）
-              └── TaskScheduler（定时任务调度）
+           Service Worker (core scheduling)
+              ├── LLM Provider (OpenAI / Anthropic)
+              ├── ToolRegistry (tool registration and execution)
+              ├── SkillScriptExecutor (Skill script execution)
+              ├── MCPClient (MCP protocol client)
+              └── TaskScheduler (scheduled task scheduling)
 ```
 
-### 存储结构
+### Storage Structure
 
-Agent 使用浏览器 OPFS（Origin Private File System）存储数据：
+The Agent stores data using the browser's OPFS (Origin Private File System):
 
 ```
 agents/
-├── conversations/       # 对话历史
-├── attachments/         # 附件（图片、文件）
-├── skills/{name}/       # Skill 包文件
+├── conversations/       # conversation history
+├── attachments/         # attachments (images, files)
+├── skills/{name}/       # Skill package files
 │   ├── SKILL.cat.md
 │   ├── scripts/
 │   └── references/
-├── tasks/               # 定时任务配置和执行记录
-└── workspace/           # 用户工作区文件（opfs_* 工具操作的目录）
+├── tasks/               # scheduled task config and execution records
+└── workspace/           # user workspace files (the directory opfs_* tools operate on)
 ```
 
-### 支持的模型
+### Supported Models
 
-| Provider | 格式 | 特性 |
+| Provider | Format | Features |
 |----------|------|------|
-| OpenAI 兼容 | OpenAI Chat Completions API | 支持 GPT-4o、DeepSeek 等兼容模型 |
-| Anthropic | Anthropic Messages API | 支持 Claude 系列，Prompt Caching |
-| 智谱 | 智谱 API | 支持 GLM 系列模型 |
+| OpenAI-compatible | OpenAI Chat Completions API | Supports GPT-4o, DeepSeek, and other compatible models |
+| Anthropic | Anthropic Messages API | Supports the Claude family, Prompt Caching |
+| Zhipu | Zhipu API | Supports the GLM model family |
 
-在管理页面的「模型配置」中添加 Provider 和 API Key 即可使用。
+Add a Provider and API Key under "Model Configuration" in the dashboard to use it.
 
-### Skill 生态
+### The Skill Ecosystem
 
-Skill 是提示词 + 工具脚本 + 参考资料的扩展包，可以为 Agent 注入专业领域知识和自定义工具。
+A Skill is a package combining prompts + tool scripts + reference material, letting you inject domain-specific knowledge and custom tools into the Agent.
 
-**官方 Skill 仓库：[scriptscat/skills](https://github.com/scriptscat/skills)**
+**Official Skill repository: [scriptscat/skills](https://github.com/scriptscat/skills)**
 
-包含浏览器自动化、定时任务、Skill 创建工具、对话/DOM/配置示例等开箱即用的 Skill。
+Includes ready-to-use Skills for browser automation, scheduled tasks, a Skill-creation tool, conversation/DOM/config examples, and more.
 
-**安装方式：**
+**Installation methods:**
 
-- **URL 安装** — 在浏览器中直接打开 `SKILL.cat.md` 的 URL，ScriptCat 自动拦截并弹出安装页面；也可在管理页面 → Agent → Skill 管理中粘贴 URL 安装
-- **脚本安装** — 通过 `CAT.agent.skills.install()` API 编程式安装
+- **URL install** — open the `SKILL.cat.md` URL directly in the browser; ScriptCat automatically intercepts it and shows the install page. You can also paste the URL under the dashboard's Agent → Skill Management.
+- **Script install** — install programmatically via the `CAT.agent.skills.install()` API
 
-**检查更新：**
+**Checking for updates:**
 
-通过 URL 安装的 Skill 会记录安装来源，管理页面中可检查更新并一键升级（基于 `version` 字段的 semver 比较）。
+A Skill installed via URL records its install source; the dashboard lets you check for updates and upgrade with one click (based on semver comparison of the `version` field).
 
-详见 [Skill 管理 API](./agent-skill) 和 [Skill 开发指南](./agent-skill-dev)。
+See [Skill Management API](./skill) and [Skill Development Guide](./skill-dev) for details.

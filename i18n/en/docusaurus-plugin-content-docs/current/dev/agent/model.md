@@ -1,67 +1,61 @@
 ---
-id: agent-model
-sidebar_position: 6
+title: Model Query API
 ---
-
-# 模型查询 API
 
 `@grant CAT.agent.model`
 
-模型查询 API 提供只读访问，查询用户在管理页面中已配置的模型信息。出于安全考虑，API Key 不会暴露给脚本。
+The model query API provides read-only access to the models the user has configured on the management page. For security, the API key is never exposed to the script.
 
-## list — 列出所有模型
+## list — list all models
 
 ```javascript
 const models = await CAT.agent.model.list();
 ```
 
-**返回值 ModelSummary[]：**
+**Returns `ModelSummary[]`:**
 
-| 字段 | 类型 | 说明 |
+| Field | Type | Description |
 |------|------|------|
-| `id` | `string` | 模型 ID |
-| `name` | `string` | 显示名称 |
-| `provider` | `"openai" \| "anthropic" \| "zhipu"` | Provider 类型 |
-| `apiBaseUrl` | `string` | API 基础地址 |
-| `model` | `string` | 模型标识符（如 `gpt-4o`、`claude-sonnet-4-20250514`） |
-| `maxTokens` | `number` | 最大输出 Token 数 |
-| `contextWindow` | `number` | 上下文窗口大小 |
-| `supportsVision` | `boolean` | 是否支持视觉输入（图片） |
-| `supportsImageOutput` | `boolean` | 是否支持图片生成 |
+| `id` | `string` | Model config ID |
+| `name` | `string` | User-defined display name (e.g. "GPT-4o", "Claude Sonnet") |
+| `provider` | `"openai" \| "anthropic"` | Provider type |
+| `apiBaseUrl` | `string` | API base URL |
+| `model` | `string` | Model identifier sent to the provider API (e.g. `gpt-4o`, `claude-sonnet-4-20250514`) |
+| `maxTokens` | `number` | Maximum output tokens (omitted if unset) |
 
-> 注意：返回值**不包含** `apiKey` 字段。
+> Note: the returned objects **do not include** an `apiKey` field.
 
-## get — 获取指定模型
+## get — get a specific model
 
 ```javascript
 const model = await CAT.agent.model.get(modelId);
 ```
 
-如果模型不存在返回 `null`。
+Returns `null` if the model doesn't exist.
 
-## getDefault — 获取默认模型 ID
+## getDefault — get the default model ID
 
 ```javascript
 const defaultId = await CAT.agent.model.getDefault();
 ```
 
-返回用户设置的默认模型 ID 字符串。
+Returns the user's configured default model ID; returns an empty string if none is set.
 
-## getSummary — 获取模型列表摘要
+## getSummary — get the summary model ID
 
 ```javascript
-const summary = await CAT.agent.model.getSummary();
+const summaryModelId = await CAT.agent.model.getSummary();
 ```
 
-返回所有已配置模型的文本摘要字符串，适合直接注入到提示词中供 AI 参考。
+Returns the ID of the lightweight model the user has configured specifically for summarization tasks (such as auto-compacting conversation history). If none is configured separately, the system falls back to the default model, and this method returns an empty string.
 
-## 使用场景
+## Usage scenarios
 
-### 让用户选择模型
+### Letting the user pick a model
 
 ```javascript
 // ==UserScript==
-// @name        模型选择示例
+// @name        Model picker example
 // @grant       CAT.agent.model
 // @grant       CAT.agent.conversation
 // ==/UserScript==
@@ -69,26 +63,19 @@ const summary = await CAT.agent.model.getSummary();
 const models = await CAT.agent.model.list();
 const defaultId = await CAT.agent.model.getDefault();
 
-// 展示给用户选择
-const selectedModel = models.find(m => m.supportsVision) || models[0];
+// Show the list to the user and let them pick
+const selectedModel = models.find(m => m.id === defaultId) || models[0];
 
 const conv = await CAT.agent.conversation.create({
   model: selectedModel.id
 });
 ```
 
-### 检查模型能力
+### Getting details for a specific model
 
 ```javascript
 const model = await CAT.agent.model.get("my-model-id");
-if (model?.supportsVision) {
-  // 可以发送图片
-  await conv.chat([
-    { type: "text", text: "请描述这张图片" },
-    { type: "image", attachmentId: imgId, mimeType: "image/png" }
-  ]);
-} else {
-  // 仅文本
-  await conv.chat("请描述当前页面的内容");
+if (model) {
+  console.log(`${model.name} (${model.provider}), max output ${model.maxTokens ?? "unset"} tokens`);
 }
 ```
