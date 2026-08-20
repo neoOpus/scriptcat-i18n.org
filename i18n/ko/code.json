@@ -1142,5 +1142,8 @@
   "uninstall.warning.selectReason": {
     "message": "제거 사유를 선택해 주세요",
     "description": "Warning when no reason is selected"
+  },
+  "home.hero.en": {
+    "message": "브라우저를 위한 초능력."
   }
 }
